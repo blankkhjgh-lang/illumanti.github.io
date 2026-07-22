@@ -1,0 +1,224 @@
+<iframe src="https://logo-spin.com/embed/project-1784713235063439140-wxyz" width="300" height="300" frameborder="0" style="border: none; background: transparent;" title="LogoSpin Embedded Logo"></iframe>
+
+<script>
+(function() {
+  'use strict';
+  
+  if (window.logoSpinScrollHandler) return;
+  window.logoSpinScrollHandler = true;
+  
+  // Restored animation parameters from version 148
+  const PARAMS = {
+    speed: 1,
+    smoothing: 0.5,
+    clockwise: true,
+    size: 200,
+    motionBlur: true,
+    blurIntensity: 0.06,
+    circleMask: true
+  };
+  
+  // Restored scroll state management from version 148
+  let scrollState = { 
+    velocity: 0, 
+    lastScrollTop: 0, 
+    lastTime: 0,
+    isScrolling: false,
+    momentumDecay: 0.95
+  };
+  
+  // Restored velocity tracking from version 148
+  let velocityHistory = [];
+  let velocityResetTimeout = null;
+  
+  // Restored universal scroll position detection from version 148
+  function getScrollPosition() {
+    return window.pageYOffset || 
+           document.documentElement.scrollTop || 
+           document.body.scrollTop || 
+           0;
+  }
+  
+  // Restored enhanced velocity calculation from version 148
+  function calculateVelocity(deltaScroll, deltaTime) {
+    if (deltaTime <= 0) return 0;
+    
+    const rawVelocity = Math.abs(deltaScroll / deltaTime);
+    
+    // Add to velocity history for smoothing
+    const now = performance.now();
+    velocityHistory.push({ velocity: rawVelocity, timestamp: now });
+    
+    // Keep only recent history (last 500ms)
+    velocityHistory = velocityHistory.filter(
+      entry => now - entry.timestamp < 500
+    );
+    
+    // Calculate smoothed velocity
+    if (velocityHistory.length > 0) {
+      const recentVelocities = velocityHistory.map(entry => entry.velocity);
+      return recentVelocities.reduce((sum, vel) => sum + vel, 0) / recentVelocities.length;
+    }
+    
+    return rawVelocity;
+  }
+  
+  // Restored logo rotation message system from version 148
+  function updateEmbeddedLogos(scrollTop, velocity, source) {
+    const iframes = document.querySelectorAll('iframe[src*="/embed/"]');
+    iframes.forEach(function(iframe) {
+      try {
+        iframe.contentWindow.postMessage({
+          type: 'logoSpin_scroll',
+          scrollTop: scrollTop,
+          velocity: velocity,
+          source: source || 'scroll',
+          animationParams: PARAMS
+        }, '*');
+      } catch (e) {
+        // Silently handle cross-origin errors
+      }
+    });
+  }
+  
+  // Restored enhanced scroll handler from version 148
+  function handleScroll(event, source) {
+    const now = performance.now();
+    const scrollTop = getScrollPosition();
+    const deltaTime = now - scrollState.lastTime;
+    const deltaScroll = scrollTop - scrollState.lastScrollTop;
+    
+    if (deltaTime > 0) {
+      const velocity = calculateVelocity(deltaScroll, deltaTime);
+      scrollState.velocity = velocity;
+      scrollState.isScrolling = true;
+      
+      updateEmbeddedLogos(scrollTop, velocity, source);
+      
+      // Clear existing timeout
+      if (velocityResetTimeout) {
+        clearTimeout(velocityResetTimeout);
+      }
+      
+      // Set timeout to reset velocity when scrolling stops
+      velocityResetTimeout = setTimeout(function() {
+        scrollState.velocity = 0;
+        scrollState.isScrolling = false;
+        velocityHistory = [];
+        updateEmbeddedLogos(scrollTop, 0, 'stop');
+      }, 150);
+    }
+    
+    scrollState.lastScrollTop = scrollTop;
+    scrollState.lastTime = now;
+  }
+  
+  // Restored touch handling for mobile from version 148
+  let touchState = { startY: 0, startTime: 0, isTracking: false };
+  
+  function handleTouchStart(event) {
+    if (event.touches.length === 1) {
+      const touch = event.touches[0];
+      touchState.startY = touch.clientY;
+      touchState.startTime = performance.now();
+      touchState.isTracking = true;
+    }
+  }
+  
+  function handleTouchMove(event) {
+    if (!touchState.isTracking || event.touches.length !== 1) return;
+    
+    const touch = event.touches[0];
+    const now = performance.now();
+    const deltaY = touch.clientY - touchState.startY;
+    const deltaTime = now - touchState.startTime;
+    
+    if (deltaTime > 0) {
+      const velocity = Math.abs(deltaY / deltaTime) * 10; // Scale for responsiveness
+      const scrollTop = getScrollPosition();
+      
+      updateEmbeddedLogos(scrollTop, velocity, 'touch');
+    }
+    
+    touchState.startY = touch.clientY;
+    touchState.startTime = now;
+  }
+  
+  function handleTouchEnd() {
+    touchState.isTracking = false;
+    
+    // Start momentum decay
+    if (scrollState.velocity > 0.1) {
+      function momentumDecay() {
+        scrollState.velocity *= scrollState.momentumDecay;
+        if (scrollState.velocity > 0.1) {
+          updateEmbeddedLogos(getScrollPosition(), scrollState.velocity, 'momentum');
+          requestAnimationFrame(momentumDecay);
+        } else {
+          scrollState.velocity = 0;
+          scrollState.isScrolling = false;
+        }
+      }
+      requestAnimationFrame(momentumDecay);
+    }
+  }
+  
+  // Restored universal scroll listener initialization from version 148
+  function initializeScrollListeners() {
+    // Passive scroll listeners for performance
+    window.addEventListener('scroll', function(e) { handleScroll(e, 'window'); }, { passive: true });
+    document.addEventListener('scroll', function(e) { handleScroll(e, 'document'); }, { passive: true });
+    
+    // Mouse wheel for desktop
+    window.addEventListener('wheel', function(e) { handleScroll(e, 'wheel'); }, { passive: true });
+    document.addEventListener('wheel', function(e) { handleScroll(e, 'wheel'); }, { passive: true });
+    
+    // Touch events for mobile
+    document.addEventListener('touchstart', handleTouchStart, { passive: true });
+    document.addEventListener('touchmove', handleTouchMove, { passive: true });
+    document.addEventListener('touchend', handleTouchEnd, { passive: true });
+    
+    // Additional container-based scroll detection
+    const scrollContainers = document.querySelectorAll('[style*="overflow"], .scroll, .scrollable');
+    scrollContainers.forEach(function(container) {
+      container.addEventListener('scroll', function(e) { handleScroll(e, 'container'); }, { passive: true });
+    });
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+      if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', 'Space'].includes(e.code)) {
+        setTimeout(function() { handleScroll(e, 'keyboard'); }, 10);
+      }
+    }, { passive: true });
+  }
+  
+  // Restored initialization with DOM ready check from version 148
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeScrollListeners);
+  } else {
+    initializeScrollListeners();
+  }
+  
+  // Restored dynamic content detection from version 148
+  if (window.MutationObserver) {
+    const observer = new MutationObserver(function(mutations) {
+      let shouldReinitialize = false;
+      mutations.forEach(function(mutation) {
+        if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+          shouldReinitialize = true;
+        }
+      });
+      
+      if (shouldReinitialize) {
+        setTimeout(initializeScrollListeners, 100);
+      }
+    });
+    
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  }
+  
+})();
+</script>
