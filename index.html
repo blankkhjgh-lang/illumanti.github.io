@@ -1,609 +1,1115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ILLUMINATI MOVIES</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+<title>CYBER VAULT</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+<script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 
-        body {
-            background: #0b0101;
-            color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            margin: 0;
-            min-height: 100vh;
-        }
+<style>
 
-        /* HEADER */
-        .header {
-            width: 100%;
-            padding: 25px 20px;
-            text-align: center;
-        }
+* {
+    box-sizing: border-box;
+}
 
-        h1 {
-            font-size: 28px;
-            margin: 0 0 20px;
-        }
+:root {
+    --cyan: #00e5ff;
+    --blue: #00aaff;
+    --dark: #020608;
+    --card: rgba(4, 12, 17, 0.88);
+    --border: rgba(0, 229, 255, 0.22);
+}
 
-        /* NAVIGATION */
-        .nav-container {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-bottom: 25px;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        .dropdown {
-            position: relative;
-        }
+body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 50% -10%, rgba(0, 229, 255, 0.13), transparent 35%),
+        #020608;
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    overflow-x: hidden;
+}
 
-        .dropdown-btn {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: #120505;
-            border: 1px solid #3a0d0d;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 25px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
+#backgroundOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: -5;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
 
-        .dropdown-btn:hover {
-            background: #241010;
-            border-color: #ff4d6d;
-            transform: translateY(-2px);
-        }
+#backgroundOverlay.active {
+    opacity: 0.3;
+}
 
-        .arrow {
-            transition: transform 0.3s ease;
-        }
+#backgroundDark {
+    position: fixed;
+    inset: 0;
+    z-index: -4;
+    background:
+        linear-gradient(
+            rgba(1, 5, 8, 0.86),
+            rgba(1, 5, 8, 0.96)
+        );
+}
 
-        .dropdown.active .arrow {
-            transform: rotate(180deg);
-        }
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+    pointer-events: none;
+    opacity: 0.13;
+    background-image:
+        linear-gradient(rgba(0,229,255,0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,229,255,0.15) 1px, transparent 1px);
+    background-size: 45px 45px;
+    mask-image: linear-gradient(to bottom, black, transparent 85%);
+}
 
-        /* DROPDOWN MENU */
-        .dropdown-menu {
-            position: absolute;
-            top: calc(100% + 10px);
-            left: 50%;
-            transform: translateX(-50%) translateY(-10px);
-            width: 200px;
-            background: #120505;
-            border: 1px solid #3a0d0d;
-            border-radius: 16px;
-            padding: 8px;
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-            transition: all 0.3s ease;
-            z-index: 100;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-        }
+.glow {
+    position: fixed;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    background: rgba(0, 229, 255, 0.06);
+    filter: blur(70px);
+    pointer-events: none;
+    z-index: -2;
+}
 
-        .dropdown.active .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            pointer-events: auto;
-            transform: translateX(-50%) translateY(0);
-        }
+.glow.one {
+    top: 5%;
+    left: -150px;
+}
 
-        .category {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            width: 100%;
-            padding: 11px 12px;
-            color: #cccccc;
-            background: transparent;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            text-align: left;
-            font-size: 13px;
-            transition: all 0.2s ease;
-        }
+.glow.two {
+    top: 45%;
+    right: -150px;
+}
 
-        .category:hover {
-            background: #2a0d0d;
-            color: #ffffff;
-            padding-left: 17px;
-        }
+.header {
+    padding: 28px 20px 20px;
+    text-align: center;
+}
 
-        .category iconify-icon {
-            color: #ff4d6d;
-            font-size: 17px;
-        }
+.brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
 
-        /* SEARCH */
-        .search-container {
-            display: flex;
-            align-items: center;
-            max-width: 500px;
-            margin: 0 auto;
-            background: #120505;
-            border: 1px solid #3a0d0d;
-            border-radius: 25px;
-            padding: 11px 15px;
-        }
+.brand-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    color: var(--cyan);
+    border: 1px solid var(--border);
+    background: rgba(0, 229, 255, 0.06);
+    box-shadow:
+        0 0 20px rgba(0,229,255,0.15),
+        inset 0 0 15px rgba(0,229,255,0.05);
+}
 
-        .search-container input {
-            background: none;
-            border: none;
-            color: white;
-            outline: none;
-            margin-left: 10px;
-            width: 100%;
-            font-size: 16px;
-        }
+.brand h1 {
+    margin: 0;
+    font-size: 29px;
+    letter-spacing: 3px;
+    font-weight: 900;
+    background: linear-gradient(90deg, #ffffff, var(--cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
-        .search-container input::placeholder {
-            color: #777;
-        }
+.subtitle {
+    color: #71919a;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
 
-        /* CONTENT */
-        .content {
-            width: 100%;
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 0 20px 40px;
-        }
+.nav-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 22px;
+}
 
-        .section-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 20px;
-            margin: 20px 0;
-        }
+.dropdown {
+    position: relative;
+}
 
-        .section-title iconify-icon {
-            color: #ff4d6d;
-        }
+.dropdown-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 18px;
+    border-radius: 12px;
+    background: rgba(5, 15, 20, 0.85);
+    border: 1px solid var(--border);
+    color: #dffaff;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
 
-        /* PRODUCT GRID */
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 8px; /* Reduced gap */
-        }
+.dropdown-btn:hover,
+.dropdown.active .dropdown-btn {
+    color: var(--cyan);
+    border-color: var(--cyan);
+    box-shadow: 0 0 20px rgba(0,229,255,0.12);
+}
 
-        .product-card {
-            background: #120505;
-            border: 1px solid #3a0d0d;
-            border-radius: 16px;
-            padding: 6px; /* Smaller padding */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-            max-width: 100%;
-        }
+.arrow {
+    transition: 0.3s ease;
+}
 
-        .product-card:hover {
-            transform: translateY(-5px);
-            border-color: #ff4d6d;
-        }
+.dropdown.active .arrow {
+    transform: rotate(180deg);
+}
 
-        .badge {
-            position: absolute;
-            top: 8px;
-            left: 8px;
-            background: linear-gradient(90deg, #ff4d6d, #ff758f);
-            color: white;
-            font-size: 9px;
-            font-weight: bold;
-            padding: 3px 7px;
-            border-radius: 10px;
-            text-transform: uppercase;
-        }
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 9px);
+    left: 50%;
+    transform: translateX(-50%) translateY(-8px);
+    width: 205px;
+    padding: 7px;
+    border-radius: 15px;
+    background: rgba(3, 10, 14, 0.97);
+    border: 1px solid var(--border);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: 0.25s ease;
+    z-index: 100;
+}
 
-        .product-image {
-            width: 100%;
-            height: 110px; /* 50% smaller than 220px */
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 8px;
-            background: #1a0a0a;
-        }
+.dropdown.active .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+}
 
-        .product-title {
-            font-size: 12px; /* Smaller text */
-            font-weight: 600;
-            text-align: center;
-            margin: 0 0 8px;
-            line-height: 1.3;
-        }
+.category {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px;
+    border: 0;
+    border-radius: 9px;
+    background: transparent;
+    color: #91aab1;
+    cursor: pointer;
+    text-align: left;
+    font-size: 13px;
+    transition: 0.2s ease;
+}
 
-        .btn-fav {
-            background: #1c0b0b;
-            border: 1px solid #3a1515;
-            color: #b3b3b3;
-            width: 100%;
-            padding: 6px;
-            border-radius: 20px;
-            font-size: 10px;
-            cursor: pointer;
-            margin-bottom: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 4px;
-        }
+.category:hover {
+    color: white;
+    background: rgba(0,229,255,0.08);
+}
 
-        .btn-view {
-            background: white;
-            color: black;
-            width: 100%;
-            padding: 7px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-            text-align: center;
-            text-decoration: none;
-        }
+.category iconify-icon {
+    color: var(--cyan);
+    font-size: 17px;
+}
 
-        /* REPS SECTION */
-        #reps-section {
-            display: none;
-        }
+.search-container {
+    display: flex;
+    align-items: center;
+    max-width: 570px;
+    margin: auto;
+    padding: 13px 17px;
+    border-radius: 14px;
+    background: rgba(4, 13, 18, 0.88);
+    border: 1px solid var(--border);
+    box-shadow: 0 0 30px rgba(0,229,255,0.04);
+    transition: 0.3s ease;
+}
 
-        .empty-message {
-            background: #120505;
-            border: 1px solid #3a0d0d;
-            border-radius: 16px;
-            padding: 40px 20px;
-            text-align: center;
-            color: #888;
-        }
+.search-container:focus-within {
+    border-color: var(--cyan);
+    box-shadow: 0 0 25px rgba(0,229,255,0.12);
+}
 
-        /* MOBILE */
-        @media (max-width: 500px) {
-            .grid-container {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+.search-container input {
+    width: 100%;
+    margin-left: 11px;
+    outline: none;
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 15px;
+}
+
+.search-container input::placeholder {
+    color: #557078;
+}
+
+.background-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 13px auto 0;
+    padding: 10px 16px;
+    border-radius: 12px;
+    background: rgba(0,229,255,0.05);
+    border: 1px solid rgba(0,229,255,0.18);
+    color: #9beefa;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.25s ease;
+    width: fit-content;
+}
+
+.background-button:hover {
+    color: white;
+    border-color: var(--cyan);
+    box-shadow: 0 0 20px rgba(0,229,255,0.12);
+}
+
+#backgroundInput {
+    display: none;
+}
+
+.content {
+    max-width: 850px;
+    margin: auto;
+    padding: 20px 20px 60px;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    margin: 15px 0 18px;
+}
+
+.section-title iconify-icon {
+    color: var(--cyan);
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 9px;
+    margin-bottom: 22px;
+}
+
+.stat {
+    padding: 13px;
+    border-radius: 13px;
+    background: rgba(4, 13, 18, 0.72);
+    border: 1px solid rgba(0,229,255,0.13);
+}
+
+.stat-label {
+    color: #557078;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.stat-value {
+    margin-top: 5px;
+    color: var(--cyan);
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.product-card {
+    position: relative;
+    padding: 7px;
+    border-radius: 17px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(6, 20, 26, 0.96),
+            rgba(2, 8, 11, 0.96)
+        );
+    border: 1px solid rgba(0,229,255,0.15);
+    overflow: hidden;
+    transition: 0.35s ease;
+}
+
+.product-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+    transition: 0.5s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(0,229,255,0.5);
+    box-shadow:
+        0 15px 45px rgba(0,0,0,0.5),
+        0 0 25px rgba(0,229,255,0.08);
+}
+
+.product-card:hover::before {
+    left: 130%;
+}
+
+.badge {
+    position: absolute;
+    top: 13px;
+    left: 13px;
+    z-index: 2;
+    padding: 4px 8px;
+    border-radius: 7px;
+    background: rgba(0,229,255,0.13);
+    border: 1px solid rgba(0,229,255,0.3);
+    color: var(--cyan);
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.product-image {
+    display: block;
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 12px;
+    background: #071015;
+}
+
+.card-content {
+    padding: 10px 5px 5px;
+}
+
+.product-title {
+    margin: 0 0 10px;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.card-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    color: #5e7b83;
+    font-size: 9px;
+}
+
+.card-meta span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.card-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+}
+
+.btn-fav,
+.btn-view {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    min-height: 32px;
+    border-radius: 9px;
+    font-size: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.25s ease;
+}
+
+.btn-fav {
+    background: rgba(0,229,255,0.04);
+    border: 1px solid rgba(0,229,255,0.15);
+    color: #79939a;
+}
+
+.btn-fav:hover,
+.btn-fav.active {
+    color: var(--cyan);
+    border-color: var(--cyan);
+    background: rgba(0,229,255,0.08);
+}
+
+.btn-view {
+    background: var(--cyan);
+    border: 1px solid var(--cyan);
+    color: #001014;
+}
+
+.btn-view:hover {
+    background: white;
+    border-color: white;
+    box-shadow: 0 0 20px rgba(0,229,255,0.25);
+}
+
+#reps-section {
+    display: none;
+}
+
+.empty-message {
+    padding: 55px 20px;
+    text-align: center;
+    border-radius: 17px;
+    background: rgba(4,13,18,0.8);
+    border: 1px solid var(--border);
+}
+
+.empty-message iconify-icon {
+    color: var(--cyan);
+    font-size: 45px;
+}
+
+.empty-message p {
+    color: #68838b;
+}
+
+.footer {
+    text-align: center;
+    padding: 25px 20px 35px;
+    color: #45616a;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.footer span {
+    color: var(--cyan);
+}
+
+@media (max-width: 500px) {
+
+    .header {
+        padding-top: 22px;
+    }
+
+    .brand h1 {
+        font-size: 24px;
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    .product-image {
+        height: 190px;
+    }
+
+    .stats {
+        gap: 6px;
+    }
+
+    .stat {
+        padding: 10px;
+    }
+
+    .stat-value {
+        font-size: 14px;
+    }
+
+}
+
+</style>
 </head>
 
 <body>
 
-    <!-- HEADER -->
-    <div class="header">
-        <h1>ILLUMINATI MOVIES</h1>
+<div id="backgroundOverlay"></div>
+<div id="backgroundDark"></div>
 
-        <!-- NAVIGATION -->
-        <div class="nav-container">
+<div class="glow one"></div>
+<div class="glow two"></div>
 
-            <!-- MOVIES DROPDOWN -->
-            <div class="dropdown" id="moviesDropdown">
+<header class="header">
 
-                <button class="dropdown-btn" onclick="toggleDropdown('moviesDropdown')">
-                    <iconify-icon icon="lucide:film"></iconify-icon>
-                    Movies
-                    <iconify-icon class="arrow" icon="lucide:chevron-down"></iconify-icon>
+    <div class="brand">
+
+        <div class="brand-icon">
+            <iconify-icon icon="lucide:bitcoin" style="font-size:27px;"></iconify-icon>
+        </div>
+
+        <h1>CYBER VAULT</h1>
+
+    </div>
+
+    <div class="subtitle">
+        Digital Collection • Secure Access • Web3
+    </div>
+
+    <div class="nav-container">
+
+        <div class="dropdown" id="moviesDropdown">
+
+            <button class="dropdown-btn" onclick="toggleDropdown('moviesDropdown')">
+
+                <iconify-icon icon="lucide:database"></iconify-icon>
+
+                Collection
+
+                <iconify-icon class="arrow" icon="lucide:chevron-down"></iconify-icon>
+
+            </button>
+
+            <div class="dropdown-menu">
+
+                <button class="category" onclick="showSection('movies-section')">
+                    <iconify-icon icon="lucide:layout-grid"></iconify-icon>
+                    All Items
                 </button>
 
-                <div class="dropdown-menu">
-
-                    <button class="category" onclick="showSection('movies-section')">
-                        <iconify-icon icon="lucide:layout-grid"></iconify-icon>
-                        All Movies
-                    </button>
-
-                    <button class="category" onclick="showSection('movies-section')">
-                        <iconify-icon icon="lucide:star"></iconify-icon>
-                        Popular
-                    </button>
-
-                    <button class="category" onclick="showSection('movies-section')">
-                        <iconify-icon icon="lucide:flame"></iconify-icon>
-                        Trending
-                    </button>
-
-                    <button class="category" onclick="showSection('movies-section')">
-                        <iconify-icon icon="lucide:heart"></iconify-icon>
-                        Favorites
-                    </button>
-
-                </div>
-            </div>
-
-
-            <!-- REPS DROPDOWN -->
-            <div class="dropdown" id="repsDropdown">
-
-                <button class="dropdown-btn" onclick="toggleDropdown('repsDropdown')">
-                    <iconify-icon icon="lucide:shopping-bag"></iconify-icon>
-                    Reps
-                    <iconify-icon class="arrow" icon="lucide:chevron-down"></iconify-icon>
+                <button class="category" onclick="showSection('movies-section')">
+                    <iconify-icon icon="lucide:trending-up"></iconify-icon>
+                    Trending
                 </button>
 
-                <div class="dropdown-menu">
+                <button class="category" onclick="showSection('movies-section')">
+                    <iconify-icon icon="lucide:star"></iconify-icon>
+                    Popular
+                </button>
 
-                    <button class="category" onclick="showSection('reps-section')">
-                        <iconify-icon icon="lucide:layout-grid"></iconify-icon>
-                        All Reps
-                    </button>
+                <button class="category" onclick="showSection('movies-section')">
+                    <iconify-icon icon="lucide:heart"></iconify-icon>
+                    Favorites
+                </button>
 
-                    <button class="category" onclick="showSection('reps-section')">
-                        <iconify-icon icon="lucide:shirt"></iconify-icon>
-                        Clothing
-                    </button>
-
-                    <button class="category" onclick="showSection('reps-section')">
-                        <iconify-icon icon="lucide:footprints"></iconify-icon>
-                        Shoes
-                    </button>
-
-                    <button class="category" onclick="showSection('reps-section')">
-                        <iconify-icon icon="lucide:watch"></iconify-icon>
-                        Accessories
-                    </button>
-
-                </div>
             </div>
 
         </div>
 
-        <!-- SEARCH -->
-        <div class="search-container">
-            <iconify-icon 
-                icon="lucide:search" 
-                style="font-size: 20px; color: #ff4d6d;">
-            </iconify-icon>
+        <div class="dropdown" id="repsDropdown">
 
-            <input 
-                type="text" 
-                id="searchInput"
-                placeholder="Search movies..."
-                onkeyup="searchProducts()">
+            <button class="dropdown-btn" onclick="toggleDropdown('repsDropdown')">
+
+                <iconify-icon icon="lucide:wallet"></iconify-icon>
+
+                Vault
+
+                <iconify-icon class="arrow" icon="lucide:chevron-down"></iconify-icon>
+
+            </button>
+
+            <div class="dropdown-menu">
+
+                <button class="category" onclick="showSection('reps-section')">
+                    <iconify-icon icon="lucide:wallet-cards"></iconify-icon>
+                    My Vault
+                </button>
+
+                <button class="category" onclick="showSection('reps-section')">
+                    <iconify-icon icon="lucide:coins"></iconify-icon>
+                    Assets
+                </button>
+
+                <button class="category" onclick="showSection('reps-section')">
+                    <iconify-icon icon="lucide:lock"></iconify-icon>
+                    Secured
+                </button>
+
+            </div>
+
         </div>
 
     </div>
 
+    <div class="search-container">
 
-    <!-- CONTENT -->
-    <div class="content">
+        <iconify-icon
+            icon="lucide:search"
+            style="font-size:19px;color:#00e5ff;">
+        </iconify-icon>
 
-        <!-- MOVIES -->
-        <section id="movies-section">
-
-            <h2 class="section-title">
-                <iconify-icon icon="lucide:film"></iconify-icon>
-                Movies
-            </h2>
-
-            <div class="grid-container">
-
-                <!-- BUGS LIFE -->
-                <div class="product-card">
-                    <img 
-                        class="product-image" 
-                        src="https://upload.wikimedia.org/wikipedia/en/7/7f/A_Bug%27s_Life.jpg" 
-                        alt="A Bug's Life">
-
-                    <h3 class="product-title">
-                        A Bug's Life
-                    </h3>
-
-                    <button class="btn-fav">
-                        <iconify-icon icon="lucide:heart"></iconify-icon>
-                        Add to favorites
-                    </button>
-
-                    <a 
-                        class="btn-view" 
-                        href="https://drive.google.com/file/d/1AIq4OqiMWiY9zZSayF5VID7pfTwSH6BM/view" 
-                        target="_blank">
-                        View more
-                    </a>
-                </div>
-
-
-                <!-- CHARLIE BROWN CHRISTMAS -->
-                <div class="product-card">
-                    <span class="badge">Hot</span>
-
-                    <img 
-                        class="product-image" 
-                        src="https://upload.wikimedia.org/wikipedia/en/1/1f/A_Charlie_Brown_Christmas_poster.jpg" 
-                        alt="A Charlie Brown Christmas">
-
-                    <h3 class="product-title">
-                        A Charlie Brown Christmas
-                    </h3>
-
-                    <button class="btn-fav">
-                        <iconify-icon icon="lucide:heart"></iconify-icon>
-                        Add to favorites
-                    </button>
-
-                    <a 
-                        class="btn-view" 
-                        href="https://drive.google.com/file/d/1e2UIrJdsz_0k5tp2v0EnPZiPv2ZQSTzg/view" 
-                        target="_blank">
-                        View more
-                    </a>
-                </div>
-
-
-                <!-- A GOOFY MOVIE -->
-                <div class="product-card">
-
-                    <img 
-                        class="product-image" 
-                        src="https://upload.wikimedia.org/wikipedia/en/4/4f/A_Goofy_Movie_poster.jpg" 
-                        alt="A Goofy Movie">
-
-                    <h3 class="product-title">
-                        A Goofy Movie
-                    </h3>
-
-                    <button class="btn-fav">
-                        <iconify-icon icon="lucide:heart"></iconify-icon>
-                        Add to favorites
-                    </button>
-
-                    <a 
-                        class="btn-view" 
-                        href="https://drive.google.com/file/d/1ify_EMaQW-ZAn2FOSTztn2AGU-jE7aHL/view" 
-                        target="_blank">
-                        View more
-                    </a>
-                </div>
-
-
-                <!-- ANT-MAN -->
-                <div class="product-card">
-
-                    <img 
-                        class="product-image" 
-                        src="https://upload.wikimedia.org/wikipedia/en/0/0c/Ant-Man_and_the_Wasp_Quantumania_poster.jpg" 
-                        alt="Ant-Man and the Wasp Quantumania">
-
-                    <h3 class="product-title">
-                        Ant-Man and the Wasp: Quantumania
-                    </h3>
-
-                    <button class="btn-fav">
-                        <iconify-icon icon="lucide:heart"></iconify-icon>
-                        Add to favorites
-                    </button>
-
-                    <a 
-                        class="btn-view" 
-                        href="https://drive.google.com/file/d/1AW3Zm8256tzZ-37lmgYmlGse4knu8dA/view" 
-                        target="_blank">
-                        View more
-                    </a>
-                </div>
-
-            </div>
-        </section>
-
-
-        <!-- REPS -->
-        <section id="reps-section">
-
-            <h2 class="section-title">
-                <iconify-icon icon="lucide:shopping-bag"></iconify-icon>
-                Reps
-            </h2>
-
-            <div class="empty-message">
-                <iconify-icon 
-                    icon="lucide:package-open" 
-                    style="font-size: 40px; color: #ff4d6d;">
-                </iconify-icon>
-
-                <p>No reps added yet.</p>
-            </div>
-
-        </section>
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search the vault..."
+            onkeyup="searchProducts()">
 
     </div>
 
+    <label class="background-button" for="backgroundInput">
 
-    <script>
+        <iconify-icon icon="lucide:image"></iconify-icon>
 
-        /* DROPDOWN ANIMATION */
+        Choose Custom Background
 
-        function toggleDropdown(id) {
+    </label>
 
-            const dropdown = document.getElementById(id);
+    <input
+        type="file"
+        id="backgroundInput"
+        accept="image/*">
 
-            document.querySelectorAll('.dropdown').forEach(function(item) {
+</header>
 
-                if (item !== dropdown) {
-                    item.classList.remove('active');
-                }
+<main class="content">
 
-            });
+<section id="movies-section">
 
-            dropdown.classList.toggle('active');
+    <div class="stats">
+
+        <div class="stat">
+            <div class="stat-label">Network</div>
+            <div class="stat-value">ONLINE</div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-label">Vault Items</div>
+            <div class="stat-value">04</div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-label">Status</div>
+            <div class="stat-value">SECURE</div>
+        </div>
+
+    </div>
+
+    <h2 class="section-title">
+
+        <iconify-icon icon="lucide:layers"></iconify-icon>
+
+        Featured Collection
+
+    </h2>
+
+    <div class="grid-container">
+
+        <div class="product-card">
+
+            <span class="badge">FEATURED</span>
+
+            <img
+                class="product-image"
+                src="https://upload.wikimedia.org/wikipedia/en/7/7f/A_Bug%27s_Life.jpg"
+                alt="A Bug's Life">
+
+            <div class="card-content">
+
+                <h3 class="product-title">
+                    A Bug's Life
+                </h3>
+
+                <div class="card-meta">
+
+                    <span>
+                        <iconify-icon icon="lucide:shield-check"></iconify-icon>
+                        VERIFIED
+                    </span>
+
+                    <span>
+                        <iconify-icon icon="lucide:database"></iconify-icon>
+                        MEDIA
+                    </span>
+
+                </div>
+
+                <div class="card-actions">
+
+                    <button class="btn-fav" onclick="toggleFavorite(this)">
+
+                        <iconify-icon icon="lucide:heart"></iconify-icon>
+
+                        Favorite
+
+                    </button>
+
+                    <a class="btn-view" href="#" target="_blank">
+
+                        Open
+
+                        <iconify-icon icon="lucide:arrow-up-right"></iconify-icon>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="product-card">
+
+            <span class="badge">HOT</span>
+
+            <img
+                class="product-image"
+                src="https://upload.wikimedia.org/wikipedia/en/1/1f/A_Charlie_Brown_Christmas_poster.jpg"
+                alt="A Charlie Brown Christmas">
+
+            <div class="card-content">
+
+                <h3 class="product-title">
+                    A Charlie Brown Christmas
+                </h3>
+
+                <div class="card-meta">
+
+                    <span>
+                        <iconify-icon icon="lucide:shield-check"></iconify-icon>
+                        VERIFIED
+                    </span>
+
+                    <span>
+                        <iconify-icon icon="lucide:zap"></iconify-icon>
+                        TRENDING
+                    </span>
+
+                </div>
+
+                <div class="card-actions">
+
+                    <button class="btn-fav" onclick="toggleFavorite(this)">
+
+                        <iconify-icon icon="lucide:heart"></iconify-icon>
+
+                        Favorite
+
+                    </button>
+
+                    <a class="btn-view" href="#" target="_blank">
+
+                        Open
+
+                        <iconify-icon icon="lucide:arrow-up-right"></iconify-icon>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="product-card">
+
+            <img
+                class="product-image"
+                src="https://upload.wikimedia.org/wikipedia/en/4/4f/A_Goofy_Movie_poster.jpg"
+                alt="A Goofy Movie">
+
+            <div class="card-content">
+
+                <h3 class="product-title">
+                    A Goofy Movie
+                </h3>
+
+                <div class="card-meta">
+
+                    <span>
+                        <iconify-icon icon="lucide:shield-check"></iconify-icon>
+                        VERIFIED
+                    </span>
+
+                    <span>
+                        <iconify-icon icon="lucide:box"></iconify-icon>
+                        ITEM
+                    </span>
+
+                </div>
+
+                <div class="card-actions">
+
+                    <button class="btn-fav" onclick="toggleFavorite(this)">
+
+                        <iconify-icon icon="lucide:heart"></iconify-icon>
+
+                        Favorite
+
+                    </button>
+
+                    <a class="btn-view" href="#" target="_blank">
+
+                        Open
+
+                        <iconify-icon icon="lucide:arrow-up-right"></iconify-icon>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="product-card">
+
+            <img
+                class="product-image"
+                src="https://upload.wikimedia.org/wikipedia/en/0/0c/Ant-Man_and_the_Wasp_Quantumania_poster.jpg"
+                alt="Ant-Man and the Wasp Quantumania">
+
+            <div class="card-content">
+
+                <h3 class="product-title">
+                    Ant-Man and the Wasp: Quantumania
+                </h3>
+
+                <div class="card-meta">
+
+                    <span>
+                        <iconify-icon icon="lucide:shield-check"></iconify-icon>
+                        VERIFIED
+                    </span>
+
+                    <span>
+                        <iconify-icon icon="lucide:cpu"></iconify-icon>
+                        DIGITAL
+                    </span>
+
+                </div>
+
+                <div class="card-actions">
+
+                    <button class="btn-fav" onclick="toggleFavorite(this)">
+
+                        <iconify-icon icon="lucide:heart"></iconify-icon>
+
+                        Favorite
+
+                    </button>
+
+                    <a class="btn-view" href="#" target="_blank">
+
+                        Open
+
+                        <iconify-icon icon="lucide:arrow-up-right"></iconify-icon>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section id="reps-section">
+
+    <h2 class="section-title">
+
+        <iconify-icon icon="lucide:wallet"></iconify-icon>
+
+        My Vault
+
+    </h2>
+
+    <div class="empty-message">
+
+        <iconify-icon icon="lucide:lock-keyhole"></iconify-icon>
+
+        <p>Your secure vault is currently empty.</p>
+
+    </div>
+
+</section>
+
+</main>
+
+<footer class="footer">
+
+    <span>CYBER VAULT</span> • DIGITAL COLLECTION SYSTEM
+
+</footer>
+
+<script>
+
+function toggleDropdown(id) {
+
+    const dropdown = document.getElementById(id);
+
+    document.querySelectorAll(".dropdown").forEach(function(item) {
+
+        if (item !== dropdown) {
+            item.classList.remove("active");
         }
 
+    });
 
-        /* CLOSE DROPDOWNS WHEN CLICKING OUTSIDE */
+    dropdown.classList.toggle("active");
 
-        document.addEventListener('click', function(event) {
+}
 
-            if (!event.target.closest('.dropdown')) {
+document.addEventListener("click", function(event) {
 
-                document.querySelectorAll('.dropdown').forEach(function(dropdown) {
-                    dropdown.classList.remove('active');
-                });
+    if (!event.target.closest(".dropdown")) {
 
-            }
+        document.querySelectorAll(".dropdown").forEach(function(dropdown) {
+
+            dropdown.classList.remove("active");
 
         });
 
+    }
 
-        /* SWITCH BETWEEN MOVIES AND REPS */
+});
 
-        function showSection(sectionId) {
+function showSection(sectionId) {
 
-            document.getElementById('movies-section').style.display = 'none';
-            document.getElementById('reps-section').style.display = 'none';
+    document.getElementById("movies-section").style.display = "none";
 
-            document.getElementById(sectionId).style.display = 'block';
+    document.getElementById("reps-section").style.display = "none";
 
-            document.querySelectorAll('.dropdown').forEach(function(dropdown) {
-                dropdown.classList.remove('active');
-            });
+    document.getElementById(sectionId).style.display = "block";
+
+    document.querySelectorAll(".dropdown").forEach(function(dropdown) {
+
+        dropdown.classList.remove("active");
+
+    });
+
+}
+
+function searchProducts() {
+
+    const searchValue =
+        document.getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+    const cards =
+        document.querySelectorAll(".product-card");
+
+    cards.forEach(function(card) {
+
+        const title =
+            card.querySelector(".product-title");
+
+        if (!title) return;
+
+        const productName =
+            title.textContent.toLowerCase();
+
+        if (productName.includes(searchValue)) {
+
+            card.style.display = "block";
+
+        } else {
+
+            card.style.display = "none";
 
         }
 
+    });
 
-        /* SEARCH PRODUCTS */
+}
 
-        function searchProducts() {
+function toggleFavorite(button) {
 
-            const searchValue =
-                document.getElementById('searchInput')
-                .value
-                .toLowerCase();
+    button.classList.toggle("active");
 
-            const cards =
-                document.querySelectorAll('.product-card');
+    if (button.classList.contains("active")) {
 
-            cards.forEach(function(card) {
+        button.innerHTML =
+            '<iconify-icon icon="lucide:heart"></iconify-icon> Saved';
 
-                const title =
-                    card.querySelector('.product-title');
+    } else {
 
-                if (title) {
+        button.innerHTML =
+            '<iconify-icon icon="lucide:heart"></iconify-icon> Favorite';
 
-                    const productName =
-                        title.textContent.toLowerCase();
+    }
 
-                    if (productName.includes(searchValue)) {
-                        card.style.display = 'flex';
-                    } else {
-                        card.style.display = 'none';
-                    }
+}
 
-                }
+const backgroundInput =
+    document.getElementById("backgroundInput");
 
-            });
+const backgroundOverlay =
+    document.getElementById("backgroundOverlay");
 
-        }
+backgroundInput.addEventListener("change", function(event) {
 
-    </script>
+    const file = event.target.files[0];
+
+    if (!file) return;
+
+    if (!file.type.startsWith("image/")) {
+
+        alert("Please select an image.");
+
+        return;
+
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+
+        backgroundOverlay.style.backgroundImage =
+            "url('" + e.target.result + "')";
+
+        backgroundOverlay.classList.add("active");
+
+        localStorage.setItem(
+            "customBackground",
+            e.target.result
+        );
+
+    };
+
+    reader.readAsDataURL(file);
+
+});
+
+window.addEventListener("load", function() {
+
+    const savedBackground =
+        localStorage.getItem("customBackground");
+
+    if (savedBackground) {
+
+        backgroundOverlay.style.backgroundImage =
+            "url('" + savedBackground + "')";
+
+        backgroundOverlay.classList.add("active");
+
+    }
+
+});
+
+</script>
 
 </body>
 </html>
