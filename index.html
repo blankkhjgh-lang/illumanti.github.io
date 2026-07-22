@@ -35,7 +35,9 @@ body {
     align-items: center;
     justify-content: center;
     padding: 20px;
+
     color: white;
+
     font-family:
         -apple-system,
         BlinkMacSystemFont,
@@ -60,7 +62,8 @@ body {
     overflow: hidden;
 }
 
-/* BACKGROUND IMAGE */
+
+/* CUSTOM BACKGROUND */
 
 #backgroundOverlay {
     position: fixed;
@@ -72,11 +75,12 @@ body {
     background-repeat: no-repeat;
 
     opacity: 0;
+
     transition: opacity 0.5s ease;
 }
 
 #backgroundOverlay.active {
-    opacity: 0.25;
+    opacity: 0.28;
 }
 
 #backgroundDark {
@@ -91,10 +95,12 @@ body {
         );
 }
 
-/* GRID */
+
+/* CYBER GRID */
 
 body::before {
     content: "";
+
     position: fixed;
     inset: 0;
 
@@ -121,10 +127,12 @@ body::before {
         );
 
     pointer-events: none;
+
     z-index: -8;
 }
 
-/* GLOW ORBS */
+
+/* GLOW */
 
 .glow {
     position: fixed;
@@ -144,26 +152,33 @@ body::before {
 .glow.one {
     top: -200px;
     left: -150px;
-    background: rgba(0,229,255,0.09);
+
+    background:
+        rgba(0,229,255,0.09);
 }
 
 .glow.two {
     bottom: -200px;
     right: -150px;
-    background: rgba(0,130,255,0.08);
+
+    background:
+        rgba(0,130,255,0.08);
 }
 
-/* LOGIN WRAPPER */
+
+/* MAIN */
 
 .login-wrapper {
     width: 100%;
     max-width: 430px;
 }
 
+
 /* BRAND */
 
 .brand {
     text-align: center;
+
     margin-bottom: 25px;
 }
 
@@ -172,6 +187,7 @@ body::before {
     height: 70px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -188,11 +204,16 @@ body::before {
             rgba(0,80,120,0.05)
         );
 
-    border: 1px solid rgba(0,229,255,0.3);
+    border:
+        1px solid
+        rgba(0,229,255,0.3);
 
     box-shadow:
-        0 0 35px rgba(0,229,255,0.12),
-        inset 0 0 25px rgba(0,229,255,0.04);
+        0 0 35px
+        rgba(0,229,255,0.12),
+
+        inset 0 0 25px
+        rgba(0,229,255,0.04);
 }
 
 .logo iconify-icon {
@@ -216,6 +237,7 @@ body::before {
         );
 
     -webkit-background-clip: text;
+
     -webkit-text-fill-color: transparent;
 }
 
@@ -230,6 +252,7 @@ body::before {
 
     text-transform: uppercase;
 }
+
 
 /* LOGIN CARD */
 
@@ -247,16 +270,22 @@ body::before {
             rgba(2,8,11,0.96)
         );
 
-    border: 1px solid rgba(0,229,255,0.18);
+    border:
+        1px solid
+        rgba(0,229,255,0.18);
 
     box-shadow:
-        0 30px 80px rgba(0,0,0,0.65),
-        0 0 45px rgba(0,229,255,0.04);
+        0 30px 80px
+        rgba(0,0,0,0.65),
+
+        0 0 45px
+        rgba(0,229,255,0.04);
 
     backdrop-filter: blur(20px);
 }
 
-/* TOP GLOW */
+
+/* TOP LINE */
 
 .login-card::before {
     content: "";
@@ -278,13 +307,16 @@ body::before {
         );
 
     box-shadow:
-        0 0 15px var(--cyan);
+        0 0 15px
+        var(--cyan);
 }
 
-/* CARD HEADER */
+
+/* HEADER */
 
 .card-header {
     text-align: center;
+
     margin-bottom: 25px;
 }
 
@@ -304,7 +336,34 @@ body::before {
     font-size: 12px;
 }
 
-/* INPUT GROUP */
+
+/* STATUS MESSAGE */
+
+.status {
+    display: none;
+
+    padding: 10px;
+
+    margin-bottom: 15px;
+
+    border-radius: 9px;
+
+    text-align: center;
+
+    font-size: 11px;
+
+    color: #ff8585;
+
+    background:
+        rgba(255,50,50,0.06);
+
+    border:
+        1px solid
+        rgba(255,50,50,0.15);
+}
+
+
+/* INPUT */
 
 .input-group {
     margin-bottom: 17px;
@@ -330,6 +389,7 @@ body::before {
     position: relative;
 
     display: flex;
+
     align-items: center;
 }
 
@@ -347,7 +407,8 @@ body::before {
     transition: 0.25s ease;
 }
 
-.input-wrapper:focus-within .input-icon {
+.input-wrapper:focus-within
+.input-icon {
     color: var(--cyan);
 }
 
@@ -393,7 +454,8 @@ body::before {
         rgba(0,229,255,0.08);
 }
 
-/* PASSWORD TOGGLE */
+
+/* PASSWORD EYE */
 
 .password-toggle {
     position: absolute;
@@ -421,6 +483,7 @@ body::before {
 .password-toggle:hover {
     color: var(--cyan);
 }
+
 
 /* OPTIONS */
 
@@ -464,6 +527,7 @@ body::before {
     text-decoration: underline;
 }
 
+
 /* LOGIN BUTTON */
 
 .login-button {
@@ -474,6 +538,7 @@ body::before {
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     gap: 9px;
@@ -518,6 +583,7 @@ body::before {
     transform: scale(0.98);
 }
 
+
 /* DIVIDER */
 
 .divider {
@@ -550,6 +616,7 @@ body::before {
         rgba(0,229,255,0.1);
 }
 
+
 /* CREATE ACCOUNT */
 
 .create-account {
@@ -566,11 +633,14 @@ body::before {
     text-decoration: none;
 
     font-weight: 700;
+
+    cursor: pointer;
 }
 
 .create-account a:hover {
     text-decoration: underline;
 }
+
 
 /* SECURITY */
 
@@ -599,6 +669,7 @@ body::before {
 
     font-size: 14px;
 }
+
 
 /* BACKGROUND BUTTON */
 
@@ -648,30 +719,6 @@ body::before {
     display: none;
 }
 
-/* STATUS */
-
-.status {
-    display: none;
-
-    padding: 10px;
-
-    margin-bottom: 15px;
-
-    border-radius: 9px;
-
-    text-align: center;
-
-    font-size: 11px;
-
-    color: #ff7c7c;
-
-    background:
-        rgba(255,50,50,0.06);
-
-    border:
-        1px solid
-        rgba(255,50,50,0.15);
-}
 
 /* MOBILE */
 
@@ -699,54 +746,69 @@ body::before {
 </style>
 </head>
 
+
 <body>
 
+
 <div id="backgroundOverlay"></div>
+
 <div id="backgroundDark"></div>
 
 <div class="glow one"></div>
+
 <div class="glow two"></div>
 
 
 <div class="login-wrapper">
 
 
-    <!-- BRAND -->
+    <!-- LOGO -->
 
     <div class="brand">
 
         <div class="logo">
 
-            <iconify-icon icon="lucide:bitcoin"></iconify-icon>
+            <iconify-icon
+                icon="lucide:bitcoin">
+            </iconify-icon>
 
         </div>
 
         <h1>CYBER VAULT</h1>
 
-        <p>Secure Digital Collection</p>
+        <p>
+            Secure Digital Collection
+        </p>
 
     </div>
 
 
-    <!-- LOGIN CARD -->
+    <!-- LOGIN -->
 
     <div class="login-card">
 
 
         <div class="card-header">
 
-            <h2>Welcome Back</h2>
+            <h2>
+                Welcome Back
+            </h2>
 
-            <p>Authenticate to access your vault</p>
+            <p>
+                Log in to access your vault
+            </p>
 
         </div>
 
 
-        <!-- ERROR MESSAGE -->
+        <!-- ERROR -->
 
-        <div class="status" id="statusMessage">
+        <div
+            class="status"
+            id="statusMessage">
 
-            Please enter your username and password.
+            Please enter your username
+            and password.
 
         </div>
 
@@ -756,7 +818,9 @@ body::before {
         <div class="input-group">
 
             <label class="input-label">
+
                 Username
+
             </label>
 
             <div class="input-wrapper">
@@ -782,7 +846,9 @@ body::before {
         <div class="input-group">
 
             <label class="input-label">
+
                 Password
+
             </label>
 
             <div class="input-wrapper">
@@ -829,6 +895,7 @@ body::before {
 
             </label>
 
+
             <a
                 href="#"
                 class="forgot"
@@ -856,6 +923,8 @@ body::before {
         </button>
 
 
+        <!-- DIVIDER -->
+
         <div class="divider">
 
             OR
@@ -867,13 +936,13 @@ body::before {
 
         <div class="create-account">
 
-            Don't have access?
+            Don't have an account?
 
             <a
                 href="#"
                 onclick="createAccount(event)">
 
-                Request Access
+                Create Account
 
             </a>
 
@@ -892,10 +961,11 @@ body::before {
 
         </div>
 
+
     </div>
 
 
-    <!-- BACKGROUND PICKER -->
+    <!-- BACKGROUND -->
 
     <label
         class="background-button"
@@ -909,6 +979,7 @@ body::before {
 
     </label>
 
+
     <input
         type="file"
         id="backgroundInput"
@@ -920,60 +991,38 @@ body::before {
 
 <script>
 
-/* PASSWORD SHOW / HIDE */
 
-function togglePassword() {
-
-    const password =
-        document.getElementById("password");
-
-    const icon =
-        document.getElementById("eyeIcon");
-
-    if (password.type === "password") {
-
-        password.type = "text";
-
-        icon.setAttribute(
-            "icon",
-            "lucide:eye-off"
-        );
-
-    } else {
-
-        password.type = "password";
-
-        icon.setAttribute(
-            "icon",
-            "lucide:eye"
-        );
-
-    }
-
-}
-
-
-/* LOGIN */
+/* =========================
+   LOGIN
+========================= */
 
 function login() {
 
     const username =
-        document.getElementById("username")
+        document
+        .getElementById("username")
         .value
         .trim();
+
 
     const password =
-        document.getElementById("password")
+        document
+        .getElementById("password")
         .value
         .trim();
 
-    const status =
-        document.getElementById("statusMessage");
 
+    const status =
+        document
+        .getElementById("statusMessage");
+
+
+    /* CHECK EMPTY FIELDS */
 
     if (!username || !password) {
 
-        status.style.display = "block";
+        status.style.display =
+            "block";
 
         status.textContent =
             "Please enter your username and password.";
@@ -983,21 +1032,11 @@ function login() {
     }
 
 
-    /*
-    This is a visual login gate.
-
-    For a real secure login system,
-    connect this button to Firebase,
-    Supabase, or another authentication
-    service.
-
-    This version redirects users to
-    vault.html after entering information.
-    */
-
+    /* SAVE USERNAME */
 
     const remember =
-        document.getElementById("rememberMe")
+        document
+        .getElementById("rememberMe")
         .checked;
 
 
@@ -1011,19 +1050,127 @@ function login() {
     }
 
 
+    /*
+    LOGIN SUCCESS
+
+    This sends the user
+    directly to your vault.
+
+    Make sure your main website
+    is named:
+
+    vault.html
+    */
+
+
     window.location.href =
         "vault.html";
 
 }
 
 
-/* ENTER KEY LOGIN */
+/* =========================
+   CREATE ACCOUNT
+========================= */
+
+function createAccount(event) {
+
+    event.preventDefault();
+
+
+    /*
+    Since there is no account
+    system connected yet, this
+    simply takes the user to
+    the vault.
+
+    Anyone can access the vault
+    without requesting access.
+    */
+
+
+    window.location.href =
+        "vault.html";
+
+}
+
+
+/* =========================
+   FORGOT PASSWORD
+========================= */
+
+function forgotPassword(event) {
+
+    event.preventDefault();
+
+
+    alert(
+        "Password recovery is not connected yet."
+    );
+
+}
+
+
+/* =========================
+   SHOW PASSWORD
+========================= */
+
+function togglePassword() {
+
+    const password =
+        document
+        .getElementById("password");
+
+
+    const icon =
+        document
+        .getElementById("eyeIcon");
+
+
+    if (
+        password.type ===
+        "password"
+    ) {
+
+        password.type =
+            "text";
+
+
+        icon.setAttribute(
+            "icon",
+            "lucide:eye-off"
+        );
+
+    }
+
+    else {
+
+        password.type =
+            "password";
+
+
+        icon.setAttribute(
+            "icon",
+            "lucide:eye"
+        );
+
+    }
+
+}
+
+
+/* =========================
+   ENTER KEY
+========================= */
 
 document.addEventListener(
     "keydown",
     function(event) {
 
-        if (event.key === "Enter") {
+        if (
+            event.key ===
+            "Enter"
+        ) {
 
             login();
 
@@ -1033,41 +1180,20 @@ document.addEventListener(
 );
 
 
-/* FORGOT PASSWORD */
-
-function forgotPassword(event) {
-
-    event.preventDefault();
-
-    alert(
-        "Password recovery is not connected yet."
-    );
-
-}
-
-
-/* REQUEST ACCESS */
-
-function createAccount(event) {
-
-    event.preventDefault();
-
-    alert(
-        "Access request system is not connected yet."
-    );
-
-}
-
-
-/* BACKGROUND PICKER */
+/* =========================
+   BACKGROUND IMAGE
+========================= */
 
 const backgroundInput =
-    document.getElementById(
+    document
+    .getElementById(
         "backgroundInput"
     );
 
+
 const backgroundOverlay =
-    document.getElementById(
+    document
+    .getElementById(
         "backgroundOverlay"
     );
 
@@ -1079,10 +1205,19 @@ backgroundInput.addEventListener(
         const file =
             event.target.files[0];
 
-        if (!file) return;
+
+        if (!file) {
+
+            return;
+
+        }
 
 
-        if (!file.type.startsWith("image/")) {
+        if (
+            !file.type.startsWith(
+                "image/"
+            )
+        ) {
 
             alert(
                 "Please select an image."
@@ -1123,17 +1258,22 @@ backgroundInput.addEventListener(
             };
 
 
-        reader.readAsDataURL(file);
+        reader.readAsDataURL(
+            file
+        );
 
     }
 );
 
 
-/* LOAD SAVED BACKGROUND */
+/* =========================
+   LOAD SAVED BACKGROUND
+========================= */
 
 window.addEventListener(
     "load",
     function() {
+
 
         const savedBackground =
             localStorage.getItem(
@@ -1141,7 +1281,9 @@ window.addEventListener(
             );
 
 
-        if (savedBackground) {
+        if (
+            savedBackground
+        ) {
 
             backgroundOverlay.style
                 .backgroundImage =
@@ -1156,7 +1298,7 @@ window.addEventListener(
         }
 
 
-        /* LOAD REMEMBERED USER */
+        /* REMEMBER USERNAME */
 
         const savedUsername =
             localStorage.getItem(
@@ -1164,22 +1306,30 @@ window.addEventListener(
             );
 
 
-        if (savedUsername) {
+        if (
+            savedUsername
+        ) {
 
-            document.getElementById(
+            document
+            .getElementById(
                 "username"
-            ).value =
+            )
+            .value =
                 savedUsername;
 
-            document.getElementById(
+
+            document
+            .getElementById(
                 "rememberMe"
-            ).checked =
+            )
+            .checked =
                 true;
 
         }
 
     }
 );
+
 
 </script>
 
