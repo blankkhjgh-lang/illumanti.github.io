@@ -44,9 +44,7 @@ html {
 body {
     margin: 0;
     min-height: 100vh;
-
     color: var(--text);
-
     font-family:
         -apple-system,
         BlinkMacSystemFont,
@@ -54,7 +52,6 @@ body {
         Roboto,
         Arial,
         sans-serif;
-
     background:
         radial-gradient(
             circle at 50% -10%,
@@ -62,9 +59,7 @@ body {
             transparent 35%
         ),
         var(--bg);
-
     overflow-x: hidden;
-
     transition:
         background .4s ease,
         color .4s ease;
@@ -181,16 +176,10 @@ body.theme-purple-white {
 #customBackground {
     position: fixed;
     inset: 0;
-
-    background:
-        center / cover no-repeat;
-
+    background: center / cover no-repeat;
     opacity: 0;
-
     z-index: -10;
-
-    transition:
-        opacity .5s ease;
+    transition: opacity .5s ease;
 }
 
 body.has-background #customBackground {
@@ -202,11 +191,8 @@ body.has-background #customBackground {
 #backgroundOverlay {
     position: fixed;
     inset: 0;
-
     z-index: -9;
-
     pointer-events: none;
-
     background:
         linear-gradient(
             to bottom,
@@ -220,16 +206,11 @@ body.has-background #customBackground {
 
 body::before {
     content: "";
-
     position: fixed;
     inset: 0;
-
     pointer-events: none;
-
     z-index: -8;
-
     opacity: .14;
-
     background-image:
         linear-gradient(
             rgba(0,229,255,.08) 1px,
@@ -240,9 +221,7 @@ body::before {
             rgba(0,229,255,.08) 1px,
             transparent 1px
         );
-
     background-size: 50px 50px;
-
     mask-image:
         linear-gradient(
             to bottom,
@@ -256,9 +235,7 @@ body::before {
 #particles {
     position: fixed;
     inset: 0;
-
     pointer-events: none;
-
     z-index: -7;
 }
 
@@ -266,13 +243,10 @@ body::before {
 
 header {
     position: fixed;
-
     top: 0;
     left: 0;
     right: 0;
-
     z-index: 100;
-
     background:
         linear-gradient(
             to bottom,
@@ -280,41 +254,26 @@ header {
             rgba(2,6,8,.65),
             transparent
         );
-
-    transition:
-        background .3s ease;
+    transition: background .3s ease;
 }
 
 header.scrolled {
-    background:
-        rgba(2,6,8,.94);
-
-    backdrop-filter:
-        blur(18px);
-
-    border-bottom:
-        1px solid var(--line);
+    background: rgba(2,6,8,.94);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--line);
 }
 
 body.light header.scrolled {
-    background:
-        rgba(225,250,255,.94);
+    background: rgba(225,250,255,.94);
 }
 
 .nav {
     height: 70px;
-
     max-width: 1500px;
-
     margin: auto;
-
-    padding:
-        0 35px;
-
+    padding: 0 35px;
     display: flex;
-
     align-items: center;
-
     gap: 28px;
 }
 
@@ -322,37 +281,23 @@ body.light header.scrolled {
 
 .logo {
     display: flex;
-
     align-items: center;
-
     gap: 10px;
-
     color: var(--text);
-
     font-size: 18px;
-
     font-weight: 1000;
-
     letter-spacing: 2px;
-
     white-space: nowrap;
 }
 
 .logoIcon {
     width: 38px;
     height: 38px;
-
     display: grid;
-
     place-items: center;
-
     color: var(--cyan);
-
-    border:
-        1px solid var(--cyan);
-
+    border: 1px solid var(--cyan);
     border-radius: 11px;
-
     box-shadow:
         0 0 22px
         rgba(0,229,255,.25);
@@ -362,78 +307,52 @@ body.light header.scrolled {
 
 .navLinks {
     display: flex;
-
     gap: 5px;
-
     flex: 1;
 }
 
 .navLinks button {
     background: transparent;
-
     border: 0;
-
     color: #9db6bd;
-
     font-size: 13px;
-
     font-weight: 600;
-
-    padding:
-        8px 12px;
-
+    padding: 8px 12px;
     border-radius: 8px;
-
     cursor: pointer;
-
     transition: .2s;
 }
 
 .navLinks button:hover,
 .navLinks button.active {
     color: white;
-
-    background:
-        rgba(0,229,255,.08);
+    background: rgba(0,229,255,.08);
 }
 
 /* NAV ACTIONS */
 
 .navActions {
     display: flex;
-
     align-items: center;
-
     gap: 8px;
 }
 
 .navButton {
     width: 38px;
     height: 38px;
-
     display: grid;
-
     place-items: center;
-
     border: 0;
-
     border-radius: 50%;
-
-    background:
-        rgba(0,229,255,.06);
-
+    background: rgba(0,229,255,.06);
     color: var(--text);
-
     cursor: pointer;
-
     transition: .2s;
 }
 
 .navButton:hover {
     color: var(--cyan);
-
-    background:
-        rgba(0,229,255,.15);
+    background: rgba(0,229,255,.15);
 }
 
 /* PROFILE */
@@ -441,32 +360,20 @@ body.light header.scrolled {
 .profileButton {
     width: 38px;
     height: 38px;
-
     border: 2px solid var(--cyan);
-
     border-radius: 50%;
-
     overflow: hidden;
-
     padding: 0;
-
-    background:
-        rgba(0,229,255,.08);
-
+    background: rgba(0,229,255,.08);
     color: var(--cyan);
-
     cursor: pointer;
-
     display: grid;
-
     place-items: center;
-
     transition: .2s;
 }
 
 .profileButton:hover {
     transform: scale(1.08);
-
     box-shadow:
         0 0 18px
         rgba(0,229,255,.35);
@@ -475,9 +382,7 @@ body.light header.scrolled {
 .profileButton img {
     width: 100%;
     height: 100%;
-
     object-fit: cover;
-
     display: none;
 }
 
@@ -489,17 +394,11 @@ body.light header.scrolled {
 
 .searchBox {
     display: flex;
-
     align-items: center;
-
     gap: 8px;
-
     width: 0;
-
     overflow: hidden;
-
     opacity: 0;
-
     transition:
         width .3s ease,
         opacity .3s ease;
@@ -507,26 +406,16 @@ body.light header.scrolled {
 
 .searchBox.open {
     width: 230px;
-
     opacity: 1;
 }
 
 .searchBox input {
     width: 100%;
-
-    padding:
-        9px 12px;
-
-    border:
-        1px solid var(--line);
-
+    padding: 9px 12px;
+    border: 1px solid var(--line);
     border-radius: 8px;
-
     outline: none;
-
-    background:
-        rgba(0,229,255,.06);
-
+    background: rgba(0,229,255,.06);
     color: var(--text);
 }
 
@@ -534,9 +423,7 @@ body.light header.scrolled {
 
 main {
     max-width: 1500px;
-
     margin: auto;
-
     padding-bottom: 80px;
 }
 
@@ -544,18 +431,11 @@ main {
 
 .featured {
     min-height: 650px;
-
     position: relative;
-
     display: flex;
-
     align-items: flex-end;
-
-    padding:
-        80px 50px 70px;
-
+    padding: 80px 50px 70px;
     overflow: hidden;
-
     background:
         linear-gradient(
             to right,
@@ -567,34 +447,22 @@ main {
 
 .featuredImage {
     position: absolute;
-
     inset: 0;
-
     z-index: -2;
-
-    background:
-        center / cover no-repeat;
-
+    background: center / cover no-repeat;
     opacity: .65;
-
-    transition:
-        transform 8s ease;
+    transition: transform 8s ease;
 }
 
 .featured:hover .featuredImage {
-    transform:
-        scale(1.04);
+    transform: scale(1.04);
 }
 
 .featured::after {
     content: "";
-
     position: absolute;
-
     inset: 0;
-
     z-index: -1;
-
     background:
         linear-gradient(
             to top,
@@ -605,139 +473,94 @@ main {
 
 .featuredContent {
     max-width: 600px;
-
     position: relative;
-
     z-index: 2;
 }
 
 .featuredTag {
     color: var(--cyan);
-
     font-size: 11px;
-
     font-weight: 900;
-
     letter-spacing: 3px;
-
     margin-bottom: 12px;
 }
 
 .featuredTitle {
     font-size:
         clamp(42px, 7vw, 80px);
-
     line-height: .9;
-
-    margin:
-        0 0 18px;
-
+    margin: 0 0 18px;
     font-weight: 1000;
-
     text-shadow:
         0 5px 30px black;
 }
 
 .featuredDescription {
-    color:
-        #c1d9de;
-
+    color: #c1d9de;
     font-size: 15px;
-
     line-height: 1.6;
-
     max-width: 550px;
 }
 
 .featuredMeta {
     display: flex;
-
     gap: 15px;
-
     align-items: center;
-
-    margin:
-        20px 0;
-
-    color:
-        #c2dce1;
-
+    margin: 20px 0;
+    color: #c2dce1;
     font-size: 12px;
 }
 
 .featuredButtons {
     display: flex;
-
     gap: 10px;
 }
 
 .playButton,
 .infoButton {
     display: flex;
-
     align-items: center;
-
     gap: 8px;
-
-    padding:
-        12px 22px;
-
+    padding: 12px 22px;
     border: 0;
-
     border-radius: 7px;
-
     font-weight: 900;
-
     cursor: pointer;
-
     transition: .2s;
 }
 
 .playButton {
-    background:
-        var(--cyan);
-
-    color:
-        #001014;
+    background: var(--cyan);
+    color: #001014;
 }
 
 .playButton:hover {
-    transform:
-        translateY(-2px);
-
+    transform: translateY(-2px);
     box-shadow:
         0 8px 25px
         rgba(0,229,255,.3);
 }
 
 .infoButton {
-    background:
-        rgba(255,255,255,.12);
-
-    color:
-        white;
-
-    backdrop-filter:
-        blur(10px);
+    background: rgba(255,255,255,.12);
+    color: white;
+    backdrop-filter: blur(10px);
 }
 
 .infoButton:hover {
-    background:
-        rgba(255,255,255,.2);
+    background: rgba(255,255,255,.2);
 }
 
 /* PAGE CONTENT */
 
 .content {
-    padding:
-        0 35px;
+    padding: 0 35px;
 }
 
 /* DASHBOARD */
 
 .dashboard {
     display: none;
-
     padding-top: 100px;
 }
 
@@ -747,13 +570,11 @@ main {
 
 .dashboardHeader h1 {
     margin: 0 0 7px;
-
     font-size: 32px;
 }
 
 .dashboardHeader p {
     color: var(--muted);
-
     margin: 0;
 }
 
@@ -761,28 +582,20 @@ main {
 
 .dashboardGrid {
     display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
+    grid-template-columns: repeat(4, 1fr);
     gap: 15px;
 }
 
 .dashboardCard {
     padding: 22px;
-
-    border:
-        1px solid var(--line);
-
+    border: 1px solid var(--line);
     border-radius: 18px;
-
     background:
         linear-gradient(
             145deg,
             rgba(0,229,255,.07),
             rgba(0,229,255,.02)
         );
-
     box-shadow:
         0 15px 40px
         var(--shadow);
@@ -791,25 +604,16 @@ main {
 .dashboardIcon {
     width: 42px;
     height: 42px;
-
     display: grid;
-
     place-items: center;
-
     color: var(--cyan);
-
     border-radius: 12px;
-
-    background:
-        rgba(0,229,255,.08);
-
+    background: rgba(0,229,255,.08);
     margin-bottom: 15px;
 }
 
 .dashboardCard h3 {
-    margin:
-        0 0 5px;
-
+    margin: 0 0 5px;
     font-size: 14px;
 }
 
@@ -818,11 +622,8 @@ main {
 }
 
 .dashboardCard p {
-    margin:
-        5px 0 0;
-
+    margin: 5px 0 0;
     color: var(--muted);
-
     font-size: 11px;
 }
 
@@ -834,32 +635,22 @@ main {
 
 .sectionTitle {
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
     margin-bottom: 14px;
 }
 
 .sectionTitle h2 {
     margin: 0;
-
     font-size: 20px;
 }
 
 .seeAll {
-    color:
-        var(--cyan);
-
+    color: var(--cyan);
     background: none;
-
     border: 0;
-
     cursor: pointer;
-
     font-size: 11px;
-
     font-weight: 800;
 }
 
@@ -867,16 +658,10 @@ main {
 
 .movieRow {
     display: flex;
-
     gap: 14px;
-
     overflow-x: auto;
-
-    padding:
-        5px 2px 18px;
-
+    padding: 5px 2px 18px;
     scrollbar-width: thin;
-
     scrollbar-color:
         var(--cyan)
         transparent;
@@ -887,34 +672,22 @@ main {
 }
 
 .movieRow::-webkit-scrollbar-thumb {
-    background:
-        var(--cyan);
-
+    background: var(--cyan);
     border-radius: 10px;
 }
 
 /* MOVIE CARD */
 
 .movieCard {
-    flex:
-        0 0 210px;
-
+    flex: 0 0 210px;
     position: relative;
-
     border-radius: 12px;
-
     overflow: hidden;
-
-    background:
-        var(--panel);
-
-    border:
-        1px solid var(--line);
-
+    background: var(--panel);
+    border: 1px solid var(--line);
     transition:
         transform .25s ease,
         box-shadow .25s ease;
-
     cursor: pointer;
 }
 
@@ -922,9 +695,7 @@ main {
     transform:
         scale(1.06)
         translateY(-5px);
-
     z-index: 5;
-
     box-shadow:
         0 15px 40px
         rgba(0,229,255,.2);
@@ -932,102 +703,68 @@ main {
 
 .moviePoster {
     width: 100%;
-
     height: 300px;
-
     object-fit: cover;
-
     display: block;
 }
 
 .movieInfo {
-    padding:
-        10px;
+    padding: 10px;
 }
 
 .movieInfo h3 {
-    margin:
-        0 0 5px;
-
+    margin: 0 0 5px;
     font-size: 13px;
-
     white-space: nowrap;
-
     overflow: hidden;
-
     text-overflow: ellipsis;
 }
 
 .movieMeta {
     display: flex;
-
-    justify-content:
-        space-between;
-
-    color:
-        var(--muted);
-
+    justify-content: space-between;
+    color: var(--muted);
     font-size: 9px;
 }
 
 .movieActions {
     display: flex;
-
     gap: 5px;
-
     margin-top: 8px;
 }
 
 .movieActions button {
     flex: 1;
-
-    border:
-        1px solid var(--line);
-
-    background:
-        rgba(0,229,255,.05);
-
-    color:
-        var(--cyan);
-
-    padding:
-        7px;
-
+    border: 1px solid var(--line);
+    background: rgba(0,229,255,.05);
+    color: var(--cyan);
+    padding: 7px;
     border-radius: 7px;
-
     cursor: pointer;
-
     font-size: 9px;
-
     font-weight: 800;
 }
 
 .movieActions button:hover {
-    background:
-        rgba(0,229,255,.15);
+    background: rgba(0,229,255,.15);
 }
 
 /* PROGRESS */
 
 .watchProgress {
     height: 3px;
-
-    background:
-        rgba(255,255,255,.12);
+    background: rgba(255,255,255,.12);
 }
 
 .watchProgress i {
     display: block;
-
     height: 100%;
-
     background:
         linear-gradient(
             90deg,
             var(--blue),
             var(--cyan)
         );
-
     box-shadow:
         0 0 8px
         var(--cyan);
@@ -1037,43 +774,24 @@ main {
 
 .movieBadge {
     position: absolute;
-
     top: 10px;
-
     left: 10px;
-
-    padding:
-        5px 8px;
-
+    padding: 5px 8px;
     border-radius: 5px;
-
-    background:
-        var(--cyan);
-
-    color:
-        #001014;
-
+    background: var(--cyan);
+    color: #001014;
     font-size: 8px;
-
     font-weight: 1000;
-
     z-index: 2;
 }
 
 /* FAVORITES EMPTY */
 
 .empty {
-    padding:
-        60px 20px;
-
+    padding: 60px 20px;
     text-align: center;
-
-    color:
-        var(--muted);
-
-    border:
-        1px dashed var(--line);
-
+    color: var(--muted);
+    border: 1px dashed var(--line);
     border-radius: 15px;
 }
 
@@ -1081,22 +799,13 @@ main {
 
 .modal {
     position: fixed;
-
     inset: 0;
-
     z-index: 200;
-
     display: none;
-
     place-items: center;
-
     padding: 20px;
-
-    background:
-        rgba(0,0,0,.75);
-
-    backdrop-filter:
-        blur(10px);
+    background: rgba(0,0,0,.75);
+    backdrop-filter: blur(10px);
 }
 
 .modal.show {
@@ -1104,23 +813,13 @@ main {
 }
 
 .modalBox {
-    width:
-        min(500px,100%);
-
+    width: min(500px,100%);
     max-height: 90vh;
-
     overflow-y: auto;
-
-    background:
-        var(--panel);
-
-    border:
-        1px solid var(--line);
-
+    background: var(--panel);
+    border: 1px solid var(--line);
     border-radius: 20px;
-
     padding: 25px;
-
     box-shadow:
         0 30px 100px
         black;
@@ -1128,10 +827,7 @@ main {
 
 .modalTop {
     display: flex;
-
-    justify-content:
-        space-between;
-
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -1141,13 +837,9 @@ main {
 
 .close {
     background: none;
-
     border: 0;
-
     color: var(--muted);
-
     font-size: 25px;
-
     cursor: pointer;
 }
 
@@ -1155,169 +847,147 @@ main {
 
 .settingLabel {
     display: block;
-
     margin-top: 20px;
-
     margin-bottom: 10px;
-
     font-size: 13px;
-
     font-weight: 800;
-
     color: var(--text);
 }
 
 .themeGrid {
     display: grid;
-
-    grid-template-columns:
-        repeat(2, 1fr);
-
+    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
 }
 
 .themeOption {
     min-height: 65px;
-
-    border:
-        1px solid var(--line);
-
+    border: 1px solid var(--line);
     border-radius: 12px;
-
     cursor: pointer;
-
     padding: 10px;
-
     display: flex;
-
     align-items: center;
-
     gap: 10px;
-
-    background:
-        var(--panel2);
-
-    color:
-        var(--text);
-
+    background: var(--panel2);
+    color: var(--text);
     font-size: 11px;
-
     font-weight: 800;
-
     transition: .2s;
 }
 
 .themeOption:hover {
-    transform:
-        translateY(-2px);
-
-    border-color:
-        var(--cyan);
+    transform: translateY(-2px);
+    border-color: var(--cyan);
 }
 
 .themePreview {
     width: 35px;
     height: 35px;
-
     border-radius: 9px;
-
     flex-shrink: 0;
-
-    border:
-        1px solid rgba(255,255,255,.25);
+    border: 1px solid rgba(255,255,255,.25);
 }
 
 .preview-default {
     background:
-        linear-gradient(135deg,#dffaff 50%,#020608 50%);
+        linear-gradient(
+            135deg,
+            #dffaff 50%,
+            #020608 50%
+        );
 }
 
 .preview-red-black {
     background:
-        linear-gradient(135deg,#ff3b3b 50%,#080202 50%);
+        linear-gradient(
+            135deg,
+            #ff3b3b 50%,
+            #080202 50%
+        );
 }
 
 .preview-green-black {
     background:
-        linear-gradient(135deg,#00ff88 50%,#020804 50%);
+        linear-gradient(
+            135deg,
+            #00ff88 50%,
+            #020804 50%
+        );
 }
 
 .preview-purple-black {
     background:
-        linear-gradient(135deg,#b45cff 50%,#050208 50%);
+        linear-gradient(
+            135deg,
+            #b45cff 50%,
+            #050208 50%
+        );
 }
 
 .preview-blue-white {
     background:
-        linear-gradient(135deg,#00bce8 50%,#ffffff 50%);
+        linear-gradient(
+            135deg,
+            #00bce8 50%,
+            #ffffff 50%
+        );
 }
 
 .preview-red-white {
     background:
-        linear-gradient(135deg,#e32626 50%,#ffffff 50%);
+        linear-gradient(
+            135deg,
+            #e32626 50%,
+            #ffffff 50%
+        );
 }
 
 .preview-green-white {
     background:
-        linear-gradient(135deg,#00a85a 50%,#ffffff 50%);
+        linear-gradient(
+            135deg,
+            #00a85a 50%,
+            #ffffff 50%
+        );
 }
 
 .preview-purple-white {
     background:
-        linear-gradient(135deg,#8b32d9 50%,#ffffff 50%);
+        linear-gradient(
+            135deg,
+            #8b32d9 50%,
+            #ffffff 50%
+        );
 }
 
 /* UPLOAD */
 
 .uploadBox {
     margin-top: 20px;
-
     padding: 30px;
-
     text-align: center;
-
-    border:
-        1px dashed var(--line);
-
+    border: 1px dashed var(--line);
     border-radius: 14px;
-
-    color:
-        var(--muted);
-
+    color: var(--muted);
     cursor: pointer;
-
     transition: .2s;
 }
 
 .uploadBox:hover {
-    border-color:
-        var(--cyan);
-
-    color:
-        var(--cyan);
-
-    background:
-        rgba(0,229,255,.04);
+    border-color: var(--cyan);
+    color: var(--cyan);
+    background: rgba(0,229,255,.04);
 }
 
 .removeBackground {
     width: 100%;
-
     margin-top: 12px;
-
     padding: 11px;
-
-    border:
-        1px solid var(--line);
-
+    border: 1px solid var(--line);
     border-radius: 10px;
-
-    background:
-        transparent;
-
-    color:
-        var(--cyan);
-
+    background: transparent;
+    color: var(--cyan);
     cursor: pointer;
 }
 
@@ -1326,97 +996,54 @@ main {
 .profilePreview {
     width: 90px;
     height: 90px;
-
-    margin:
-        20px auto;
-
+    margin: 20px auto;
     border-radius: 50%;
-
     overflow: hidden;
-
-    border:
-        2px solid var(--cyan);
-
-    background:
-        rgba(0,229,255,.08);
-
+    border: 2px solid var(--cyan);
+    background: rgba(0,229,255,.08);
     display: grid;
-
     place-items: center;
-
     color: var(--cyan);
 }
 
 .profilePreview img {
     width: 100%;
     height: 100%;
-
     object-fit: cover;
-
     display: none;
 }
 
 .profileInput {
     width: 100%;
-
     padding: 12px;
-
-    border:
-        1px solid var(--line);
-
+    border: 1px solid var(--line);
     border-radius: 10px;
-
-    background:
-        rgba(0,229,255,.05);
-
-    color:
-        var(--text);
-
+    background: rgba(0,229,255,.05);
+    color: var(--text);
     outline: none;
-
     margin-bottom: 10px;
 }
 
 .profileUpload {
     width: 100%;
-
     padding: 11px;
-
-    border:
-        1px solid var(--line);
-
+    border: 1px solid var(--line);
     border-radius: 10px;
-
-    background:
-        rgba(0,229,255,.05);
-
-    color:
-        var(--cyan);
-
+    background: rgba(0,229,255,.05);
+    color: var(--cyan);
     cursor: pointer;
-
     font-weight: 800;
 }
 
 .saveProfile {
     width: 100%;
-
     margin-top: 10px;
-
     padding: 12px;
-
     border: 0;
-
     border-radius: 10px;
-
-    background:
-        var(--cyan);
-
-    color:
-        #001014;
-
+    background: var(--cyan);
+    color: #001014;
     font-weight: 900;
-
     cursor: pointer;
 }
 
@@ -1424,43 +1051,24 @@ main {
 
 .toast {
     position: fixed;
-
     bottom: 25px;
-
     right: 25px;
-
     z-index: 500;
-
-    padding:
-        13px 18px;
-
-    border:
-        1px solid var(--cyan);
-
+    padding: 13px 18px;
+    border: 1px solid var(--cyan);
     border-radius: 10px;
-
-    background:
-        var(--panel);
-
-    color:
-        var(--cyan);
-
+    background: var(--panel);
+    color: var(--cyan);
     box-shadow:
         0 0 25px
         rgba(0,229,255,.2);
-
-    transform:
-        translateY(100px);
-
+    transform: translateY(100px);
     opacity: 0;
-
     transition: .3s;
 }
 
 .toast.show {
-    transform:
-        translateY(0);
-
+    transform: translateY(0);
     opacity: 1;
 }
 
@@ -1468,57 +1076,34 @@ main {
 
 .mobileNav {
     display: none;
-
     position: fixed;
-
     bottom: 0;
-
     left: 0;
-
     right: 0;
-
     z-index: 150;
-
-    padding:
-        8px 5px;
-
-    background:
-        rgba(2,6,8,.94);
-
-    backdrop-filter:
-        blur(15px);
-
-    border-top:
-        1px solid var(--line);
-
-    justify-content:
-        space-around;
+    padding: 8px 5px;
+    background: rgba(2,6,8,.94);
+    backdrop-filter: blur(15px);
+    border-top: 1px solid var(--line);
+    justify-content: space-around;
 }
 
 .mobileNav button {
     background: none;
-
     border: 0;
-
-    color:
-        var(--muted);
-
+    color: var(--muted);
     font-size: 9px;
-
     cursor: pointer;
 }
 
 .mobileNav iconify-icon {
     display: block;
-
     font-size: 20px;
-
     margin-bottom: 3px;
 }
 
 .mobileNav button.active {
-    color:
-        var(--cyan);
+    color: var(--cyan);
 }
 
 /* RESPONSIVE */
@@ -1526,8 +1111,7 @@ main {
 @media(max-width:1000px) {
 
     .dashboardGrid {
-        grid-template-columns:
-            repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 
 }
@@ -1535,9 +1119,7 @@ main {
 @media(max-width:700px) {
 
     .nav {
-        padding:
-            0 15px;
-
+        padding: 0 15px;
         gap: 8px;
     }
 
@@ -1551,28 +1133,18 @@ main {
 
     .searchBox.open {
         position: absolute;
-
         top: 65px;
-
         left: 15px;
-
         right: 15px;
-
         width: auto;
-
-        background:
-            var(--panel);
-
+        background: var(--panel);
         padding: 8px;
-
         border-radius: 10px;
     }
 
     .featured {
         min-height: 600px;
-
-        padding:
-            70px 20px 50px;
+        padding: 70px 20px 50px;
     }
 
     .featuredTitle {
@@ -1580,13 +1152,11 @@ main {
     }
 
     .content {
-        padding:
-            0 15px 80px;
+        padding: 0 15px 80px;
     }
 
     .movieCard {
-        flex-basis:
-            160px;
+        flex-basis: 160px;
     }
 
     .moviePoster {
@@ -1594,8 +1164,7 @@ main {
     }
 
     .dashboardGrid {
-        grid-template-columns:
-            1fr 1fr;
+        grid-template-columns: 1fr 1fr;
     }
 
     .mobileNav {
@@ -1607,8 +1176,7 @@ main {
 @media(max-width:450px) {
 
     .dashboardGrid {
-        grid-template-columns:
-            1fr;
+        grid-template-columns: 1fr;
     }
 
     .featuredTitle {
@@ -1616,8 +1184,7 @@ main {
     }
 
     .themeGrid {
-        grid-template-columns:
-            1fr;
+        grid-template-columns: 1fr;
     }
 
 }
@@ -1626,9 +1193,7 @@ main {
 
     * {
         animation: none !important;
-
         transition: none !important;
-
         scroll-behavior: auto !important;
     }
 
@@ -1644,8 +1209,6 @@ main {
 <div id="backgroundOverlay"></div>
 
 <canvas id="particles"></canvas>
-
-<!-- HEADER -->
 
 <header id="header">
 
@@ -1762,34 +1325,23 @@ icon="lucide:user">
 
 <main>
 
-<!-- HOME -->
+<div id="homePage">
 
-<div
-id="homePage">
-
-<section
-class="featured">
+<section class="featured">
 
 <div
 class="featuredImage"
 id="featuredImage">
-
 </div>
 
-<div
-class="featuredContent">
+<div class="featuredContent">
 
 <div class="featuredTag">
-
 ◈ FEATURED MOVIE
-
 </div>
 
-<h1
-class="featuredTitle">
-
+<h1 class="featuredTitle">
 A BUG'S LIFE
-
 </h1>
 
 <p class="featuredDescription">
@@ -1802,15 +1354,10 @@ Your next cinematic experience is waiting inside the vault.
 <div class="featuredMeta">
 
 <span>1998</span>
-
 <span>•</span>
-
 <span>G</span>
-
 <span>•</span>
-
 <span>1h 35m</span>
-
 <span>•</span>
 
 <span style="color:var(--cyan)">
@@ -1823,7 +1370,7 @@ Rare
 
 <button
 class="playButton"
-onclick="playMovie('A Bug\\'s Life')">
+onclick="playMovie('A Bug\'s Life')">
 
 <iconify-icon
 icon="lucide:play"
@@ -1836,7 +1383,7 @@ PLAY
 
 <button
 class="infoButton"
-onclick="movieInfo('A Bug\\'s Life')">
+onclick="movieInfo('A Bug\'s Life')">
 
 <iconify-icon
 icon="lucide:info">
@@ -1875,7 +1422,6 @@ SEE ALL
 <div
 class="movieRow"
 id="continueRow">
-
 </div>
 
 </section>
@@ -1901,7 +1447,6 @@ SEE ALL
 <div
 class="movieRow"
 id="trendingRow">
-
 </div>
 
 </section>
@@ -1927,7 +1472,6 @@ SEE ALL
 <div
 class="movieRow"
 id="popularRow">
-
 </div>
 
 </section>
@@ -1945,7 +1489,6 @@ Recently Added
 <div
 class="movieRow"
 id="recentRow">
-
 </div>
 
 </section>
@@ -1953,8 +1496,6 @@ id="recentRow">
 </div>
 
 </div>
-
-<!-- DASHBOARD -->
 
 <div
 id="dashboardPage"
@@ -2087,7 +1628,6 @@ Your Continue Watching
 <div
 class="movieRow"
 id="dashboardContinue">
-
 </div>
 
 </section>
@@ -2095,8 +1635,6 @@ id="dashboardContinue">
 </div>
 
 </div>
-
-<!-- MOVIES PAGE -->
 
 <div
 id="moviesPage"
@@ -2119,18 +1657,12 @@ Browse the complete movie collection.
 <div
 class="movieRow"
 id="allMoviesRow"
-style="
-flex-wrap:wrap;
-overflow:visible;
-">
-
+style="flex-wrap:wrap;overflow:visible;">
 </div>
 
 </div>
 
 </div>
-
-<!-- FAVORITES PAGE -->
 
 <div
 id="favoritesPage"
@@ -2153,11 +1685,7 @@ Your saved movies in one place.
 <div
 class="movieRow"
 id="favoritesRow"
-style="
-flex-wrap:wrap;
-overflow:visible;
-">
-
+style="flex-wrap:wrap;overflow:visible;">
 </div>
 
 </div>
@@ -2165,8 +1693,6 @@ overflow:visible;
 </div>
 
 </main>
-
-<!-- MOBILE NAV -->
 
 <nav class="mobileNav">
 
@@ -2216,8 +1742,6 @@ Favorites
 </button>
 
 </nav>
-
-<!-- SETTINGS MODAL -->
 
 <div
 class="modal"
@@ -2372,8 +1896,6 @@ REMOVE CUSTOM BACKGROUND
 
 </div>
 
-<!-- PROFILE MODAL -->
-
 <div
 class="modal"
 id="profileModal">
@@ -2455,19 +1977,20 @@ SAVE PROFILE
 
 </div>
 
-<!-- TOAST -->
-
 <div
 class="toast"
 id="toast">
-
 </div>
 
 <script>
 
-/* MOVIES */
+/* =========================================================
+   MOVIE DATABASE
+   ========================================================= */
 
 const movies = [
+
+/* ORIGINAL MOVIES */
 
 {
 name:"A Bug's Life",
@@ -2573,6 +2096,232 @@ progress:0,
 rarity:"Rare",
 score:72,
 link:"https://drive.google.com/file/d/1GYQqHUdyWMNQJKj4Sa8SGW0ZRX32D5og/view"
+},
+
+/* BATMAN COLLECTION */
+
+{
+name:"Batman (1989)",
+image:"https://upload.wikimedia.org/wikipedia/en/5/5f/Batman_%281989%29_theatrical_poster.jpg",
+category:"popular",
+progress:0,
+rarity:"Legendary",
+score:90,
+link:"https://sites.google.com/view/scholarvision/batman-1989?authuser=0"
+},
+
+{
+name:"Batman Returns",
+image:"https://upload.wikimedia.org/wikipedia/en/8/87/Batman_Returns_poster.jpg",
+category:"popular",
+progress:0,
+rarity:"Legendary",
+score:87,
+link:"https://sites.google.com/view/scholarvision/batman-returns?authuser=0"
+},
+
+{
+name:"Batman Forever",
+image:"https://upload.wikimedia.org/wikipedia/en/2/2d/Batman_Forever_poster.jpg",
+category:"popular",
+progress:0,
+rarity:"Epic",
+score:76,
+link:"https://sites.google.com/view/scholarvision/movies/batman-forever?authuser=0"
+},
+
+{
+name:"Batman & Robin",
+image:"https://upload.wikimedia.org/wikipedia/en/3/37/Batman_%26_Robin_poster.jpg",
+category:"popular",
+progress:0,
+rarity:"Rare",
+score:63,
+link:"https://sites.google.com/view/scholarvision/movies/batman-forever?authuser=0"
+},
+
+{
+name:"Batman Begins",
+image:"https://upload.wikimedia.org/wikipedia/en/a/af/Batman_Begins_Poster.jpg",
+category:"popular",
+progress:0,
+rarity:"Legendary",
+score:91,
+link:"https://sites.google.com/view/scholarvision/batman-begins?authuser=0"
+},
+
+{
+name:"The Dark Knight",
+image:"https://upload.wikimedia.org/wikipedia/en/8/8a/Dark_Knight.jpg",
+category:"popular",
+progress:0,
+rarity:"Legendary",
+score:98,
+link:"https://sites.google.com/view/scholarvision/the-dark-knight?authuser=0"
+},
+
+{
+name:"The Dark Knight Rises",
+image:"https://upload.wikimedia.org/wikipedia/en/8/83/Dark_knight_rises_poster.jpg",
+category:"popular",
+progress:0,
+rarity:"Legendary",
+score:90,
+link:"https://sites.google.com/view/scholarvision/the-dark-knight-rises?authuser=0"
+},
+
+{
+name:"The Batman",
+image:"https://upload.wikimedia.org/wikipedia/en/8/81/The_Batman_%282022%29_film_poster.jpg",
+category:"popular",
+progress:0,
+rarity:"Epic",
+score:87,
+link:"https://drive.google.com/file/d/16si_yvGyZn5mgvNIHil5xXOR3I8RaTKb/view?usp=sharing"
+},
+
+/* MARVEL */
+
+{
+name:"Black Panther",
+image:"https://upload.wikimedia.org/wikipedia/en/0/0c/Black_Panther_film_poster.jpg",
+category:"popular",
+progress:0,
+rarity:"Legendary",
+score:96,
+link:"https://sites.google.com/view/scholarvision/movies/black-panther?authuser=0"
+},
+
+{
+name:"Black Panther: Wakanda Forever",
+image:"https://upload.wikimedia.org/wikipedia/en/7/7e/Black_Panther_Wakanda_Forever_poster.jpg",
+category:"popular",
+progress:0,
+rarity:"Epic",
+score:84,
+link:"https://sites.google.com/view/scholarvision/movies/wakanda-forever?authuser=0"
+},
+
+{
+name:"Blue Beetle",
+image:"https://upload.wikimedia.org/wikipedia/en/0/0f/Blue_Beetle_%282023%29_poster.jpg",
+category:"popular",
+progress:0,
+rarity:"Epic",
+score:78,
+link:"https://drive.google.com/file/d/1T2XMXtDAlohPcGdi-u2p9zXF9Os9zkY1/view?usp=sharing"
+},
+
+/* OTHER MOVIES */
+
+{
+name:"The Bad Guys",
+image:"https://upload.wikimedia.org/wikipedia/en/1/18/The_Bad_Guys_film_poster.jpg",
+category:"popular",
+progress:0,
+rarity:"Rare",
+score:88,
+link:"https://drive.google.com/file/d/1Ep4I8JdvH8NlbcqxiNMA8c7U_UAOpewT/view?usp=drive_link"
+},
+
+{
+name:"Barbie",
+image:"https://upload.wikimedia.org/wikipedia/en/0/0f/Barbie_2023_poster.jpg",
+category:"popular",
+progress:0,
+rarity:"Epic",
+score:83,
+link:"https://drive.google.com/file/d/1K88LvZ6q9KRwsdiVQ72Wrh5DQqWVLkd3/view?usp=sharing"
+},
+
+{
+name:"Batman Beyond: Return of the Joker",
+image:"https://upload.wikimedia.org/wikipedia/en/0/07/Batman_Beyond_Return_of_the_Joker.jpg",
+category:"popular",
+progress:0,
+rarity:"Epic",
+score:85,
+link:"https://sites.google.com/view/scholarvision/movies/return-of-the-joker?authuser=0"
+},
+
+{
+name:"The Blackening",
+image:"https://upload.wikimedia.org/wikipedia/en/1/1c/The_Blackening_film_poster.jpg",
+category:"popular",
+progress:0,
+rarity:"Rare",
+score:79,
+link:"https://drive.google.com/file/d/1VBG7WXqeiZ3BSvPuWUPCL1_iF9znvPI5/view?usp=sharing"
+},
+
+{
+name:"Birds of Prey",
+image:"https://upload.wikimedia.org/wikipedia/en/1/1c/Birds_of_Prey_poster.jpg",
+category:"popular",
+progress:0,
+rarity:"Epic",
+score:78,
+link:"https://drive.google.com/file/d/1AShi8tLLzbPiPO6vDokf8ew-qBbzh5Pb/view?usp=sharing"
+},
+
+{
+name:"Boyz n the Hood",
+image:"https://upload.wikimedia.org/wikipedia/en/3/31/Boyz_n_the_Hood.jpg",
+category:"popular",
+progress:0,
+rarity:"Legendary",
+score:91,
+link:"https://drive.google.com/file/d/1fCv2dJuy8k_NQWAxbNRxqW0_zKetF-uy/view"
+},
+
+{
+name:"Beetlejuice",
+image:"https://upload.wikimedia.org/wikipedia/en/9/97/Beetlejuice_%281988_film%29_poster.jpg",
+category:"popular",
+progress:0,
+rarity:"Legendary",
+score:86,
+link:"https://drive.google.com/file/d/1fs2-oBGADuUeepkLX2V3zxNNUstHvBTs/view?usp=sharing"
+},
+
+{
+name:"Dolly Parton's Coat of Many Colors",
+image:"https://upload.wikimedia.org/wikipedia/en/5/55/Dolly_Parton%27s_Coat_of_Many_Colors_poster.jpg",
+category:"popular",
+progress:0,
+rarity:"Rare",
+score:82,
+link:"https://sites.google.com/view/scholarvision/movies/dolly-partons-coat-of-many-colors?authuser=0"
+},
+
+{
+name:"Dolly Parton's Christmas of Many Colors: Circle of Love",
+image:"https://upload.wikimedia.org/wikipedia/en/7/7f/Dolly_Parton%27s_Christmas_of_Many_Colors_Circle_of_Love.jpg",
+category:"popular",
+progress:0,
+rarity:"Rare",
+score:81,
+link:"https://sites.google.com/view/scholarvision/movies/dolly-partons-christmas-of-many-colors-circle-of-love?authuser=0"
+},
+
+{
+name:"Coraline",
+image:"https://upload.wikimedia.org/wikipedia/en/7/76/Coraline_poster.jpg",
+category:"popular",
+progress:0,
+rarity:"Legendary",
+score:92,
+link:"https://sites.google.com/view/scholarvision/movies/coraline?authuser=0"
+},
+
+{
+name:"Captain America: Civil War",
+image:"https://upload.wikimedia.org/wikipedia/en/5/53/Captain_America_Civil_War_poster.jpg",
+category:"popular",
+progress:0,
+rarity:"Legendary",
+score:90,
+link:"https://sites.google.com/view/scholarvision/movies/captain-america-civil-war?authuser=0"
 }
 
 ];
@@ -2601,43 +2350,31 @@ return `
 <article class="movieCard">
 
 <span class="movieBadge">
-
 ${movie.rarity}
-
 </span>
 
 <img
-
 class="moviePoster"
-
 src="${movie.image}"
-
 alt="${movie.name}"
-
 loading="lazy"
-
+onerror="this.src='https://via.placeholder.com/210x300/071116/00e5ff?text=${encodeURIComponent(movie.name)}'"
 >
 
 <div class="movieInfo">
 
 <h3>
-
 ${movie.name}
-
 </h3>
 
 <div class="movieMeta">
 
 <span>
-
 Score ${movie.score}
-
 </span>
 
 <span>
-
 ◈ ${movie.rarity}
-
 </span>
 
 </div>
