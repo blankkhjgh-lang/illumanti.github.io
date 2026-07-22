@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CYBER VAULT | Access</title>
+<title>CYBER VAULT | Crypto Cinema</title>
 
 <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 
@@ -17,29 +17,44 @@
     --cyan: #00e5ff;
     --blue: #008cff;
     --dark: #020608;
+    --card: rgba(5, 18, 24, .92);
+    --card2: rgba(3, 12, 17, .96);
+    --border: rgba(0, 229, 255, .16);
     --text: #e8fcff;
     --muted: #64818a;
+    --green: #00ffb3;
 }
 
-html, body {
-    margin: 0;
-    width: 100%;
-    min-height: 100%;
+html {
+    scroll-behavior: smooth;
 }
 
 body {
+    margin: 0;
     min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
     color: white;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
     background:
-        radial-gradient(circle at 50% 0%, rgba(0,229,255,0.15), transparent 35%),
-        radial-gradient(circle at 0% 100%, rgba(0,150,255,0.08), transparent 35%),
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(0,229,255,.14),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 0% 100%,
+            rgba(0,140,255,.08),
+            transparent 30%
+        ),
         #020608;
-    overflow: hidden;
+
+    overflow-x: hidden;
 }
 
 /* CUSTOM BACKGROUND */
@@ -47,697 +62,2877 @@ body {
 #backgroundOverlay {
     position: fixed;
     inset: 0;
-    z-index: -10;
+    z-index: -20;
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
     opacity: 0;
-    transition: opacity 0.7s ease, transform 1s ease;
-    transform: scale(1.05);
+    transition: .7s ease;
 }
 
 #backgroundOverlay.active {
-    opacity: 0.32;
-    transform: scale(1);
+    opacity: .16;
 }
 
 #backgroundDark {
     position: fixed;
     inset: 0;
-    z-index: -9;
-    background: linear-gradient(
-        rgba(1,5,8,0.82),
-        rgba(1,5,8,0.96)
-    );
+    z-index: -19;
+    background: rgba(1,5,8,.88);
 }
 
-/* CYBER GRID */
+/* GRID */
 
 body::before {
     content: "";
     position: fixed;
     inset: 0;
+    z-index: -15;
+    pointer-events: none;
+
     background-image:
         linear-gradient(
-            rgba(0,229,255,0.08) 1px,
+            rgba(0,229,255,.045) 1px,
             transparent 1px
         ),
         linear-gradient(
             90deg,
-            rgba(0,229,255,0.08) 1px,
+            rgba(0,229,255,.045) 1px,
             transparent 1px
         );
+
     background-size: 45px 45px;
-    opacity: 0.35;
     mask-image: linear-gradient(
         to bottom,
         black,
-        transparent 90%
+        transparent 95%
     );
-    pointer-events: none;
-    z-index: -8;
 }
 
-/* GLOW */
+/* PARTICLES */
 
-.glow {
+.particle {
     position: fixed;
-    width: 350px;
-    height: 350px;
+    width: 3px;
+    height: 3px;
     border-radius: 50%;
-    filter: blur(90px);
+    background: var(--cyan);
+    box-shadow: 0 0 12px var(--cyan);
+    opacity: .35;
     pointer-events: none;
-    z-index: -7;
+    animation: floatParticle linear infinite;
 }
 
-.glow.one {
-    top: -200px;
-    left: -150px;
-    background: rgba(0,229,255,0.09);
+@keyframes floatParticle {
+    from {
+        transform: translateY(110vh);
+    }
+    to {
+        transform: translateY(-10vh);
+    }
 }
 
-.glow.two {
-    bottom: -200px;
-    right: -150px;
-    background: rgba(0,130,255,0.08);
+/* NAVBAR */
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 14px 24px;
+
+    background:
+        rgba(2,8,11,.88);
+
+    border-bottom:
+        1px solid
+        rgba(0,229,255,.12);
+
+    backdrop-filter: blur(20px);
 }
-
-/* MAIN */
-
-.access-wrapper {
-    width: 100%;
-    max-width: 430px;
-    text-align: center;
-}
-
-/* BRAND */
 
 .brand {
-    text-align: center;
-    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 900;
+    letter-spacing: 2px;
 }
 
-.logo {
-    width: 75px;
-    height: 75px;
+.brand-icon {
+    width: 38px;
+    height: 38px;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 15px;
-    border-radius: 23px;
+
     color: var(--cyan);
-    background: linear-gradient(
-        145deg,
-        rgba(0,229,255,0.12),
-        rgba(0,80,120,0.05)
-    );
-    border: 1px solid rgba(0,229,255,0.3);
+
+    border:
+        1px solid
+        rgba(0,229,255,.3);
+
+    border-radius: 12px;
+
+    background:
+        rgba(0,229,255,.06);
+
     box-shadow:
-        0 0 35px rgba(0,229,255,0.14),
-        inset 0 0 25px rgba(0,229,255,0.04);
+        0 0 20px
+        rgba(0,229,255,.1);
 }
 
-.logo iconify-icon {
-    font-size: 40px;
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-.brand h1 {
-    margin: 0;
-    font-size: 29px;
-    font-weight: 900;
-    letter-spacing: 4px;
-    background: linear-gradient(
-        90deg,
-        white,
-        var(--cyan)
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 9px 13px;
+
+    color: #a6c4ca;
+
+    background:
+        rgba(0,229,255,.035);
+
+    border:
+        1px solid
+        rgba(0,229,255,.12);
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    transition: .2s;
 }
 
-.brand p {
-    margin: 9px 0 0;
-    color: var(--muted);
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
+.nav-btn:hover {
+    color: var(--cyan);
+    border-color: var(--cyan);
 }
 
-/* ACCESS CARD */
+.wallet {
+    color: var(--cyan);
+}
 
-.access-card {
+/* HERO */
+
+.hero {
+    max-width: 1200px;
+    margin: auto;
+    padding: 45px 22px 25px;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 18px;
+}
+
+.hero-main {
     position: relative;
-    padding: 30px;
-    border-radius: 24px;
-    background: linear-gradient(
-        145deg,
-        rgba(5,18,24,0.94),
-        rgba(2,8,11,0.97)
-    );
-    border: 1px solid rgba(0,229,255,0.18);
-    box-shadow:
-        0 30px 80px rgba(0,0,0,0.65),
-        0 0 45px rgba(0,229,255,0.04);
-    backdrop-filter: blur(20px);
     overflow: hidden;
+
+    padding: 35px;
+
+    min-height: 260px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0,229,255,.08),
+            rgba(2,8,11,.95) 65%
+        );
+
+    box-shadow:
+        0 25px 80px
+        rgba(0,0,0,.45);
 }
 
-.access-card::before {
+.hero-main::after {
     content: "";
     position: absolute;
-    top: 0;
-    left: 15%;
-    width: 70%;
-    height: 1px;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        var(--cyan),
-        transparent
-    );
-    box-shadow: 0 0 15px var(--cyan);
-}
+    width: 250px;
+    height: 250px;
+    right: -80px;
+    top: -80px;
 
-/* HEADER */
+    border-radius: 50%;
 
-.card-header {
-    text-align: center;
-    margin-bottom: 25px;
-}
-
-.card-header h2 {
-    margin: 0 0 8px;
-    font-size: 21px;
-    color: var(--text);
-}
-
-.card-header p {
-    margin: 0;
-    color: var(--muted);
-    font-size: 12px;
-}
-
-/* PHOTO AREA */
-
-.photo-area {
-    position: relative;
-    width: 190px;
-    height: 190px;
-    margin: 0 auto 22px;
-    border-radius: 18px;
-    overflow: hidden;
-    border: 1px solid rgba(0,229,255,0.25);
     background:
         radial-gradient(
             circle,
-            rgba(0,229,255,0.06),
-            rgba(0,0,0,0.4)
+            rgba(0,229,255,.22),
+            transparent 65%
         );
-    box-shadow:
-        inset 0 0 30px rgba(0,229,255,0.05),
-        0 0 30px rgba(0,229,255,0.05);
 }
 
-.empty-icon {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    color: #41616b;
-}
-
-.empty-icon iconify-icon {
-    font-size: 48px;
+.hero-tag {
     color: var(--cyan);
-    opacity: 0.7;
-}
-
-.empty-icon span {
     font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    font-weight: 800;
+    letter-spacing: 3px;
 }
 
-/* IMAGE */
+.hero h1 {
+    margin: 12px 0;
+    max-width: 600px;
 
-#photoPreview {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: none;
+    font-size: clamp(30px, 5vw, 60px);
+    line-height: .98;
+
+    letter-spacing: -2px;
 }
 
-/* SCAN OVERLAY */
-
-.scan-overlay {
-    position: absolute;
-    inset: 0;
-    display: none;
-    pointer-events: none;
-    background: linear-gradient(
-        rgba(0,229,255,0.08),
-        rgba(0,229,255,0.02)
-    );
+.hero p {
+    max-width: 600px;
+    color: #76949c;
+    line-height: 1.7;
 }
 
-/* SCAN LINE */
-
-.scan-line {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    top: 0;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        var(--cyan),
-        white,
-        var(--cyan),
-        transparent
-    );
-    box-shadow:
-        0 0 15px var(--cyan),
-        0 0 30px var(--cyan);
-    animation: scanMove 1.5s linear infinite;
-}
-
-@keyframes scanMove {
-    0% {
-        top: 0;
-    }
-
-    100% {
-        top: 100%;
-    }
-}
-
-/* CORNERS */
-
-.corner {
-    position: absolute;
-    width: 22px;
-    height: 22px;
-    border-color: var(--cyan);
-    border-style: solid;
-    opacity: 0.9;
-}
-
-.corner.top-left {
-    top: 10px;
-    left: 10px;
-    border-width: 2px 0 0 2px;
-}
-
-.corner.top-right {
-    top: 10px;
-    right: 10px;
-    border-width: 2px 2px 0 0;
-}
-
-.corner.bottom-left {
-    bottom: 10px;
-    left: 10px;
-    border-width: 0 0 2px 2px;
-}
-
-.corner.bottom-right {
-    bottom: 10px;
-    right: 10px;
-    border-width: 0 2px 2px 0;
-}
-
-/* STATUS */
-
-.status {
-    min-height: 20px;
-    margin-bottom: 18px;
-    color: var(--cyan);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-
-/* BUTTON */
-
-.choose-button {
-    width: 100%;
-    height: 50px;
+.hero-buttons {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 9px;
+    gap: 10px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+.primary-btn,
+.secondary-btn {
     border: none;
     border-radius: 12px;
-    background: linear-gradient(
-        135deg,
-        #00e5ff,
-        #00aaff
-    );
-    color: #001014;
-    font-size: 13px;
-    font-weight: 900;
-    letter-spacing: 1px;
+    padding: 12px 18px;
+
+    font-weight: 800;
     cursor: pointer;
-    box-shadow:
-        0 8px 25px rgba(0,229,255,0.15);
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
-}
 
-.choose-button:hover {
-    transform: translateY(-2px);
-    box-shadow:
-        0 12px 35px rgba(0,229,255,0.3);
-}
-
-.choose-button:active {
-    transform: scale(0.98);
-}
-
-.choose-button.scanning {
-    pointer-events: none;
-    background: linear-gradient(
-        135deg,
-        #007c91,
-        #0063a0
-    );
-    color: white;
-}
-
-/* HIDDEN FILE INPUT */
-
-#photoInput {
-    display: none;
-}
-
-/* AUTHORIZED */
-
-.authorized {
-    display: none;
-    position: absolute;
-    inset: 0;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 10px;
-    background: rgba(0,8,11,0.92);
-    z-index: 20;
-}
-
-.authorized.show {
-    display: flex;
-}
-
-.authorized-icon {
-    width: 75px;
-    height: 75px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    border-radius: 50%;
+    gap: 8px;
+}
+
+.primary-btn {
+    color: #001014;
+    background:
+        linear-gradient(
+            135deg,
+            var(--cyan),
+            var(--blue)
+        );
+}
+
+.secondary-btn {
     color: var(--cyan);
-    border: 2px solid var(--cyan);
+    background:
+        rgba(0,229,255,.05);
+
+    border:
+        1px solid
+        rgba(0,229,255,.18);
+}
+
+/* STATS */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 12px;
+}
+
+.stat-card {
+    padding: 20px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 20px;
+
+    background:
+        var(--card);
+
     box-shadow:
-        0 0 25px rgba(0,229,255,0.5),
-        inset 0 0 20px rgba(0,229,255,0.1);
-    animation:
-        authorizedPulse 1s ease infinite alternate;
+        0 15px 40px
+        rgba(0,0,0,.25);
 }
 
-.authorized-icon iconify-icon {
-    font-size: 40px;
-}
-
-.authorized h2 {
-    margin: 5px 0 0;
+.stat-icon {
     color: var(--cyan);
     font-size: 22px;
-    letter-spacing: 4px;
 }
 
-.authorized p {
-    margin: 0;
-    color: #7da7b0;
+.stat-label {
+    margin-top: 15px;
+    color: var(--muted);
     font-size: 10px;
-    letter-spacing: 2px;
     text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-@keyframes authorizedPulse {
-    from {
-        box-shadow:
-            0 0 15px rgba(0,229,255,0.3);
-    }
-
-    to {
-        box-shadow:
-            0 0 45px rgba(0,229,255,0.7);
-    }
+.stat-value {
+    margin-top: 5px;
+    font-size: 23px;
+    font-weight: 900;
 }
 
-/* SECURITY */
+/* CONTENT */
 
-.security {
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px 22px 70px;
+}
+
+.section {
+    margin-top: 40px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 18px;
+}
+
+.section-title {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 6px;
-    margin-top: 20px;
-    color: #45616a;
-    font-size: 9px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+    gap: 9px;
+
+    font-size: 21px;
+    margin: 0;
 }
 
-.security iconify-icon {
+.section-title iconify-icon {
     color: var(--cyan);
+}
+
+/* SEARCH */
+
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    width: 100%;
+    max-width: 500px;
+
+    padding: 12px 15px;
+
+    background:
+        rgba(0,229,255,.025);
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 14px;
+}
+
+.search-container iconify-icon {
+    color: var(--cyan);
+    font-size: 20px;
+}
+
+.search-container input {
+    width: 100%;
+    border: none;
+    outline: none;
+
+    background: transparent;
+    color: white;
+
     font-size: 14px;
 }
 
-/* MOBILE */
+.search-container input::placeholder {
+    color: #46616a;
+}
 
-@media (max-width: 500px) {
+/* FILTERS */
 
-    body {
-        padding: 15px;
+.filters {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+}
+
+.filter {
+    padding: 9px 13px;
+
+    color: #76949c;
+
+    background:
+        rgba(0,229,255,.03);
+
+    border:
+        1px solid
+        rgba(0,229,255,.1);
+
+    border-radius: 20px;
+
+    cursor: pointer;
+    font-size: 11px;
+}
+
+.filter.active,
+.filter:hover {
+    color: #001014;
+    background: var(--cyan);
+}
+
+/* MOVIE GRID */
+
+.movie-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 14px;
+}
+
+.movie-card {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 7px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 17px;
+
+    background:
+        var(--card);
+
+    transition:
+        transform .25s,
+        border-color .25s;
+}
+
+.movie-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--cyan);
+}
+
+.movie-image {
+    width: 100%;
+    height: 230px;
+
+    object-fit: cover;
+
+    border-radius: 12px;
+
+    background: #061014;
+}
+
+.movie-info {
+    padding: 9px 5px 3px;
+}
+
+.movie-title {
+    margin: 0 0 9px;
+
+    font-size: 13px;
+    line-height: 1.3;
+}
+
+.movie-meta {
+    color: #54727b;
+    font-size: 10px;
+}
+
+.movie-actions {
+    display: flex;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.movie-fav {
+    width: 38px;
+
+    border-radius: 9px;
+
+    color: #72939b;
+
+    background:
+        rgba(0,229,255,.04);
+
+    border:
+        1px solid
+        rgba(0,229,255,.1);
+
+    cursor: pointer;
+}
+
+.movie-fav.active {
+    color: var(--cyan);
+}
+
+.view-btn {
+    flex: 1;
+
+    padding: 9px;
+
+    border-radius: 9px;
+
+    text-align: center;
+    text-decoration: none;
+
+    color: #001014;
+
+    background: white;
+
+    font-size: 11px;
+    font-weight: 900;
+}
+
+/* BADGE */
+
+.badge {
+    position: absolute;
+    top: 13px;
+    left: 13px;
+
+    z-index: 2;
+
+    padding: 5px 8px;
+
+    border-radius: 8px;
+
+    color: #001014;
+
+    background:
+        var(--cyan);
+
+    font-size: 8px;
+    font-weight: 900;
+}
+
+/* DASHBOARD GRID */
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 15px;
+}
+
+.panel {
+    padding: 20px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 20px;
+
+    background:
+        var(--card);
+
+    box-shadow:
+        0 15px 45px
+        rgba(0,0,0,.2);
+}
+
+.panel h3 {
+    margin: 0 0 15px;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    font-size: 14px;
+}
+
+.panel h3 iconify-icon {
+    color: var(--cyan);
+}
+
+/* PROGRESS */
+
+.progress {
+    height: 7px;
+
+    margin: 10px 0 8px;
+
+    overflow: hidden;
+
+    border-radius: 10px;
+
+    background:
+        rgba(0,229,255,.08);
+}
+
+.progress-bar {
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--cyan),
+            var(--blue)
+        );
+
+    box-shadow:
+        0 0 15px
+        rgba(0,229,255,.5);
+}
+
+/* QUEST */
+
+.quest {
+    padding: 12px 0;
+
+    border-bottom:
+        1px solid
+        rgba(0,229,255,.07);
+}
+
+.quest:last-child {
+    border-bottom: none;
+}
+
+.quest-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.quest-name {
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.quest-reward {
+    color: var(--green);
+    font-size: 10px;
+    font-weight: 800;
+}
+
+/* LEADERBOARD */
+
+.rank {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 10px 0;
+
+    border-bottom:
+        1px solid
+        rgba(0,229,255,.06);
+}
+
+.rank-number {
+    width: 25px;
+    color: var(--cyan);
+    font-weight: 900;
+}
+
+.avatar {
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    color: var(--cyan);
+
+    background:
+        rgba(0,229,255,.08);
+
+    border:
+        1px solid
+        rgba(0,229,255,.2);
+}
+
+.rank-name {
+    flex: 1;
+    font-size: 11px;
+}
+
+.rank-score {
+    color: var(--green);
+    font-size: 10px;
+}
+
+/* DAO */
+
+.vote {
+    margin-bottom: 12px;
+}
+
+.vote-title {
+    font-size: 11px;
+    margin-bottom: 8px;
+}
+
+.vote-bar {
+    height: 8px;
+
+    overflow: hidden;
+
+    border-radius: 10px;
+
+    background:
+        rgba(255,255,255,.06);
+}
+
+.vote-fill {
+    height: 100%;
+    background:
+        linear-gradient(
+            90deg,
+            var(--cyan),
+            var(--blue)
+        );
+}
+
+.vote-buttons {
+    display: flex;
+    gap: 7px;
+    margin-top: 8px;
+}
+
+.vote-buttons button {
+    flex: 1;
+
+    padding: 7px;
+
+    border-radius: 8px;
+
+    border:
+        1px solid
+        rgba(0,229,255,.1);
+
+    color: #7da7b0;
+
+    background:
+        rgba(0,229,255,.03);
+
+    cursor: pointer;
+}
+
+/* MARKETPLACE */
+
+.market-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap: 13px;
+}
+
+.nft {
+    padding: 8px;
+
+    border-radius: 16px;
+
+    background:
+        rgba(0,229,255,.025);
+
+    border:
+        1px solid
+        rgba(0,229,255,.1);
+}
+
+.nft-image {
+    height: 150px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    color: var(--cyan);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,229,255,.12),
+            rgba(2,8,11,.9)
+        );
+}
+
+.nft-title {
+    margin: 10px 2px 4px;
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.nft-price {
+    color: var(--green);
+    font-size: 10px;
+}
+
+.buy-btn {
+    width: 100%;
+
+    margin-top: 9px;
+
+    padding: 8px;
+
+    border: none;
+    border-radius: 9px;
+
+    color: #001014;
+    background: var(--cyan);
+
+    font-size: 10px;
+    font-weight: 900;
+
+    cursor: pointer;
+}
+
+/* TRENDING */
+
+.chart {
+    height: 130px;
+
+    display: flex;
+    align-items: end;
+    gap: 7px;
+
+    padding-top: 15px;
+}
+
+.bar {
+    flex: 1;
+
+    min-height: 15px;
+
+    border-radius:
+        5px 5px 2px 2px;
+
+    background:
+        linear-gradient(
+            to top,
+            #006d8a,
+            var(--cyan)
+        );
+
+    box-shadow:
+        0 0 12px
+        rgba(0,229,255,.2);
+}
+
+/* REFERRAL */
+
+.referral-code {
+    padding: 12px;
+
+    color: var(--cyan);
+
+    background:
+        rgba(0,229,255,.04);
+
+    border:
+        1px dashed
+        rgba(0,229,255,.25);
+
+    border-radius: 10px;
+
+    font-size: 12px;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.copy-btn {
+    width: 100%;
+
+    margin-top: 10px;
+
+    padding: 9px;
+
+    border-radius: 9px;
+
+    color: var(--cyan);
+
+    background:
+        transparent;
+
+    border:
+        1px solid
+        rgba(0,229,255,.2);
+
+    cursor: pointer;
+}
+
+/* WALLET */
+
+.wallet-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 15px;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0,229,255,.09),
+            rgba(0,0,0,.2)
+        );
+
+    border:
+        1px solid
+        rgba(0,229,255,.15);
+}
+
+.wallet-address {
+    color: #8cb0b8;
+    font-size: 10px;
+}
+
+.wallet-balance {
+    margin-top: 4px;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.disconnect {
+    color: #ff6680;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+/* MODE */
+
+.mode-toggle {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+
+    z-index: 100;
+
+    width: 48px;
+    height: 48px;
+
+    border-radius: 50%;
+
+    color: var(--cyan);
+
+    background:
+        rgba(2,8,11,.9);
+
+    border:
+        1px solid
+        rgba(0,229,255,.25);
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 25px
+        rgba(0,229,255,.12);
+}
+
+/* BACKGROUND PICKER */
+
+.background-picker {
+    display: none;
+}
+
+.custom-bg-btn {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+
+    z-index: 100;
+
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 10px 13px;
+
+    border-radius: 12px;
+
+    color: #7da7b0;
+
+    background:
+        rgba(2,8,11,.9);
+
+    border:
+        1px solid
+        rgba(0,229,255,.15);
+
+    cursor: pointer;
+
+    font-size: 10px;
+}
+
+/* TOAST */
+
+.toast {
+    position: fixed;
+
+    left: 50%;
+    bottom: 25px;
+
+    transform:
+        translate(-50%, 100px);
+
+    z-index: 9999;
+
+    padding: 13px 20px;
+
+    border-radius: 12px;
+
+    color: #001014;
+
+    background:
+        var(--cyan);
+
+    font-size: 11px;
+    font-weight: 900;
+
+    box-shadow:
+        0 0 30px
+        rgba(0,229,255,.3);
+
+    transition: .3s;
+}
+
+.toast.show {
+    transform:
+        translate(-50%, 0);
+}
+
+/* LIGHT MODE */
+
+body.light {
+    color: #041014;
+
+    background:
+        linear-gradient(
+            135deg,
+            #dffaff,
+            #a9ecff
+        );
+}
+
+body.light #backgroundDark {
+    background:
+        rgba(220,250,255,.72);
+}
+
+body.light .navbar,
+body.light .panel,
+body.light .movie-card,
+body.light .stat-card,
+body.light .hero-main {
+    background:
+        rgba(255,255,255,.72);
+
+    color: #041014;
+}
+
+body.light .movie-title,
+body.light h1,
+body.light h2,
+body.light h3,
+body.light .section-title {
+    color: #041014;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1000px) {
+
+    .movie-grid,
+    .market-grid {
+        grid-template-columns:
+            repeat(3,1fr);
     }
 
-    .access-card {
-        padding: 25px 20px;
-    }
-
-    .brand h1 {
-        font-size: 25px;
-    }
-
-    .logo {
-        width: 62px;
-        height: 62px;
-    }
-
-    .photo-area {
-        width: 170px;
-        height: 170px;
+    .dashboard-grid {
+        grid-template-columns:
+            repeat(2,1fr);
     }
 }
 
+@media(max-width:700px) {
+
+    .navbar {
+        padding: 12px 15px;
+    }
+
+    .nav-actions .nav-btn span {
+        display: none;
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .movie-grid,
+    .market-grid {
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .movie-image {
+        height: 200px;
+    }
+
+    .hero-main {
+        padding: 25px;
+    }
+}
+
+@media(max-width:450px) {
+
+    .container,
+    .hero {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .movie-grid,
+    .market-grid {
+        gap: 8px;
+    }
+
+    .movie-image {
+        height: 165px;
+    }
+
+    .custom-bg-btn {
+        left: 10px;
+        bottom: 10px;
+    }
+
+    .mode-toggle {
+        right: 10px;
+        bottom: 10px;
+    }
+}
 </style>
 </head>
 
 <body>
 
 <div id="backgroundOverlay"></div>
-
 <div id="backgroundDark"></div>
 
-<div class="glow one"></div>
+<!-- PARTICLES -->
+<div class="particle" style="left:5%;animation-duration:14s"></div>
+<div class="particle" style="left:15%;animation-duration:19s"></div>
+<div class="particle" style="left:27%;animation-duration:16s"></div>
+<div class="particle" style="left:40%;animation-duration:22s"></div>
+<div class="particle" style="left:55%;animation-duration:17s"></div>
+<div class="particle" style="left:68%;animation-duration:21s"></div>
+<div class="particle" style="left:80%;animation-duration:15s"></div>
+<div class="particle" style="left:92%;animation-duration:20s"></div>
 
-<div class="glow two"></div>
 
+<!-- NAVBAR -->
 
-<div class="access-wrapper">
+<nav class="navbar">
 
     <div class="brand">
 
-        <div class="logo">
-
-            <iconify-icon
-                icon="lucide:shield-check">
-            </iconify-icon>
-
+        <div class="brand-icon">
+            <iconify-icon icon="lucide:bitcoin"></iconify-icon>
         </div>
 
-        <h1>
-            CYBER VAULT
-        </h1>
-
-        <p>
-            Secure Digital Collection
-        </p>
+        CYBER VAULT
 
     </div>
 
 
-    <div class="access-card">
+    <div class="nav-actions">
 
-        <div class="card-header">
+        <button class="nav-btn" onclick="connectWallet()">
 
-            <h2>
-                Identity Verification
-            </h2>
+            <iconify-icon icon="lucide:wallet"></iconify-icon>
+
+            <span id="walletText">
+                CONNECT WALLET
+            </span>
+
+        </button>
+
+        <button class="nav-btn" onclick="scrollToSection('profile')">
+
+            <iconify-icon icon="lucide:user"></iconify-icon>
+
+            <span>
+                PROFILE
+            </span>
+
+        </button>
+
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<header class="hero">
+
+    <div class="hero-grid">
+
+
+        <div class="hero-main">
+
+            <div class="hero-tag">
+                WEB3 CINEMA NETWORK
+            </div>
+
+            <h1>
+                YOUR MOVIES.<br>
+                YOUR VAULT.
+            </h1>
 
             <p>
-                Select an image to initialize secure access
+                Discover films, complete watch quests,
+                collect digital movie assets, and explore
+                the future of decentralized entertainment.
             </p>
+
+            <div class="hero-buttons">
+
+                <button
+                    class="primary-btn"
+                    onclick="scrollToSection('movies')">
+
+                    <iconify-icon icon="lucide:play"></iconify-icon>
+
+                    EXPLORE MOVIES
+
+                </button>
+
+                <button
+                    class="secondary-btn"
+                    onclick="scrollToSection('quests')">
+
+                    <iconify-icon icon="lucide:pickaxe"></iconify-icon>
+
+                    MINING QUESTS
+
+                </button>
+
+            </div>
 
         </div>
 
 
-        <div class="photo-area">
+        <div class="stats-grid">
 
-            <div
-                class="empty-icon"
-                id="emptyIcon">
+
+            <div class="stat-card">
 
                 <iconify-icon
-                    icon="lucide:scan-face">
+                    class="stat-icon"
+                    icon="lucide:coins">
                 </iconify-icon>
 
-                <span>
-                    Awaiting Scan
+                <div class="stat-label">
+                    Vault Tokens
+                </div>
+
+                <div
+                    class="stat-value"
+                    id="tokenBalance">
+
+                    2,480
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <iconify-icon
+                    class="stat-icon"
+                    icon="lucide:flame">
+                </iconify-icon>
+
+                <div class="stat-label">
+                    Watch Streak
+                </div>
+
+                <div
+                    class="stat-value">
+
+                    7 Days
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <iconify-icon
+                    class="stat-icon"
+                    icon="lucide:film">
+                </iconify-icon>
+
+                <div class="stat-label">
+                    Movies Watched
+                </div>
+
+                <div
+                    class="stat-value">
+
+                    42
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <iconify-icon
+                    class="stat-icon"
+                    icon="lucide:trending-up">
+                </iconify-icon>
+
+                <div class="stat-label">
+                    Vault Level
+                </div>
+
+                <div
+                    class="stat-value">
+
+                    LVL 12
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<main class="container">
+
+
+<!-- MOVIES -->
+
+<section
+    class="section"
+    id="movies">
+
+    <div class="section-header">
+
+        <h2 class="section-title">
+
+            <iconify-icon icon="lucide:film"></iconify-icon>
+
+            Movie Vault
+
+        </h2>
+
+    </div>
+
+
+    <div class="search-container">
+
+        <iconify-icon icon="lucide:search"></iconify-icon>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search the vault..."
+            onkeyup="searchMovies()">
+
+    </div>
+
+
+    <div class="filters">
+
+        <button
+            class="filter active"
+            onclick="filterMood(this,'all')">
+
+            ALL
+
+        </button>
+
+        <button
+            class="filter"
+            onclick="filterMood(this,'bull')">
+
+            🟢 BULL MARKET EPIC
+
+        </button>
+
+        <button
+            class="filter"
+            onclick="filterMood(this,'bear')">
+
+            🔴 BEAR MARKET THRILLER
+
+        </button>
+
+        <button
+            class="filter"
+            onclick="filterMood(this,'stable')">
+
+            🔵 STABLECOIN CHILL
+
+        </button>
+
+    </div>
+
+
+    <div
+        class="movie-grid"
+        id="movieGrid">
+
+
+        <!-- BUGS LIFE -->
+
+        <div
+            class="movie-card"
+            data-title="A Bug's Life"
+            data-mood="stable">
+
+            <img
+                class="movie-image"
+                src="https://upload.wikimedia.org/wikipedia/en/7/7f/A_Bug%27s_Life.jpg"
+                alt="A Bug's Life">
+
+            <div class="movie-info">
+
+                <h3 class="movie-title">
+                    A Bug's Life
+                </h3>
+
+                <div class="movie-meta">
+                    STABLECOIN CHILL • +25 TOKENS
+                </div>
+
+                <div class="movie-actions">
+
+                    <button
+                        class="movie-fav"
+                        onclick="toggleFavorite(this)">
+
+                        <iconify-icon icon="lucide:heart"></iconify-icon>
+
+                    </button>
+
+                    <a
+                        class="view-btn"
+                        href="https://drive.google.com/file/d/1AIq4OqiMWiY9zZSayF5VID7pfTwSH6BM/view"
+                        target="_blank">
+
+                        WATCH
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CHARLIE BROWN -->
+
+        <div
+            class="movie-card"
+            data-title="A Charlie Brown Christmas"
+            data-mood="stable">
+
+            <span class="badge">
+                HOT
+            </span>
+
+            <img
+                class="movie-image"
+                src="https://upload.wikimedia.org/wikipedia/en/1/1f/A_Charlie_Brown_Christmas_poster.jpg"
+                alt="A Charlie Brown Christmas">
+
+            <div class="movie-info">
+
+                <h3 class="movie-title">
+                    A Charlie Brown Christmas
+                </h3>
+
+                <div class="movie-meta">
+                    STABLECOIN CHILL • +30 TOKENS
+                </div>
+
+                <div class="movie-actions">
+
+                    <button
+                        class="movie-fav"
+                        onclick="toggleFavorite(this)">
+
+                        <iconify-icon icon="lucide:heart"></iconify-icon>
+
+                    </button>
+
+                    <a
+                        class="view-btn"
+                        href="https://drive.google.com/file/d/1e2UIrJdsz_0k5tp2v0EnPZiPv2ZQSTzg/view"
+                        target="_blank">
+
+                        WATCH
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- GOOFY -->
+
+        <div
+            class="movie-card"
+            data-title="A Goofy Movie"
+            data-mood="bull">
+
+            <img
+                class="movie-image"
+                src="https://upload.wikimedia.org/wikipedia/en/4/4f/A_Goofy_Movie_poster.jpg"
+                alt="A Goofy Movie">
+
+            <div class="movie-info">
+
+                <h3 class="movie-title">
+                    A Goofy Movie
+                </h3>
+
+                <div class="movie-meta">
+                    BULL MARKET EPIC • +35 TOKENS
+                </div>
+
+                <div class="movie-actions">
+
+                    <button
+                        class="movie-fav"
+                        onclick="toggleFavorite(this)">
+
+                        <iconify-icon icon="lucide:heart"></iconify-icon>
+
+                    </button>
+
+                    <a
+                        class="view-btn"
+                        href="https://drive.google.com/file/d/1ify_EMaQW-ZAn2FOSTztn2AGU-jE7aHL/view"
+                        target="_blank">
+
+                        WATCH
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ANT MAN -->
+
+        <div
+            class="movie-card"
+            data-title="Ant-Man and the Wasp Quantumania"
+            data-mood="bull">
+
+            <img
+                class="movie-image"
+                src="https://upload.wikimedia.org/wikipedia/en/0/0c/Ant-Man_and_the_Wasp_Quantumania_poster.jpg"
+                alt="Ant-Man and the Wasp Quantumania">
+
+            <div class="movie-info">
+
+                <h3 class="movie-title">
+                    Ant-Man and the Wasp: Quantumania
+                </h3>
+
+                <div class="movie-meta">
+                    BULL MARKET EPIC • +50 TOKENS
+                </div>
+
+                <div class="movie-actions">
+
+                    <button
+                        class="movie-fav"
+                        onclick="toggleFavorite(this)">
+
+                        <iconify-icon icon="lucide:heart"></iconify-icon>
+
+                    </button>
+
+                    <a
+                        class="view-btn"
+                        href="https://drive.google.com/file/d/1AW3Zm8256tzZ-37lmgYmlGse4knu8dA/view"
+                        target="_blank">
+
+                        WATCH
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- DASHBOARD -->
+
+<section
+    class="section"
+    id="dashboard">
+
+    <div class="section-header">
+
+        <h2 class="section-title">
+
+            <iconify-icon icon="lucide:layout-dashboard"></iconify-icon>
+
+            Crypto Command Center
+
+        </h2>
+
+    </div>
+
+
+    <div class="dashboard-grid">
+
+
+        <!-- WALLET -->
+
+        <div class="panel">
+
+            <h3>
+
+                <iconify-icon icon="lucide:wallet"></iconify-icon>
+
+                Digital Wallet
+
+            </h3>
+
+            <div class="wallet-box">
+
+                <div>
+
+                    <div class="wallet-address">
+                        VAULT WALLET
+                    </div>
+
+                    <div class="wallet-balance">
+                        2,480 VLT
+                    </div>
+
+                </div>
+
+                <div
+                    class="disconnect"
+                    onclick="connectWallet()">
+
+                    CONNECT
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- TRENDING -->
+
+        <div class="panel">
+
+            <h3>
+
+                <iconify-icon icon="lucide:activity"></iconify-icon>
+
+                Trending On Chain
+
+            </h3>
+
+            <div class="chart">
+
+                <div class="bar" style="height:40%"></div>
+                <div class="bar" style="height:55%"></div>
+                <div class="bar" style="height:45%"></div>
+                <div class="bar" style="height:70%"></div>
+                <div class="bar" style="height:62%"></div>
+                <div class="bar" style="height:85%"></div>
+                <div class="bar" style="height:100%"></div>
+                <div class="bar" style="height:88%"></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PORTFOLIO -->
+
+        <div class="panel">
+
+            <h3>
+
+                <iconify-icon icon="lucide:pie-chart"></iconify-icon>
+
+                Watch Portfolio
+
+            </h3>
+
+            <p style="color:#64818a;font-size:11px;line-height:1.7">
+
+                Your cinematic portfolio is performing
+                <strong style="color:#00ffb3">
+                    +18.4%
+                </strong>
+                this week.
+
+            </p>
+
+            <div class="progress">
+
+                <div
+                    class="progress-bar"
+                    style="width:78%">
+                </div>
+
+            </div>
+
+            <small style="color:#64818a">
+                78% Vault Completion
+            </small>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- QUESTS -->
+
+<section
+    class="section"
+    id="quests">
+
+    <div class="section-header">
+
+        <h2 class="section-title">
+
+            <iconify-icon icon="lucide:pickaxe"></iconify-icon>
+
+            Daily Mining Quests
+
+        </h2>
+
+    </div>
+
+
+    <div class="dashboard-grid">
+
+
+        <div class="panel">
+
+            <h3>
+                <iconify-icon icon="lucide:flame"></iconify-icon>
+                Active Quests
+            </h3>
+
+
+            <div class="quest">
+
+                <div class="quest-top">
+
+                    <span class="quest-name">
+                        Watch 1 Movie
+                    </span>
+
+                    <span class="quest-reward">
+                        +50 VLT
+                    </span>
+
+                </div>
+
+                <div class="progress">
+
+                    <div
+                        class="progress-bar"
+                        style="width:100%">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="quest">
+
+                <div class="quest-top">
+
+                    <span class="quest-name">
+                        Add 2 Favorites
+                    </span>
+
+                    <span class="quest-reward">
+                        +25 VLT
+                    </span>
+
+                </div>
+
+                <div class="progress">
+
+                    <div
+                        class="progress-bar"
+                        style="width:50%">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="quest">
+
+                <div class="quest-top">
+
+                    <span class="quest-name">
+                        Maintain 7 Day Streak
+                    </span>
+
+                    <span class="quest-reward">
+                        +100 VLT
+                    </span>
+
+                </div>
+
+                <div class="progress">
+
+                    <div
+                        class="progress-bar"
+                        style="width:70%">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- LEADERBOARD -->
+
+        <div class="panel">
+
+            <h3>
+
+                <iconify-icon icon="lucide:trophy"></iconify-icon>
+
+                Top Curators
+
+            </h3>
+
+
+            <div class="rank">
+
+                <span class="rank-number">
+                    01
+                </span>
+
+                <div class="avatar">
+                    A
+                </div>
+
+                <span class="rank-name">
+                    AlphaVault
+                </span>
+
+                <span class="rank-score">
+                    12.4K
                 </span>
 
             </div>
 
 
-            <img
-                id="photoPreview"
-                alt="Selected Photo">
+            <div class="rank">
 
+                <span class="rank-number">
+                    02
+                </span>
 
-            <div
-                class="scan-overlay"
-                id="scanOverlay">
+                <div class="avatar">
+                    C
+                </div>
 
-                <div class="scan-line"></div>
+                <span class="rank-name">
+                    CryptoCinema
+                </span>
+
+                <span class="rank-score">
+                    10.8K
+                </span>
 
             </div>
 
 
-            <div class="corner top-left"></div>
+            <div class="rank">
 
-            <div class="corner top-right"></div>
+                <span class="rank-number">
+                    03
+                </span>
 
-            <div class="corner bottom-left"></div>
+                <div class="avatar">
+                    V
+                </div>
 
-            <div class="corner bottom-right"></div>
+                <span class="rank-name">
+                    VaultHunter
+                </span>
 
+                <span class="rank-score">
+                    9.7K
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ACHIEVEMENTS -->
+
+        <div class="panel">
+
+            <h3>
+
+                <iconify-icon icon="lucide:award"></iconify-icon>
+
+                Achievements
+
+            </h3>
 
             <div
-                class="authorized"
-                id="authorized">
+                style="
+                display:grid;
+                grid-template-columns:
+                repeat(3,1fr);
+                gap:8px;
+                ">
 
-                <div class="authorized-icon">
+                <div class="nft">
 
-                    <iconify-icon
-                        icon="lucide:check">
-                    </iconify-icon>
+                    <div class="nft-image">
+
+                        <iconify-icon
+                            icon="lucide:flame"
+                            style="font-size:30px">
+                        </iconify-icon>
+
+                    </div>
+
+                    <div class="nft-title">
+                        7 DAY STREAK
+                    </div>
 
                 </div>
 
-                <h2>
-                    AUTHORIZED
-                </h2>
 
-                <p>
-                    Access Granted
-                </p>
+                <div class="nft">
+
+                    <div class="nft-image">
+
+                        <iconify-icon
+                            icon="lucide:film"
+                            style="font-size:30px">
+                        </iconify-icon>
+
+                    </div>
+
+                    <div class="nft-title">
+                        FILM MINER
+                    </div>
+
+                </div>
+
+
+                <div class="nft">
+
+                    <div class="nft-image">
+
+                        <iconify-icon
+                            icon="lucide:diamond"
+                            style="font-size:30px">
+                        </iconify-icon>
+
+                    </div>
+
+                    <div class="nft-title">
+                        DIAMOND
+                    </div>
+
+                </div>
 
             </div>
-
-        </div>
-
-
-        <div
-            class="status"
-            id="status">
-
-            SYSTEM READY
-
-        </div>
-
-
-        <label
-            class="choose-button"
-            id="chooseButton"
-            for="photoInput">
-
-            <iconify-icon
-                icon="lucide:image-plus">
-            </iconify-icon>
-
-            SELECT PHOTO
-
-        </label>
-
-
-        <input
-            type="file"
-            id="photoInput"
-            accept="image/*">
-
-
-        <div class="security">
-
-            <iconify-icon
-                icon="lucide:shield-check">
-            </iconify-icon>
-
-            Encrypted biometric gateway
 
         </div>
 
     </div>
+
+</section>
+
+
+<!-- DAO -->
+
+<section
+    class="section"
+    id="dao">
+
+    <div class="section-header">
+
+        <h2 class="section-title">
+
+            <iconify-icon icon="lucide:landmark"></iconify-icon>
+
+            Movie DAO
+
+        </h2>
+
+    </div>
+
+
+    <div class="dashboard-grid">
+
+
+        <div class="panel">
+
+            <h3>
+                <iconify-icon icon="lucide:vote"></iconify-icon>
+                Community Proposals
+            </h3>
+
+
+            <div class="vote">
+
+                <div class="vote-title">
+                    Add more animated classics
+                </div>
+
+                <div class="vote-bar">
+
+                    <div
+                        class="vote-fill"
+                        style="width:78%">
+                    </div>
+
+                </div>
+
+                <div class="vote-buttons">
+
+                    <button onclick="vote()">
+                        YES
+                    </button>
+
+                    <button onclick="vote()">
+                        NO
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="vote">
+
+                <div class="vote-title">
+                    Launch weekly Block Parties
+                </div>
+
+                <div class="vote-bar">
+
+                    <div
+                        class="vote-fill"
+                        style="width:64%">
+                    </div>
+
+                </div>
+
+                <div class="vote-buttons">
+
+                    <button onclick="vote()">
+                        YES
+                    </button>
+
+                    <button onclick="vote()">
+                        NO
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="panel">
+
+            <h3>
+
+                <iconify-icon icon="lucide:radio"></iconify-icon>
+
+                Block Party
+
+            </h3>
+
+            <p style="color:#64818a;font-size:11px;line-height:1.7">
+
+                Join synchronized community watch events
+                and earn bonus Vault Tokens for participation.
+
+            </p>
+
+            <button
+                class="primary-btn"
+                onclick="joinParty()"
+                style="width:100%;justify-content:center">
+
+                JOIN NEXT WATCH
+
+            </button>
+
+        </div>
+
+
+        <div class="panel">
+
+            <h3>
+
+                <iconify-icon icon="lucide:send"></iconify-icon>
+
+                Creator Tipping
+
+            </h3>
+
+            <p style="color:#64818a;font-size:11px">
+
+                Support your favorite creators with
+                simulated Vault Token tips.
+
+            </p>
+
+            <button
+                class="secondary-btn"
+                onclick="tipCreator()"
+                style="width:100%;justify-content:center">
+
+                TIP 25 VLT
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MARKETPLACE -->
+
+<section
+    class="section"
+    id="marketplace">
+
+    <div class="section-header">
+
+        <h2 class="section-title">
+
+            <iconify-icon icon="lucide:store"></iconify-icon>
+
+            Digital Movie Marketplace
+
+        </h2>
+
+    </div>
+
+
+    <div class="market-grid">
+
+
+        <div class="nft">
+
+            <div class="nft-image">
+
+                <iconify-icon
+                    icon="lucide:clapperboard"
+                    style="font-size:55px">
+                </iconify-icon>
+
+            </div>
+
+            <div class="nft-title">
+                CYBER POSTER #001
+            </div>
+
+            <div class="nft-price">
+                500 VLT
+            </div>
+
+            <button
+                class="buy-btn"
+                onclick="buyItem()">
+
+                COLLECT
+
+            </button>
+
+        </div>
+
+
+        <div class="nft">
+
+            <div class="nft-image">
+
+                <iconify-icon
+                    icon="lucide:ticket"
+                    style="font-size:55px">
+                </iconify-icon>
+
+            </div>
+
+            <div class="nft-title">
+                VIRTUAL THEATER SEAT
+            </div>
+
+            <div class="nft-price">
+                750 VLT
+            </div>
+
+            <button
+                class="buy-btn"
+                onclick="buyItem()">
+
+                COLLECT
+
+            </button>
+
+        </div>
+
+
+        <div class="nft">
+
+            <div class="nft-image">
+
+                <iconify-icon
+                    icon="lucide:music"
+                    style="font-size:55px">
+                </iconify-icon>
+
+            </div>
+
+            <div class="nft-title">
+                ORIGINAL SOUNDTRACK
+            </div>
+
+            <div class="nft-price">
+                350 VLT
+            </div>
+
+            <button
+                class="buy-btn"
+                onclick="buyItem()">
+
+                COLLECT
+
+            </button>
+
+        </div>
+
+
+        <div class="nft">
+
+            <div class="nft-image">
+
+                <iconify-icon
+                    icon="lucide:diamond"
+                    style="font-size:55px">
+                </iconify-icon>
+
+            </div>
+
+            <div class="nft-title">
+                GENESIS PASS
+            </div>
+
+            <div class="nft-price">
+                2,500 VLT
+            </div>
+
+            <button
+                class="buy-btn"
+                onclick="buyItem()">
+
+                UNLOCK
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- REFERRAL -->
+
+<section
+    class="section"
+    id="profile">
+
+    <div class="dashboard-grid">
+
+
+        <div class="panel">
+
+            <h3>
+
+                <iconify-icon icon="lucide:gift"></iconify-icon>
+
+                Referral Network
+
+            </h3>
+
+            <p style="color:#64818a;font-size:11px">
+
+                Invite friends and earn simulated
+                Vault Token rewards.
+
+            </p>
+
+            <div class="referral-code">
+                VAULT-X7K92
+            </div>
+
+            <button
+                class="copy-btn"
+                onclick="copyReferral()">
+
+                COPY INVITE CODE
+
+            </button>
+
+        </div>
+
+
+        <div class="panel">
+
+            <h3>
+
+                <iconify-icon icon="lucide:crown"></iconify-icon>
+
+                Genesis Pass
+
+            </h3>
+
+            <p style="color:#64818a;font-size:11px;line-height:1.7">
+
+                Unlock exclusive drops, early releases,
+                premium themes, and boosted rewards.
+
+            </p>
+
+            <button
+                class="primary-btn"
+                onclick="buyItem()"
+                style="width:100%;justify-content:center">
+
+                EXPLORE PASS
+
+            </button>
+
+        </div>
+
+
+        <div class="panel">
+
+            <h3>
+
+                <iconify-icon icon="lucide:share-2"></iconify-icon>
+
+                Proof of Watch
+
+            </h3>
+
+            <p style="color:#64818a;font-size:11px;line-height:1.7">
+
+                Generate a simulated collectible certificate
+                showing your movie journey.
+
+            </p>
+
+            <button
+                class="secondary-btn"
+                onclick="proofOfWatch()"
+                style="width:100%;justify-content:center">
+
+                GENERATE PROOF
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<!-- CUSTOM BACKGROUND -->
+
+<label
+    class="custom-bg-btn"
+    for="backgroundInput">
+
+    <iconify-icon icon="lucide:image"></iconify-icon>
+
+    CUSTOM BACKGROUND
+
+</label>
+
+<input
+    type="file"
+    id="backgroundInput"
+    class="background-picker"
+    accept="image/*">
+
+
+<!-- DARK MODE -->
+
+<button
+    class="mode-toggle"
+    onclick="toggleMode()">
+
+    <iconify-icon
+        id="modeIcon"
+        icon="lucide:sun">
+    </iconify-icon>
+
+</button>
+
+
+<!-- TOAST -->
+
+<div
+    class="toast"
+    id="toast">
+
+    SYSTEM MESSAGE
 
 </div>
 
 
 <script>
 
-const photoInput =
-    document.getElementById("photoInput");
+/* =========================
+   TOAST
+========================= */
 
-const photoPreview =
-    document.getElementById("photoPreview");
+function toast(message) {
 
-const emptyIcon =
-    document.getElementById("emptyIcon");
+    const element =
+        document.getElementById("toast");
 
-const scanOverlay =
-    document.getElementById("scanOverlay");
+    element.textContent =
+        message;
 
-const chooseButton =
-    document.getElementById("chooseButton");
+    element.classList.add("show");
 
-const status =
-    document.getElementById("status");
+    setTimeout(
+        () => {
+            element.classList.remove("show");
+        },
+        2500
+    );
 
-const authorized =
-    document.getElementById("authorized");
+}
+
+
+/* =========================
+   WALLET
+========================= */
+
+function connectWallet() {
+
+    const text =
+        document.getElementById("walletText");
+
+    if (
+        text.textContent ===
+        "CONNECTED"
+    ) {
+
+        text.textContent =
+            "CONNECT WALLET";
+
+        toast(
+            "Wallet disconnected"
+        );
+
+    }
+
+    else {
+
+        text.textContent =
+            "CONNECTED";
+
+        toast(
+            "Demo wallet connected"
+        );
+
+    }
+
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+function searchMovies() {
+
+    const query =
+        document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+    document
+    .querySelectorAll(".movie-card")
+    .forEach(
+        card => {
+
+            const title =
+                card.dataset.title
+                .toLowerCase();
+
+            card.style.display =
+                title.includes(query)
+                ? "block"
+                : "none";
+
+        }
+    );
+
+}
+
+
+/* =========================
+   FILTER
+========================= */
+
+function filterMood(button, mood) {
+
+    document
+    .querySelectorAll(".filter")
+    .forEach(
+        item =>
+        item.classList.remove(
+            "active"
+        )
+    );
+
+    button.classList.add(
+        "active"
+    );
+
+
+    document
+    .querySelectorAll(".movie-card")
+    .forEach(
+        card => {
+
+            if (
+                mood === "all" ||
+                card.dataset.mood === mood
+            ) {
+
+                card.style.display =
+                    "block";
+
+            }
+
+            else {
+
+                card.style.display =
+                    "none";
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================
+   FAVORITES
+========================= */
+
+function toggleFavorite(button) {
+
+    button.classList.toggle(
+        "active"
+    );
+
+    if (
+        button.classList.contains(
+            "active"
+        )
+    ) {
+
+        toast(
+            "Added to Crypto Watchlist +10 VLT"
+        );
+
+    }
+
+    else {
+
+        toast(
+            "Removed from Watchlist"
+        );
+
+    }
+
+}
+
+
+/* =========================
+   VOTING
+========================= */
+
+function vote() {
+
+    toast(
+        "Vote recorded on demo Movie DAO"
+    );
+
+}
+
+
+/* =========================
+   BLOCK PARTY
+========================= */
+
+function joinParty() {
+
+    toast(
+        "You're on the Block Party guest list!"
+    );
+
+}
+
+
+/* =========================
+   TIPPING
+========================= */
+
+function tipCreator() {
+
+    toast(
+        "25 VLT tip sent in demo mode"
+    );
+
+}
+
+
+/* =========================
+   MARKETPLACE
+========================= */
+
+function buyItem() {
+
+    toast(
+        "Demo collectible added to your vault"
+    );
+
+}
+
+
+/* =========================
+   PROOF OF WATCH
+========================= */
+
+function proofOfWatch() {
+
+    toast(
+        "Proof of Watch certificate generated!"
+    );
+
+}
+
+
+/* =========================
+   REFERRAL
+========================= */
+
+function copyReferral() {
+
+    navigator.clipboard
+    .writeText(
+        "VAULT-X7K92"
+    )
+    .then(
+        () => {
+            toast(
+                "Referral code copied!"
+            );
+        }
+    )
+    .catch(
+        () => {
+            toast(
+                "Referral code: VAULT-X7K92"
+            );
+        }
+    );
+
+}
+
+
+/* =========================
+   SCROLL
+========================= */
+
+function scrollToSection(id) {
+
+    document
+    .getElementById(id)
+    .scrollIntoView({
+        behavior:
+            "smooth"
+    });
+
+}
+
+
+/* =========================
+   LIGHT / DARK MODE
+========================= */
+
+function toggleMode() {
+
+    document
+    .body
+    .classList
+    .toggle("light");
+
+    const icon =
+        document
+        .getElementById("modeIcon");
+
+    if (
+        document
+        .body
+        .classList
+        .contains("light")
+    ) {
+
+        icon.setAttribute(
+            "icon",
+            "lucide:moon"
+        );
+
+        localStorage.setItem(
+            "vaultMode",
+            "light"
+        );
+
+    }
+
+    else {
+
+        icon.setAttribute(
+            "icon",
+            "lucide:sun"
+        );
+
+        localStorage.setItem(
+            "vaultMode",
+            "dark"
+        );
+
+    }
+
+}
+
+
+/* =========================
+   CUSTOM BACKGROUND
+========================= */
+
+const backgroundInput =
+    document
+    .getElementById(
+        "backgroundInput"
+    );
 
 const backgroundOverlay =
-    document.getElementById("backgroundOverlay");
+    document
+    .getElementById(
+        "backgroundOverlay"
+    );
 
 
-/* PHOTO SELECTED */
-
-photoInput.addEventListener(
+backgroundInput.addEventListener(
     "change",
     function(event) {
 
@@ -748,12 +2943,17 @@ photoInput.addEventListener(
             return;
         }
 
-        if (!file.type.startsWith("image/")) {
+        if (
+            !file.type
+            .startsWith("image/")
+        ) {
 
-            status.textContent =
-                "INVALID FILE";
+            toast(
+                "Please select an image"
+            );
 
             return;
+
         }
 
         const reader =
@@ -765,171 +2965,107 @@ photoInput.addEventListener(
                 const image =
                     e.target.result;
 
-                /* SHOW PHOTO */
+                backgroundOverlay
+                .style
+                .backgroundImage =
+                    "url('" +
+                    image +
+                    "')";
 
-                photoPreview.src =
-                    image;
+                backgroundOverlay
+                .classList
+                .add("active");
 
-                photoPreview.style.display =
-                    "block";
+                try {
 
-                emptyIcon.style.display =
-                    "none";
+                    localStorage.setItem(
+                        "vaultBackground",
+                        image
+                    );
 
+                }
 
-                /* SET BACKGROUND */
+                catch(error) {
 
-                backgroundOverlay.style.backgroundImage =
-                    "url('" + image + "')";
+                    console.log(
+                        "Image too large to save"
+                    );
 
-                backgroundOverlay.classList.add(
-                    "active"
+                }
+
+                toast(
+                    "Custom vault background activated"
                 );
-
-
-                /* START SCAN */
-
-                startScan();
 
             };
 
-        reader.readAsDataURL(file);
+        reader.readAsDataURL(
+            file
+        );
 
     }
 );
 
 
-/* HACKER SCAN */
+/* =========================
+   LOAD SETTINGS
+========================= */
 
-function startScan() {
+window.addEventListener(
+    "load",
+    function() {
 
-    chooseButton.classList.add(
-        "scanning"
-    );
-
-    chooseButton.innerHTML = `
-
-        <iconify-icon
-            icon="lucide:loader-circle"
-            style="
-                animation:
-                spin 1s linear infinite;
-            ">
-        </iconify-icon>
-
-        SCANNING...
-
-    `;
-
-    scanOverlay.style.display =
-        "block";
-
-
-    status.textContent =
-        "INITIALIZING SECURE SCAN";
-
-
-    setTimeout(
-        function() {
-
-            status.textContent =
-                "ANALYZING IMAGE DATA...";
-
-        },
-        900
-    );
-
-
-    setTimeout(
-        function() {
-
-            status.textContent =
-                "VERIFYING IDENTITY SIGNATURE...";
-
-        },
-        1800
-    );
-
-
-    setTimeout(
-        function() {
-
-            status.textContent =
-                "ENCRYPTION VERIFIED...";
-
-        },
-        2700
-    );
-
-
-    setTimeout(
-        function() {
-
-            status.textContent =
-                "ACCESS PROTOCOL ACCEPTED";
-
-        },
-        3500
-    );
-
-
-    /* AUTHORIZED */
-
-    setTimeout(
-        function() {
-
-            scanOverlay.style.display =
-                "none";
-
-            authorized.classList.add(
-                "show"
+        const savedBackground =
+            localStorage.getItem(
+                "vaultBackground"
             );
 
-            status.textContent =
-                "ACCESS GRANTED";
+        if (
+            savedBackground
+        ) {
+
+            backgroundOverlay
+            .style
+            .backgroundImage =
+                "url('" +
+                savedBackground +
+                "')";
+
+            backgroundOverlay
+            .classList
+            .add("active");
+
+        }
 
 
-            /* ENTER VAULT */
-
-            setTimeout(
-                function() {
-
-                    window.location.href =
-                        "vault.html";
-
-                },
-                2200
+        const savedMode =
+            localStorage.getItem(
+                "vaultMode"
             );
 
-        },
-        4300
-    );
+        if (
+            savedMode ===
+            "light"
+        ) {
 
-}
+            document
+            .body
+            .classList
+            .add("light");
 
+            document
+            .getElementById(
+                "modeIcon"
+            )
+            .setAttribute(
+                "icon",
+                "lucide:moon"
+            );
 
-/* SPIN ANIMATION */
+        }
 
-const style =
-    document.createElement("style");
-
-style.innerHTML = `
-
-@keyframes spin {
-
-    from {
-        transform: rotate(0deg);
     }
-
-    to {
-        transform: rotate(360deg);
-    }
-
-}
-
-`;
-
-document.head.appendChild(style);
+);
 
 </script>
 
