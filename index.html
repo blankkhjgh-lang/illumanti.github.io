@@ -4,26 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CYBER VAULT | Login</title>
+<title>CYBER VAULT | Access</title>
 
 <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 
 <style>
-
 * {
     box-sizing: border-box;
 }
 
 :root {
     --cyan: #00e5ff;
-    --blue: #009dff;
+    --blue: #008cff;
     --dark: #020608;
     --text: #e8fcff;
     --muted: #64818a;
 }
 
-html,
-body {
+html, body {
     margin: 0;
     width: 100%;
     min-height: 100%;
@@ -35,33 +33,14 @@ body {
     align-items: center;
     justify-content: center;
     padding: 20px;
-
     color: white;
-
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Arial,
-        sans-serif;
-
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     background:
-        radial-gradient(
-            circle at 50% 0%,
-            rgba(0,229,255,0.15),
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at 0% 100%,
-            rgba(0,150,255,0.08),
-            transparent 35%
-        ),
+        radial-gradient(circle at 50% 0%, rgba(0,229,255,0.15), transparent 35%),
+        radial-gradient(circle at 0% 100%, rgba(0,150,255,0.08), transparent 35%),
         #020608;
-
     overflow: hidden;
 }
-
 
 /* CUSTOM BACKGROUND */
 
@@ -69,656 +48,477 @@ body {
     position: fixed;
     inset: 0;
     z-index: -10;
-
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
     opacity: 0;
-
-    transition: opacity 0.5s ease;
+    transition: opacity 0.7s ease, transform 1s ease;
+    transform: scale(1.05);
 }
 
 #backgroundOverlay.active {
-    opacity: 0.28;
+    opacity: 0.32;
+    transform: scale(1);
 }
 
 #backgroundDark {
     position: fixed;
     inset: 0;
     z-index: -9;
-
-    background:
-        linear-gradient(
-            rgba(1,5,8,0.84),
-            rgba(1,5,8,0.95)
-        );
+    background: linear-gradient(
+        rgba(1,5,8,0.82),
+        rgba(1,5,8,0.96)
+    );
 }
-
 
 /* CYBER GRID */
 
 body::before {
     content: "";
-
     position: fixed;
     inset: 0;
-
     background-image:
         linear-gradient(
-            rgba(0,229,255,0.09) 1px,
+            rgba(0,229,255,0.08) 1px,
             transparent 1px
         ),
         linear-gradient(
             90deg,
-            rgba(0,229,255,0.09) 1px,
+            rgba(0,229,255,0.08) 1px,
             transparent 1px
         );
-
     background-size: 45px 45px;
-
     opacity: 0.35;
-
-    mask-image:
-        linear-gradient(
-            to bottom,
-            black,
-            transparent 90%
-        );
-
+    mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent 90%
+    );
     pointer-events: none;
-
     z-index: -8;
 }
-
 
 /* GLOW */
 
 .glow {
     position: fixed;
-
     width: 350px;
     height: 350px;
-
     border-radius: 50%;
-
     filter: blur(90px);
-
     pointer-events: none;
-
     z-index: -7;
 }
 
 .glow.one {
     top: -200px;
     left: -150px;
-
-    background:
-        rgba(0,229,255,0.09);
+    background: rgba(0,229,255,0.09);
 }
 
 .glow.two {
     bottom: -200px;
     right: -150px;
-
-    background:
-        rgba(0,130,255,0.08);
+    background: rgba(0,130,255,0.08);
 }
-
 
 /* MAIN */
 
-.login-wrapper {
+.access-wrapper {
     width: 100%;
     max-width: 430px;
+    text-align: center;
 }
-
 
 /* BRAND */
 
 .brand {
     text-align: center;
-
     margin-bottom: 25px;
 }
 
 .logo {
-    width: 70px;
-    height: 70px;
-
+    width: 75px;
+    height: 75px;
     display: flex;
-
     align-items: center;
     justify-content: center;
-
     margin: 0 auto 15px;
-
-    border-radius: 22px;
-
+    border-radius: 23px;
     color: var(--cyan);
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(0,229,255,0.12),
-            rgba(0,80,120,0.05)
-        );
-
-    border:
-        1px solid
-        rgba(0,229,255,0.3);
-
-    box-shadow:
-        0 0 35px
+    background: linear-gradient(
+        145deg,
         rgba(0,229,255,0.12),
-
-        inset 0 0 25px
-        rgba(0,229,255,0.04);
+        rgba(0,80,120,0.05)
+    );
+    border: 1px solid rgba(0,229,255,0.3);
+    box-shadow:
+        0 0 35px rgba(0,229,255,0.14),
+        inset 0 0 25px rgba(0,229,255,0.04);
 }
 
 .logo iconify-icon {
-    font-size: 38px;
+    font-size: 40px;
 }
 
 .brand h1 {
     margin: 0;
-
     font-size: 29px;
-
     font-weight: 900;
-
     letter-spacing: 4px;
-
-    background:
-        linear-gradient(
-            90deg,
-            white,
-            var(--cyan)
-        );
-
+    background: linear-gradient(
+        90deg,
+        white,
+        var(--cyan)
+    );
     -webkit-background-clip: text;
-
     -webkit-text-fill-color: transparent;
 }
 
 .brand p {
     margin: 9px 0 0;
-
     color: var(--muted);
-
     font-size: 10px;
-
     letter-spacing: 3px;
-
     text-transform: uppercase;
 }
 
+/* ACCESS CARD */
 
-/* LOGIN CARD */
-
-.login-card {
+.access-card {
     position: relative;
-
     padding: 30px;
-
     border-radius: 24px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(5,18,24,0.94),
-            rgba(2,8,11,0.96)
-        );
-
-    border:
-        1px solid
-        rgba(0,229,255,0.18);
-
+    background: linear-gradient(
+        145deg,
+        rgba(5,18,24,0.94),
+        rgba(2,8,11,0.97)
+    );
+    border: 1px solid rgba(0,229,255,0.18);
     box-shadow:
-        0 30px 80px
-        rgba(0,0,0,0.65),
-
-        0 0 45px
-        rgba(0,229,255,0.04);
-
+        0 30px 80px rgba(0,0,0,0.65),
+        0 0 45px rgba(0,229,255,0.04);
     backdrop-filter: blur(20px);
+    overflow: hidden;
 }
 
-
-/* TOP LINE */
-
-.login-card::before {
+.access-card::before {
     content: "";
-
     position: absolute;
-
     top: 0;
     left: 15%;
-
     width: 70%;
     height: 1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--cyan),
-            transparent
-        );
-
-    box-shadow:
-        0 0 15px
-        var(--cyan);
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--cyan),
+        transparent
+    );
+    box-shadow: 0 0 15px var(--cyan);
 }
-
 
 /* HEADER */
 
 .card-header {
     text-align: center;
-
     margin-bottom: 25px;
 }
 
 .card-header h2 {
-    margin: 0 0 7px;
-
+    margin: 0 0 8px;
     font-size: 21px;
-
     color: var(--text);
 }
 
 .card-header p {
     margin: 0;
-
     color: var(--muted);
-
     font-size: 12px;
 }
 
+/* PHOTO AREA */
 
-/* STATUS MESSAGE */
+.photo-area {
+    position: relative;
+    width: 190px;
+    height: 190px;
+    margin: 0 auto 22px;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(0,229,255,0.25);
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,229,255,0.06),
+            rgba(0,0,0,0.4)
+        );
+    box-shadow:
+        inset 0 0 30px rgba(0,229,255,0.05),
+        0 0 30px rgba(0,229,255,0.05);
+}
+
+.empty-icon {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: #41616b;
+}
+
+.empty-icon iconify-icon {
+    font-size: 48px;
+    color: var(--cyan);
+    opacity: 0.7;
+}
+
+.empty-icon span {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* IMAGE */
+
+#photoPreview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+
+/* SCAN OVERLAY */
+
+.scan-overlay {
+    position: absolute;
+    inset: 0;
+    display: none;
+    pointer-events: none;
+    background: linear-gradient(
+        rgba(0,229,255,0.08),
+        rgba(0,229,255,0.02)
+    );
+}
+
+/* SCAN LINE */
+
+.scan-line {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    top: 0;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--cyan),
+        white,
+        var(--cyan),
+        transparent
+    );
+    box-shadow:
+        0 0 15px var(--cyan),
+        0 0 30px var(--cyan);
+    animation: scanMove 1.5s linear infinite;
+}
+
+@keyframes scanMove {
+    0% {
+        top: 0;
+    }
+
+    100% {
+        top: 100%;
+    }
+}
+
+/* CORNERS */
+
+.corner {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border-color: var(--cyan);
+    border-style: solid;
+    opacity: 0.9;
+}
+
+.corner.top-left {
+    top: 10px;
+    left: 10px;
+    border-width: 2px 0 0 2px;
+}
+
+.corner.top-right {
+    top: 10px;
+    right: 10px;
+    border-width: 2px 2px 0 0;
+}
+
+.corner.bottom-left {
+    bottom: 10px;
+    left: 10px;
+    border-width: 0 0 2px 2px;
+}
+
+.corner.bottom-right {
+    bottom: 10px;
+    right: 10px;
+    border-width: 0 2px 2px 0;
+}
+
+/* STATUS */
 
 .status {
-    display: none;
-
-    padding: 10px;
-
-    margin-bottom: 15px;
-
-    border-radius: 9px;
-
-    text-align: center;
-
+    min-height: 20px;
+    margin-bottom: 18px;
+    color: var(--cyan);
     font-size: 11px;
-
-    color: #ff8585;
-
-    background:
-        rgba(255,50,50,0.06);
-
-    border:
-        1px solid
-        rgba(255,50,50,0.15);
-}
-
-
-/* INPUT */
-
-.input-group {
-    margin-bottom: 17px;
-}
-
-.input-label {
-    display: block;
-
-    margin-bottom: 7px;
-
-    color: #8caab2;
-
-    font-size: 10px;
-
     font-weight: 700;
-
-    letter-spacing: 1px;
-
+    letter-spacing: 2px;
     text-transform: uppercase;
 }
 
-.input-wrapper {
-    position: relative;
+/* BUTTON */
 
-    display: flex;
-
-    align-items: center;
-}
-
-.input-icon {
-    position: absolute;
-
-    left: 14px;
-
-    color: #54727b;
-
-    font-size: 18px;
-
-    pointer-events: none;
-
-    transition: 0.25s ease;
-}
-
-.input-wrapper:focus-within
-.input-icon {
-    color: var(--cyan);
-}
-
-.input-wrapper input {
+.choose-button {
     width: 100%;
-
-    height: 48px;
-
-    padding:
-        0 45px
-        0 43px;
-
-    border-radius: 12px;
-
-    outline: none;
-
-    color: white;
-
-    background:
-        rgba(0,229,255,0.025);
-
-    border:
-        1px solid
-        rgba(0,229,255,0.13);
-
-    font-size: 14px;
-
-    transition: 0.25s ease;
-}
-
-.input-wrapper input::placeholder {
-    color: #405b63;
-}
-
-.input-wrapper input:focus {
-    border-color: var(--cyan);
-
-    background:
-        rgba(0,229,255,0.045);
-
-    box-shadow:
-        0 0 20px
-        rgba(0,229,255,0.08);
-}
-
-
-/* PASSWORD EYE */
-
-.password-toggle {
-    position: absolute;
-
-    right: 13px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border: none;
-
-    background: transparent;
-
-    color: #54727b;
-
-    cursor: pointer;
-
-    font-size: 18px;
-
-    padding: 4px;
-}
-
-.password-toggle:hover {
-    color: var(--cyan);
-}
-
-
-/* OPTIONS */
-
-.options {
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    margin: 5px 0 20px;
-
-    font-size: 11px;
-}
-
-.remember {
-    display: flex;
-
-    align-items: center;
-
-    gap: 7px;
-
-    color: #64818a;
-
-    cursor: pointer;
-}
-
-.remember input {
-    accent-color: var(--cyan);
-}
-
-.forgot {
-    color: var(--cyan);
-
-    text-decoration: none;
-
-    cursor: pointer;
-}
-
-.forgot:hover {
-    text-decoration: underline;
-}
-
-
-/* LOGIN BUTTON */
-
-.login-button {
-    width: 100%;
-
     height: 50px;
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     gap: 9px;
-
     border: none;
-
     border-radius: 12px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #00e5ff,
-            #00aaff
-        );
-
+    background: linear-gradient(
+        135deg,
+        #00e5ff,
+        #00aaff
+    );
     color: #001014;
-
     font-size: 13px;
-
     font-weight: 900;
-
     letter-spacing: 1px;
-
     cursor: pointer;
-
     box-shadow:
-        0 8px 25px
-        rgba(0,229,255,0.15);
-
-    transition: 0.25s ease;
+        0 8px 25px rgba(0,229,255,0.15);
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
-.login-button:hover {
+.choose-button:hover {
     transform: translateY(-2px);
-
     box-shadow:
-        0 12px 35px
-        rgba(0,229,255,0.28);
+        0 12px 35px rgba(0,229,255,0.3);
 }
 
-.login-button:active {
+.choose-button:active {
     transform: scale(0.98);
 }
 
+.choose-button.scanning {
+    pointer-events: none;
+    background: linear-gradient(
+        135deg,
+        #007c91,
+        #0063a0
+    );
+    color: white;
+}
 
-/* DIVIDER */
+/* HIDDEN FILE INPUT */
 
-.divider {
-    display: flex;
+#photoInput {
+    display: none;
+}
 
+/* AUTHORIZED */
+
+.authorized {
+    display: none;
+    position: absolute;
+    inset: 0;
     align-items: center;
-
-    gap: 12px;
-
-    margin: 23px 0;
-
-    color: #3f5a62;
-
-    font-size: 10px;
-
-    text-transform: uppercase;
-
-    letter-spacing: 1px;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(0,8,11,0.92);
+    z-index: 20;
 }
 
-.divider::before,
-.divider::after {
-    content: "";
-
-    height: 1px;
-
-    flex: 1;
-
-    background:
-        rgba(0,229,255,0.1);
+.authorized.show {
+    display: flex;
 }
 
-
-/* CREATE ACCOUNT */
-
-.create-account {
-    text-align: center;
-
-    color: #64818a;
-
-    font-size: 12px;
-}
-
-.create-account a {
+.authorized-icon {
+    width: 75px;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
     color: var(--cyan);
-
-    text-decoration: none;
-
-    font-weight: 700;
-
-    cursor: pointer;
+    border: 2px solid var(--cyan);
+    box-shadow:
+        0 0 25px rgba(0,229,255,0.5),
+        inset 0 0 20px rgba(0,229,255,0.1);
+    animation:
+        authorizedPulse 1s ease infinite alternate;
 }
 
-.create-account a:hover {
-    text-decoration: underline;
+.authorized-icon iconify-icon {
+    font-size: 40px;
 }
 
+.authorized h2 {
+    margin: 5px 0 0;
+    color: var(--cyan);
+    font-size: 22px;
+    letter-spacing: 4px;
+}
+
+.authorized p {
+    margin: 0;
+    color: #7da7b0;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+@keyframes authorizedPulse {
+    from {
+        box-shadow:
+            0 0 15px rgba(0,229,255,0.3);
+    }
+
+    to {
+        box-shadow:
+            0 0 45px rgba(0,229,255,0.7);
+    }
+}
 
 /* SECURITY */
 
 .security {
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     gap: 6px;
-
     margin-top: 20px;
-
     color: #45616a;
-
     font-size: 9px;
-
     letter-spacing: 1px;
-
     text-transform: uppercase;
 }
 
 .security iconify-icon {
     color: var(--cyan);
-
     font-size: 14px;
 }
-
-
-/* BACKGROUND BUTTON */
-
-.background-button {
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 7px;
-
-    width: fit-content;
-
-    margin: 18px auto 0;
-
-    padding: 9px 14px;
-
-    border-radius: 10px;
-
-    color: #64818a;
-
-    background:
-        rgba(0,229,255,0.03);
-
-    border:
-        1px solid
-        rgba(0,229,255,0.1);
-
-    font-size: 10px;
-
-    font-weight: 700;
-
-    cursor: pointer;
-
-    transition: 0.25s ease;
-}
-
-.background-button:hover {
-    color: var(--cyan);
-
-    border-color:
-        rgba(0,229,255,0.35);
-}
-
-#backgroundInput {
-    display: none;
-}
-
 
 /* MOBILE */
 
@@ -728,7 +528,7 @@ body::before {
         padding: 15px;
     }
 
-    .login-card {
+    .access-card {
         padding: 25px 20px;
     }
 
@@ -741,14 +541,16 @@ body::before {
         height: 62px;
     }
 
+    .photo-area {
+        width: 170px;
+        height: 170px;
+    }
 }
 
 </style>
 </head>
 
-
 <body>
-
 
 <div id="backgroundOverlay"></div>
 
@@ -759,22 +561,21 @@ body::before {
 <div class="glow two"></div>
 
 
-<div class="login-wrapper">
-
-
-    <!-- LOGO -->
+<div class="access-wrapper">
 
     <div class="brand">
 
         <div class="logo">
 
             <iconify-icon
-                icon="lucide:bitcoin">
+                icon="lucide:shield-check">
             </iconify-icon>
 
         </div>
 
-        <h1>CYBER VAULT</h1>
+        <h1>
+            CYBER VAULT
+        </h1>
 
         <p>
             Secure Digital Collection
@@ -783,173 +584,114 @@ body::before {
     </div>
 
 
-    <!-- LOGIN -->
-
-    <div class="login-card">
-
+    <div class="access-card">
 
         <div class="card-header">
 
             <h2>
-                Welcome Back
+                Identity Verification
             </h2>
 
             <p>
-                Log in to access your vault
+                Select an image to initialize secure access
             </p>
 
         </div>
 
 
-        <!-- ERROR -->
+        <div class="photo-area">
+
+            <div
+                class="empty-icon"
+                id="emptyIcon">
+
+                <iconify-icon
+                    icon="lucide:scan-face">
+                </iconify-icon>
+
+                <span>
+                    Awaiting Scan
+                </span>
+
+            </div>
+
+
+            <img
+                id="photoPreview"
+                alt="Selected Photo">
+
+
+            <div
+                class="scan-overlay"
+                id="scanOverlay">
+
+                <div class="scan-line"></div>
+
+            </div>
+
+
+            <div class="corner top-left"></div>
+
+            <div class="corner top-right"></div>
+
+            <div class="corner bottom-left"></div>
+
+            <div class="corner bottom-right"></div>
+
+
+            <div
+                class="authorized"
+                id="authorized">
+
+                <div class="authorized-icon">
+
+                    <iconify-icon
+                        icon="lucide:check">
+                    </iconify-icon>
+
+                </div>
+
+                <h2>
+                    AUTHORIZED
+                </h2>
+
+                <p>
+                    Access Granted
+                </p>
+
+            </div>
+
+        </div>
+
 
         <div
             class="status"
-            id="statusMessage">
+            id="status">
 
-            Please enter your username
-            and password.
-
-        </div>
-
-
-        <!-- USERNAME -->
-
-        <div class="input-group">
-
-            <label class="input-label">
-
-                Username
-
-            </label>
-
-            <div class="input-wrapper">
-
-                <iconify-icon
-                    class="input-icon"
-                    icon="lucide:user">
-                </iconify-icon>
-
-                <input
-                    type="text"
-                    id="username"
-                    placeholder="Enter your username"
-                    autocomplete="username">
-
-            </div>
+            SYSTEM READY
 
         </div>
 
 
-        <!-- PASSWORD -->
-
-        <div class="input-group">
-
-            <label class="input-label">
-
-                Password
-
-            </label>
-
-            <div class="input-wrapper">
-
-                <iconify-icon
-                    class="input-icon"
-                    icon="lucide:lock">
-                </iconify-icon>
-
-                <input
-                    type="password"
-                    id="password"
-                    placeholder="Enter your password"
-                    autocomplete="current-password">
-
-                <button
-                    class="password-toggle"
-                    type="button"
-                    onclick="togglePassword()">
-
-                    <iconify-icon
-                        id="eyeIcon"
-                        icon="lucide:eye">
-                    </iconify-icon>
-
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <!-- OPTIONS -->
-
-        <div class="options">
-
-            <label class="remember">
-
-                <input
-                    type="checkbox"
-                    id="rememberMe">
-
-                Remember me
-
-            </label>
-
-
-            <a
-                href="#"
-                class="forgot"
-                onclick="forgotPassword(event)">
-
-                Forgot password?
-
-            </a>
-
-        </div>
-
-
-        <!-- LOGIN -->
-
-        <button
-            class="login-button"
-            onclick="login()">
+        <label
+            class="choose-button"
+            id="chooseButton"
+            for="photoInput">
 
             <iconify-icon
-                icon="lucide:log-in">
+                icon="lucide:image-plus">
             </iconify-icon>
 
-            ENTER VAULT
+            SELECT PHOTO
 
-        </button>
-
-
-        <!-- DIVIDER -->
-
-        <div class="divider">
-
-            OR
-
-        </div>
+        </label>
 
 
-        <!-- CREATE ACCOUNT -->
+        <input
+            type="file"
+            id="photoInput"
+            accept="image/*">
 
-        <div class="create-account">
-
-            Don't have an account?
-
-            <a
-                href="#"
-                onclick="createAccount(event)">
-
-                Create Account
-
-            </a>
-
-        </div>
-
-
-        <!-- SECURITY -->
 
         <div class="security">
 
@@ -957,280 +699,65 @@ body::before {
                 icon="lucide:shield-check">
             </iconify-icon>
 
-            Secure encrypted connection
+            Encrypted biometric gateway
 
         </div>
 
-
     </div>
-
-
-    <!-- BACKGROUND -->
-
-    <label
-        class="background-button"
-        for="backgroundInput">
-
-        <iconify-icon
-            icon="lucide:image">
-        </iconify-icon>
-
-        Choose Custom Background
-
-    </label>
-
-
-    <input
-        type="file"
-        id="backgroundInput"
-        accept="image/*">
-
 
 </div>
 
 
 <script>
 
+const photoInput =
+    document.getElementById("photoInput");
 
-/* =========================
-   LOGIN
-========================= */
+const photoPreview =
+    document.getElementById("photoPreview");
 
-function login() {
+const emptyIcon =
+    document.getElementById("emptyIcon");
 
-    const username =
-        document
-        .getElementById("username")
-        .value
-        .trim();
+const scanOverlay =
+    document.getElementById("scanOverlay");
 
+const chooseButton =
+    document.getElementById("chooseButton");
 
-    const password =
-        document
-        .getElementById("password")
-        .value
-        .trim();
+const status =
+    document.getElementById("status");
 
-
-    const status =
-        document
-        .getElementById("statusMessage");
-
-
-    /* CHECK EMPTY FIELDS */
-
-    if (!username || !password) {
-
-        status.style.display =
-            "block";
-
-        status.textContent =
-            "Please enter your username and password.";
-
-        return;
-
-    }
-
-
-    /* SAVE USERNAME */
-
-    const remember =
-        document
-        .getElementById("rememberMe")
-        .checked;
-
-
-    if (remember) {
-
-        localStorage.setItem(
-            "vaultUsername",
-            username
-        );
-
-    }
-
-
-    /*
-    LOGIN SUCCESS
-
-    This sends the user
-    directly to your vault.
-
-    Make sure your main website
-    is named:
-
-    vault.html
-    */
-
-
-    window.location.href =
-        "vault.html";
-
-}
-
-
-/* =========================
-   CREATE ACCOUNT
-========================= */
-
-function createAccount(event) {
-
-    event.preventDefault();
-
-
-    /*
-    Since there is no account
-    system connected yet, this
-    simply takes the user to
-    the vault.
-
-    Anyone can access the vault
-    without requesting access.
-    */
-
-
-    window.location.href =
-        "vault.html";
-
-}
-
-
-/* =========================
-   FORGOT PASSWORD
-========================= */
-
-function forgotPassword(event) {
-
-    event.preventDefault();
-
-
-    alert(
-        "Password recovery is not connected yet."
-    );
-
-}
-
-
-/* =========================
-   SHOW PASSWORD
-========================= */
-
-function togglePassword() {
-
-    const password =
-        document
-        .getElementById("password");
-
-
-    const icon =
-        document
-        .getElementById("eyeIcon");
-
-
-    if (
-        password.type ===
-        "password"
-    ) {
-
-        password.type =
-            "text";
-
-
-        icon.setAttribute(
-            "icon",
-            "lucide:eye-off"
-        );
-
-    }
-
-    else {
-
-        password.type =
-            "password";
-
-
-        icon.setAttribute(
-            "icon",
-            "lucide:eye"
-        );
-
-    }
-
-}
-
-
-/* =========================
-   ENTER KEY
-========================= */
-
-document.addEventListener(
-    "keydown",
-    function(event) {
-
-        if (
-            event.key ===
-            "Enter"
-        ) {
-
-            login();
-
-        }
-
-    }
-);
-
-
-/* =========================
-   BACKGROUND IMAGE
-========================= */
-
-const backgroundInput =
-    document
-    .getElementById(
-        "backgroundInput"
-    );
-
+const authorized =
+    document.getElementById("authorized");
 
 const backgroundOverlay =
-    document
-    .getElementById(
-        "backgroundOverlay"
-    );
+    document.getElementById("backgroundOverlay");
 
 
-backgroundInput.addEventListener(
+/* PHOTO SELECTED */
+
+photoInput.addEventListener(
     "change",
     function(event) {
 
         const file =
             event.target.files[0];
 
-
         if (!file) {
-
             return;
-
         }
 
+        if (!file.type.startsWith("image/")) {
 
-        if (
-            !file.type.startsWith(
-                "image/"
-            )
-        ) {
-
-            alert(
-                "Please select an image."
-            );
+            status.textContent =
+                "INVALID FILE";
 
             return;
-
         }
-
 
         const reader =
             new FileReader();
-
 
         reader.onload =
             function(e) {
@@ -1238,98 +765,171 @@ backgroundInput.addEventListener(
                 const image =
                     e.target.result;
 
+                /* SHOW PHOTO */
 
-                backgroundOverlay.style
-                    .backgroundImage =
-                    "url('" +
-                    image +
-                    "')";
+                photoPreview.src =
+                    image;
+
+                photoPreview.style.display =
+                    "block";
+
+                emptyIcon.style.display =
+                    "none";
 
 
-                backgroundOverlay.classList
-                    .add("active");
+                /* SET BACKGROUND */
 
+                backgroundOverlay.style.backgroundImage =
+                    "url('" + image + "')";
 
-                localStorage.setItem(
-                    "loginBackground",
-                    image
+                backgroundOverlay.classList.add(
+                    "active"
                 );
+
+
+                /* START SCAN */
+
+                startScan();
 
             };
 
-
-        reader.readAsDataURL(
-            file
-        );
+        reader.readAsDataURL(file);
 
     }
 );
 
 
-/* =========================
-   LOAD SAVED BACKGROUND
-========================= */
+/* HACKER SCAN */
 
-window.addEventListener(
-    "load",
-    function() {
+function startScan() {
+
+    chooseButton.classList.add(
+        "scanning"
+    );
+
+    chooseButton.innerHTML = `
+
+        <iconify-icon
+            icon="lucide:loader-circle"
+            style="
+                animation:
+                spin 1s linear infinite;
+            ">
+        </iconify-icon>
+
+        SCANNING...
+
+    `;
+
+    scanOverlay.style.display =
+        "block";
 
 
-        const savedBackground =
-            localStorage.getItem(
-                "loginBackground"
+    status.textContent =
+        "INITIALIZING SECURE SCAN";
+
+
+    setTimeout(
+        function() {
+
+            status.textContent =
+                "ANALYZING IMAGE DATA...";
+
+        },
+        900
+    );
+
+
+    setTimeout(
+        function() {
+
+            status.textContent =
+                "VERIFYING IDENTITY SIGNATURE...";
+
+        },
+        1800
+    );
+
+
+    setTimeout(
+        function() {
+
+            status.textContent =
+                "ENCRYPTION VERIFIED...";
+
+        },
+        2700
+    );
+
+
+    setTimeout(
+        function() {
+
+            status.textContent =
+                "ACCESS PROTOCOL ACCEPTED";
+
+        },
+        3500
+    );
+
+
+    /* AUTHORIZED */
+
+    setTimeout(
+        function() {
+
+            scanOverlay.style.display =
+                "none";
+
+            authorized.classList.add(
+                "show"
             );
 
-
-        if (
-            savedBackground
-        ) {
-
-            backgroundOverlay.style
-                .backgroundImage =
-                "url('" +
-                savedBackground +
-                "')";
+            status.textContent =
+                "ACCESS GRANTED";
 
 
-            backgroundOverlay.classList
-                .add("active");
+            /* ENTER VAULT */
 
-        }
+            setTimeout(
+                function() {
 
+                    window.location.href =
+                        "vault.html";
 
-        /* REMEMBER USERNAME */
-
-        const savedUsername =
-            localStorage.getItem(
-                "vaultUsername"
+                },
+                2200
             );
 
+        },
+        4300
+    );
 
-        if (
-            savedUsername
-        ) {
-
-            document
-            .getElementById(
-                "username"
-            )
-            .value =
-                savedUsername;
+}
 
 
-            document
-            .getElementById(
-                "rememberMe"
-            )
-            .checked =
-                true;
+/* SPIN ANIMATION */
 
-        }
+const style =
+    document.createElement("style");
 
+style.innerHTML = `
+
+@keyframes spin {
+
+    from {
+        transform: rotate(0deg);
     }
-);
 
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+`;
+
+document.head.appendChild(style);
 
 </script>
 
