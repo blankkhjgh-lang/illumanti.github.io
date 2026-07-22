@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Product Shop</title>
+    <title>ILLUMINATI MOVIES</title>
 
     <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 
@@ -173,10 +173,10 @@
             color: #ff4d6d;
         }
 
-        /* PRODUCT GRID */
+        /* PRODUCT GRID - Made skinnier */
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -184,12 +184,14 @@
             background: #120505;
             border: 1px solid #3a0d0d;
             border-radius: 16px;
-            padding: 16px;
+            padding: 12px; /* Reduced padding */
             display: flex;
             flex-direction: column;
             align-items: center;
             position: relative;
             transition: transform 0.3s ease, border-color 0.3s ease;
+            max-width: 240px; /* Skinnier cards */
+            margin: 0 auto;
         }
 
         .product-card:hover {
@@ -212,9 +214,11 @@
 
         .product-image {
             width: 100%;
-            height: 140px;
-            object-fit: contain;
+            height: 280px; /* Taller for movie posters */
+            object-fit: cover; /* Better for posters */
+            border-radius: 12px;
             margin-bottom: 12px;
+            background: #1a0a0a;
         }
 
         .product-title {
@@ -272,10 +276,6 @@
             .grid-container {
                 grid-template-columns: 1fr;
             }
-
-            .dropdown-menu {
-                width: 180px;
-            }
         }
     </style>
 </head>
@@ -284,7 +284,7 @@
 
     <!-- HEADER -->
     <div class="header">
-        <h1>Welcome to My Website</h1>
+        <h1>ILLUMINATI MOVIES</h1>
 
         <!-- NAVIGATION -->
         <div class="nav-container">
@@ -370,7 +370,7 @@
             <input 
                 type="text" 
                 id="searchInput"
-                placeholder="Search products..."
+                placeholder="Search movies..."
                 onkeyup="searchProducts()">
         </div>
 
@@ -394,11 +394,11 @@
                 <div class="product-card">
                     <img 
                         class="product-image" 
-                        src="polo-sweaters.png" 
-                        alt="Bugs Life">
+                        src="https://upload.wikimedia.org/wikipedia/en/7/7f/A_Bug%27s_Life.jpg" 
+                        alt="A Bug's Life">
 
                     <h3 class="product-title">
-                        Bugs Life
+                        A Bug's Life
                     </h3>
 
                     <button class="btn-fav">
@@ -421,7 +421,7 @@
 
                     <img 
                         class="product-image" 
-                        src="essentials-set.png" 
+                        src="https://upload.wikimedia.org/wikipedia/en/1/1f/A_Charlie_Brown_Christmas_poster.jpg" 
                         alt="A Charlie Brown Christmas">
 
                     <h3 class="product-title">
@@ -447,7 +447,7 @@
 
                     <img 
                         class="product-image" 
-                        src="essentials-set.png" 
+                        src="https://upload.wikimedia.org/wikipedia/en/4/4f/A_Goofy_Movie_poster.jpg" 
                         alt="A Goofy Movie">
 
                     <h3 class="product-title">
@@ -473,7 +473,7 @@
 
                     <img 
                         class="product-image" 
-                        src="essentials-set.png" 
+                        src="https://upload.wikimedia.org/wikipedia/en/0/0c/Ant-Man_and_the_Wasp_Quantumania_poster.jpg" 
                         alt="Ant-Man and the Wasp Quantumania">
 
                     <h3 class="product-title">
