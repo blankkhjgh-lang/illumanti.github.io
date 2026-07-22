@@ -44,6 +44,7 @@ html {
 body {
     margin: 0;
     min-height: 100vh;
+
     color: var(--text);
 
     font-family:
@@ -67,6 +68,112 @@ body {
     transition:
         background .4s ease,
         color .4s ease;
+}
+
+/* BACKGROUND THEMES */
+
+body.theme-default {
+    --cyan: #00e5ff;
+    --blue: #008cff;
+    --deep-blue: #006eff;
+    --bg: #020608;
+    --panel: #071116;
+    --panel2: #0b1920;
+    --text: #eaffff;
+    --muted: #7899a3;
+    --line: rgba(0,229,255,.18);
+    --shadow: rgba(0,0,0,.7);
+}
+
+body.theme-red-black {
+    --cyan: #ff3b3b;
+    --blue: #ff1717;
+    --deep-blue: #c90000;
+    --bg: #080202;
+    --panel: #160707;
+    --panel2: #210b0b;
+    --text: #fff0f0;
+    --muted: #ad7777;
+    --line: rgba(255,50,50,.22);
+    --shadow: rgba(0,0,0,.8);
+}
+
+body.theme-green-black {
+    --cyan: #00ff88;
+    --blue: #00d96f;
+    --deep-blue: #00a653;
+    --bg: #020804;
+    --panel: #06150c;
+    --panel2: #0a2013;
+    --text: #eafff2;
+    --muted: #78a38b;
+    --line: rgba(0,255,136,.2);
+    --shadow: rgba(0,0,0,.8);
+}
+
+body.theme-purple-black {
+    --cyan: #b45cff;
+    --blue: #853cff;
+    --deep-blue: #6824d6;
+    --bg: #050208;
+    --panel: #100718;
+    --panel2: #180b25;
+    --text: #f7edff;
+    --muted: #9c7eae;
+    --line: rgba(180,92,255,.22);
+    --shadow: rgba(0,0,0,.8);
+}
+
+body.theme-blue-white {
+    --cyan: #009dcc;
+    --blue: #008cff;
+    --deep-blue: #006eff;
+    --bg: #e5faff;
+    --panel: #ffffff;
+    --panel2: #d9f5fa;
+    --text: #03141a;
+    --muted: #47717b;
+    --line: rgba(0,120,150,.22);
+    --shadow: rgba(0,80,100,.18);
+}
+
+body.theme-red-white {
+    --cyan: #e32626;
+    --blue: #ff3b3b;
+    --deep-blue: #c90000;
+    --bg: #fff1f1;
+    --panel: #ffffff;
+    --panel2: #ffe0e0;
+    --text: #250303;
+    --muted: #8d5c5c;
+    --line: rgba(210,0,0,.2);
+    --shadow: rgba(100,0,0,.12);
+}
+
+body.theme-green-white {
+    --cyan: #00a85a;
+    --blue: #00c96b;
+    --deep-blue: #008b4a;
+    --bg: #effff6;
+    --panel: #ffffff;
+    --panel2: #ddf8e9;
+    --text: #031a0d;
+    --muted: #527c65;
+    --line: rgba(0,150,80,.2);
+    --shadow: rgba(0,80,40,.12);
+}
+
+body.theme-purple-white {
+    --cyan: #8b32d9;
+    --blue: #a64cff;
+    --deep-blue: #7120b8;
+    --bg: #faf3ff;
+    --panel: #ffffff;
+    --panel2: #f0ddff;
+    --text: #180421;
+    --muted: #765581;
+    --line: rgba(120,30,180,.2);
+    --shadow: rgba(80,0,120,.12);
 }
 
 /* CUSTOM BACKGROUND */
@@ -290,11 +397,6 @@ body.light header.scrolled {
         rgba(0,229,255,.08);
 }
 
-body.light .navLinks button:hover,
-body.light .navLinks button.active {
-    color: #003943;
-}
-
 /* NAV ACTIONS */
 
 .navActions {
@@ -332,6 +434,55 @@ body.light .navLinks button.active {
 
     background:
         rgba(0,229,255,.15);
+}
+
+/* PROFILE */
+
+.profileButton {
+    width: 38px;
+    height: 38px;
+
+    border: 2px solid var(--cyan);
+
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    padding: 0;
+
+    background:
+        rgba(0,229,255,.08);
+
+    color: var(--cyan);
+
+    cursor: pointer;
+
+    display: grid;
+
+    place-items: center;
+
+    transition: .2s;
+}
+
+.profileButton:hover {
+    transform: scale(1.08);
+
+    box-shadow:
+        0 0 18px
+        rgba(0,229,255,.35);
+}
+
+.profileButton img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: none;
+}
+
+.profileButton iconify-icon {
+    font-size: 20px;
 }
 
 /* SEARCH */
@@ -588,10 +739,6 @@ main {
     display: none;
 
     padding-top: 100px;
-}
-
-.dashboard.active {
-    display: block;
 }
 
 .dashboardHeader {
@@ -901,7 +1048,7 @@ main {
     border-radius: 5px;
 
     background:
-        rgba(0,229,255,.9);
+        var(--cyan);
 
     color:
         #001014;
@@ -930,7 +1077,7 @@ main {
     border-radius: 15px;
 }
 
-/* SETTINGS MODAL */
+/* MODALS */
 
 .modal {
     position: fixed;
@@ -959,6 +1106,10 @@ main {
 .modalBox {
     width:
         min(500px,100%);
+
+    max-height: 90vh;
+
+    overflow-y: auto;
 
     background:
         var(--panel);
@@ -999,6 +1150,124 @@ main {
 
     cursor: pointer;
 }
+
+/* BACKGROUND SETTINGS */
+
+.settingLabel {
+    display: block;
+
+    margin-top: 20px;
+
+    margin-bottom: 10px;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    color: var(--text);
+}
+
+.themeGrid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 10px;
+}
+
+.themeOption {
+    min-height: 65px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    padding: 10px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    background:
+        var(--panel2);
+
+    color:
+        var(--text);
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    transition: .2s;
+}
+
+.themeOption:hover {
+    transform:
+        translateY(-2px);
+
+    border-color:
+        var(--cyan);
+}
+
+.themePreview {
+    width: 35px;
+    height: 35px;
+
+    border-radius: 9px;
+
+    flex-shrink: 0;
+
+    border:
+        1px solid rgba(255,255,255,.25);
+}
+
+.preview-default {
+    background:
+        linear-gradient(135deg,#dffaff 50%,#020608 50%);
+}
+
+.preview-red-black {
+    background:
+        linear-gradient(135deg,#ff3b3b 50%,#080202 50%);
+}
+
+.preview-green-black {
+    background:
+        linear-gradient(135deg,#00ff88 50%,#020804 50%);
+}
+
+.preview-purple-black {
+    background:
+        linear-gradient(135deg,#b45cff 50%,#050208 50%);
+}
+
+.preview-blue-white {
+    background:
+        linear-gradient(135deg,#00bce8 50%,#ffffff 50%);
+}
+
+.preview-red-white {
+    background:
+        linear-gradient(135deg,#e32626 50%,#ffffff 50%);
+}
+
+.preview-green-white {
+    background:
+        linear-gradient(135deg,#00a85a 50%,#ffffff 50%);
+}
+
+.preview-purple-white {
+    background:
+        linear-gradient(135deg,#8b32d9 50%,#ffffff 50%);
+}
+
+/* UPLOAD */
 
 .uploadBox {
     margin-top: 20px;
@@ -1048,6 +1317,105 @@ main {
 
     color:
         var(--cyan);
+
+    cursor: pointer;
+}
+
+/* PROFILE */
+
+.profilePreview {
+    width: 90px;
+    height: 90px;
+
+    margin:
+        20px auto;
+
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    border:
+        2px solid var(--cyan);
+
+    background:
+        rgba(0,229,255,.08);
+
+    display: grid;
+
+    place-items: center;
+
+    color: var(--cyan);
+}
+
+.profilePreview img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: none;
+}
+
+.profileInput {
+    width: 100%;
+
+    padding: 12px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius: 10px;
+
+    background:
+        rgba(0,229,255,.05);
+
+    color:
+        var(--text);
+
+    outline: none;
+
+    margin-bottom: 10px;
+}
+
+.profileUpload {
+    width: 100%;
+
+    padding: 11px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius: 10px;
+
+    background:
+        rgba(0,229,255,.05);
+
+    color:
+        var(--cyan);
+
+    cursor: pointer;
+
+    font-weight: 800;
+}
+
+.saveProfile {
+    width: 100%;
+
+    margin-top: 10px;
+
+    padding: 12px;
+
+    border: 0;
+
+    border-radius: 10px;
+
+    background:
+        var(--cyan);
+
+    color:
+        #001014;
+
+    font-weight: 900;
 
     cursor: pointer;
 }
@@ -1169,6 +1537,8 @@ main {
     .nav {
         padding:
             0 15px;
+
+        gap: 8px;
     }
 
     .logo {
@@ -1245,6 +1615,11 @@ main {
         font-size: 40px;
     }
 
+    .themeGrid {
+        grid-template-columns:
+            1fr;
+    }
+
 }
 
 @media(prefers-reduced-motion:reduce) {
@@ -1262,7 +1637,7 @@ main {
 </style>
 </head>
 
-<body>
+<body class="theme-default">
 
 <div id="customBackground"></div>
 
@@ -1330,7 +1705,7 @@ id="searchBox">
 <input
 id="searchInput"
 placeholder="Search movies..."
-oninput="searchMovies">
+oninput="searchMovies()">
 
 </div>
 
@@ -1360,6 +1735,21 @@ onclick="openSettings()">
 
 <iconify-icon
 icon="lucide:settings">
+</iconify-icon>
+
+</button>
+
+<button
+class="profileButton"
+onclick="openProfile()">
+
+<img
+id="profileNavImage"
+alt="Profile">
+
+<iconify-icon
+id="profileNavIcon"
+icon="lucide:user">
 </iconify-icon>
 
 </button>
@@ -1853,9 +2243,101 @@ onclick="closeSettings()">
 
 <p style="color:var(--muted);font-size:13px">
 
-Customize your Movie Vault background.
+Customize your Movie Vault experience.
 
 </p>
+
+<label class="settingLabel">
+Choose Background Theme
+</label>
+
+<div class="themeGrid">
+
+<button
+class="themeOption"
+onclick="setBackgroundTheme('theme-default')">
+
+<span class="themePreview preview-default"></span>
+
+Default Light Blue + Black
+
+</button>
+
+<button
+class="themeOption"
+onclick="setBackgroundTheme('theme-red-black')">
+
+<span class="themePreview preview-red-black"></span>
+
+Red + Black
+
+</button>
+
+<button
+class="themeOption"
+onclick="setBackgroundTheme('theme-green-black')">
+
+<span class="themePreview preview-green-black"></span>
+
+Green + Black
+
+</button>
+
+<button
+class="themeOption"
+onclick="setBackgroundTheme('theme-purple-black')">
+
+<span class="themePreview preview-purple-black"></span>
+
+Purple + Black
+
+</button>
+
+<button
+class="themeOption"
+onclick="setBackgroundTheme('theme-blue-white')">
+
+<span class="themePreview preview-blue-white"></span>
+
+Light Blue + White
+
+</button>
+
+<button
+class="themeOption"
+onclick="setBackgroundTheme('theme-red-white')">
+
+<span class="themePreview preview-red-white"></span>
+
+Red + White
+
+</button>
+
+<button
+class="themeOption"
+onclick="setBackgroundTheme('theme-green-white')">
+
+<span class="themePreview preview-green-white"></span>
+
+Green + White
+
+</button>
+
+<button
+class="themeOption"
+onclick="setBackgroundTheme('theme-purple-white')">
+
+<span class="themePreview preview-purple-white"></span>
+
+Purple + White
+
+</button>
+
+</div>
+
+<label class="settingLabel">
+Custom Background Image
+</label>
 
 <div
 class="uploadBox"
@@ -1883,6 +2365,89 @@ class="removeBackground"
 onclick="removeBackground()">
 
 REMOVE CUSTOM BACKGROUND
+
+</button>
+
+</div>
+
+</div>
+
+<!-- PROFILE MODAL -->
+
+<div
+class="modal"
+id="profileModal">
+
+<div class="modalBox">
+
+<div class="modalTop">
+
+<h2>
+Profile
+</h2>
+
+<button
+class="close"
+onclick="closeProfile()">
+
+×
+
+</button>
+
+</div>
+
+<p style="color:var(--muted);font-size:13px">
+
+Customize your profile. This is only a visual profile and does not affect your Movie Vault account or movies.
+
+</p>
+
+<div class="profilePreview">
+
+<img
+id="profilePreviewImage"
+alt="Profile Preview">
+
+<iconify-icon
+id="profilePreviewIcon"
+icon="lucide:user"
+style="font-size:35px">
+</iconify-icon>
+
+</div>
+
+<input
+id="profileNameInput"
+class="profileInput"
+type="text"
+placeholder="Enter your username"
+maxlength="25">
+
+<input
+id="profileImageInput"
+type="file"
+accept="image/*"
+style="display:none">
+
+<button
+class="profileUpload"
+onclick="document.getElementById('profileImageInput').click()">
+
+<iconify-icon
+icon="lucide:image-plus">
+</iconify-icon>
+
+&nbsp;
+
+CHANGE PROFILE PICTURE
+
+</button>
+
+<button
+class="saveProfile"
+onclick="saveProfile()">
+
+SAVE PROFILE
 
 </button>
 
@@ -2011,6 +2576,8 @@ link:"https://drive.google.com/file/d/1GYQqHUdyWMNQJKj4Sa8SGW0ZRX32D5og/view"
 }
 
 ];
+
+/* STORAGE */
 
 let favorites =
 JSON.parse(
@@ -2290,9 +2857,7 @@ watched.push(name);
 
 localStorage.setItem(
 "movieWatched",
-JSON.stringify(
-watched
-)
+JSON.stringify(watched)
 );
 
 }
@@ -2513,6 +3078,43 @@ document
 
 }
 
+/* BACKGROUND COLOR THEMES */
+
+function setBackgroundTheme(theme) {
+
+document.body.classList.remove(
+
+"theme-default",
+
+"theme-red-black",
+
+"theme-green-black",
+
+"theme-purple-black",
+
+"theme-blue-white",
+
+"theme-red-white",
+
+"theme-green-white",
+
+"theme-purple-white"
+
+);
+
+document.body.classList.add(theme);
+
+localStorage.setItem(
+"backgroundTheme",
+theme
+);
+
+toast(
+"Background theme changed"
+);
+
+}
+
 /* SETTINGS */
 
 function openSettings() {
@@ -2541,7 +3143,7 @@ document
 
 }
 
-/* BACKGROUND */
+/* BACKGROUND IMAGE */
 
 document
 .getElementById(
@@ -2629,6 +3231,274 @@ document
 toast(
 "Custom background removed"
 );
+
+}
+
+/* PROFILE */
+
+function openProfile() {
+
+const savedName =
+localStorage.getItem(
+"profileName"
+) || "";
+
+document
+.getElementById(
+"profileNameInput"
+)
+.value =
+savedName;
+
+const savedImage =
+localStorage.getItem(
+"profileImage"
+);
+
+if (
+savedImage
+) {
+
+document
+.getElementById(
+"profilePreviewImage"
+)
+.src =
+savedImage;
+
+document
+.getElementById(
+"profilePreviewImage"
+)
+.style
+.display =
+"block";
+
+document
+.getElementById(
+"profilePreviewIcon"
+)
+.style
+.display =
+"none";
+
+}
+
+else {
+
+document
+.getElementById(
+"profilePreviewImage"
+)
+.style
+.display =
+"none";
+
+document
+.getElementById(
+"profilePreviewIcon"
+)
+.style
+.display =
+"block";
+
+}
+
+document
+.getElementById(
+"profileModal"
+)
+.classList
+.add(
+"show"
+);
+
+}
+
+function closeProfile() {
+
+document
+.getElementById(
+"profileModal"
+)
+.classList
+.remove(
+"show"
+);
+
+}
+
+/* PROFILE IMAGE */
+
+document
+.getElementById(
+"profileImageInput"
+)
+.addEventListener(
+"change",
+
+function(event) {
+
+const file =
+event.target.files[0];
+
+if (
+!file
+) return;
+
+const reader =
+new FileReader();
+
+reader.onload =
+function(e) {
+
+const image =
+e.target.result;
+
+document
+.getElementById(
+"profilePreviewImage"
+)
+.src =
+image;
+
+document
+.getElementById(
+"profilePreviewImage"
+)
+.style
+.display =
+"block";
+
+document
+.getElementById(
+"profilePreviewIcon"
+)
+.style
+.display =
+"none";
+
+};
+
+reader.readAsDataURL(
+file
+);
+
+}
+
+);
+
+/* SAVE PROFILE */
+
+function saveProfile() {
+
+const name =
+document
+.getElementById(
+"profileNameInput"
+)
+.value
+.trim();
+
+const previewImage =
+document
+.getElementById(
+"profilePreviewImage"
+)
+.src;
+
+if (
+name
+) {
+
+localStorage.setItem(
+"profileName",
+name
+);
+
+}
+
+if (
+previewImage &&
+previewImage !==
+window.location.href
+) {
+
+localStorage.setItem(
+"profileImage",
+previewImage
+);
+
+document
+.getElementById(
+"profileNavImage"
+)
+.src =
+previewImage;
+
+document
+.getElementById(
+"profileNavImage"
+)
+.style
+.display =
+"block";
+
+document
+.getElementById(
+"profileNavIcon"
+)
+.style
+.display =
+"none";
+
+}
+
+toast(
+"Profile updated"
+);
+
+closeProfile();
+
+}
+
+/* LOAD PROFILE */
+
+function loadProfile() {
+
+const savedImage =
+localStorage.getItem(
+"profileImage"
+);
+
+if (
+savedImage
+) {
+
+document
+.getElementById(
+"profileNavImage"
+)
+.src =
+savedImage;
+
+document
+.getElementById(
+"profileNavImage"
+)
+.style
+.display =
+"block";
+
+document
+.getElementById(
+"profileNavIcon"
+)
+.style
+.display =
+"none";
+
+}
 
 }
 
@@ -2819,6 +3689,43 @@ document
 
 /* LOAD THEME */
 
+const savedTheme =
+localStorage.getItem(
+"backgroundTheme"
+);
+
+if (
+savedTheme
+) {
+
+document.body.classList.remove(
+
+"theme-default",
+
+"theme-red-black",
+
+"theme-green-black",
+
+"theme-purple-black",
+
+"theme-blue-white",
+
+"theme-red-white",
+
+"theme-green-white",
+
+"theme-purple-white"
+
+);
+
+document.body.classList.add(
+savedTheme
+);
+
+}
+
+/* LOAD OLD LIGHT MODE */
+
 if (
 
 localStorage.getItem(
@@ -2879,12 +3786,14 @@ animateParticles();
 
 renderAll();
 
+loadProfile();
+
 window.addEventListener(
 "resize",
 resizeCanvas
 );
 
-/* CLOSE MODAL */
+/* CLOSE SETTINGS MODAL */
 
 document
 .getElementById(
@@ -2904,7 +3813,28 @@ closeSettings();
 }
 
 }
+);
 
+/* CLOSE PROFILE MODAL */
+
+document
+.getElementById(
+"profileModal"
+)
+.addEventListener(
+"click",
+
+function(event) {
+
+if (
+event.target === this
+) {
+
+closeProfile();
+
+}
+
+}
 );
 
 </script>
