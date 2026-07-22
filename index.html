@@ -186,4 +186,325 @@
     </div>
 
 </body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>My Website</title>
+
+  <style>
+    body {
+      margin: 0;
+      min-height: 200vh;
+      background: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 100px;
+    }
+
+    iframe {
+      border: none;
+      background: transparent;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="logo-container">
+    <iframe
+      src="https://logo-spin.com/embed/project-1784713235063439140-wxyz"
+      width="300"
+      height="300"
+      frameborder="0"
+      title="LogoSpin Embedded Logo">
+    </iframe>
+  </div>
+
+  <script>
+  (function() {
+    'use strict';
+
+    if (window.logoSpinScrollHandler) return;
+    window.logoSpinScrollHandler = true;
+
+    const PARAMS = {
+      speed: 1,
+      smoothing: 0.5,
+      clockwise: true,
+      size: 200,
+      motionBlur: true,
+      blurIntensity: 0.06,
+      circleMask: true
+    };
+
+    let scrollState = {
+      velocity: 0,
+      lastScrollTop: 0,
+      lastTime: performance.now(),
+      isScrolling: false,
+      momentumDecay: 0.95
+    };
+
+    let velocityHistory = [];
+    let velocityResetTimeout = null;
+
+    function getScrollPosition() {
+      return window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop ||
+        0;
+    }
+
+    function calculateVelocity(deltaScroll, deltaTime) {
+      if (deltaTime <= 0) return 0;
+
+      const rawVelocity = Math.abs(deltaScroll / deltaTime);
+      const now = performance.now();
+
+      velocityHistory.push({
+        velocity: rawVelocity,
+        timestamp: now
+      });
+
+      velocityHistory = velocityHistory.filter(function(entry) {
+        return now - entry.timestamp < 500;
+      });
+
+      if (velocityHistory.length > 0) {
+        const total = velocityHistory.reduce(function(sum, entry) {
+          return sum + entry.velocity;
+        }, 0);
+
+        return total / velocityHistory.length;
+      }
+
+      return rawVelocity;
+    }
+
+    function updateEmbeddedLogos(scrollTop, velocity, source) {
+      const iframes = document.querySelectorAll(
+        'iframe[src*="/embed/"]'
+      );
+
+      iframes.forEach(function(iframe) {
+        try {
+          iframe.contentWindow.postMessage({
+            type: 'logoSpin_scroll',
+            scrollTop: scrollTop,
+            velocity: velocity,
+            source: source || 'scroll',
+            animationParams: PARAMS
+          }, '*');
+        } catch (e) {
+          // Ignore cross-origin errors
+        }
+      });
+    }
+
+    function handleScroll(event, source) {
+      const now = performance.now();
+      const scrollTop = getScrollPosition();
+
+      const deltaTime = now - scrollState.lastTime;
+      const deltaScroll =
+        scrollTop - scrollState.lastScrollTop;
+
+      if (deltaTime > 0) {
+        const velocity = calculateVelocity(
+          deltaScroll,
+          deltaTime
+        );
+
+        scrollState.velocity = velocity;
+        scrollState.isScrolling = true;
+
+        updateEmbeddedLogos(
+          scrollTop,
+          velocity,
+          source
+        );
+
+        if (velocityResetTimeout) {
+          clearTimeout(velocityResetTimeout);
+        }
+
+        velocityResetTimeout = setTimeout(function() {
+          scrollState.velocity = 0;
+          scrollState.isScrolling = false;
+          velocityHistory = [];
+
+          updateEmbeddedLogos(
+            scrollTop,
+            0,
+            'stop'
+          );
+        }, 150);
+      }
+
+      scrollState.lastScrollTop = scrollTop;
+      scrollState.lastTime = now;
+    }
+
+    let touchState = {
+      startY: 0,
+      startTime: 0,
+      isTracking: false
+    };
+
+    function handleTouchStart(event) {
+      if (event.touches.length === 1) {
+        const touch = event.touches[0];
+
+        touchState.startY = touch.clientY;
+        touchState.startTime = performance.now();
+        touchState.isTracking = true;
+      }
+    }
+
+    function handleTouchMove(event) {
+      if (
+        !touchState.isTracking ||
+        event.touches.length !== 1
+      ) {
+        return;
+      }
+
+      const touch = event.touches[0];
+      const now = performance.now();
+
+      const deltaY =
+        touch.clientY - touchState.startY;
+
+      const deltaTime =
+        now - touchState.startTime;
+
+      if (deltaTime > 0) {
+        const velocity =
+          Math.abs(deltaY / deltaTime) * 10;
+
+        const scrollTop =
+          getScrollPosition();
+
+        updateEmbeddedLogos(
+          scrollTop,
+          velocity,
+          'touch'
+        );
+      }
+
+      touchState.startY = touch.clientY;
+      touchState.startTime = now;
+    }
+
+    function handleTouchEnd() {
+      touchState.isTracking = false;
+
+      if (scrollState.velocity > 0.1) {
+        function momentumDecay() {
+          scrollState.velocity *=
+            scrollState.momentumDecay;
+
+          if (scrollState.velocity > 0.1) {
+            updateEmbeddedLogos(
+              getScrollPosition(),
+              scrollState.velocity,
+              'momentum'
+            );
+
+            requestAnimationFrame(
+              momentumDecay
+            );
+          } else {
+            scrollState.velocity = 0;
+            scrollState.isScrolling = false;
+          }
+        }
+
+        requestAnimationFrame(
+          momentumDecay
+        );
+      }
+    }
+
+    function initializeScrollListeners() {
+      window.addEventListener(
+        'scroll',
+        function(e) {
+          handleScroll(e, 'window');
+        },
+        { passive: true }
+      );
+
+      window.addEventListener(
+        'wheel',
+        function(e) {
+          handleScroll(e, 'wheel');
+        },
+        { passive: true }
+      );
+
+      document.addEventListener(
+        'touchstart',
+        handleTouchStart,
+        { passive: true }
+      );
+
+      document.addEventListener(
+        'touchmove',
+        handleTouchMove,
+        { passive: true }
+      );
+
+      document.addEventListener(
+        'touchend',
+        handleTouchEnd,
+        { passive: true }
+      );
+
+      document.addEventListener(
+        'keydown',
+        function(e) {
+          if (
+            [
+              'ArrowUp',
+              'ArrowDown',
+              'PageUp',
+              'PageDown',
+              'Home',
+              'End',
+              'Space'
+            ].includes(e.code)
+          ) {
+            setTimeout(function() {
+              handleScroll(e, 'keyboard');
+            }, 10);
+          }
+        }
+      );
+    }
+
+    if (
+      document.readyState === 'loading'
+    ) {
+      document.addEventListener(
+        'DOMContentLoaded',
+        initializeScrollListeners
+      );
+    } else {
+      initializeScrollListeners();
+    }
+
+  })();
+  </script>
+
+</body>
 </html>
