@@ -13,16 +13,30 @@
       padding: 0;
     }
 
+    html,
     body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+      padding: 0;
       background:
-        radial-gradient(circle at top, #2b0008 0%, #120004 45%, #080001 100%);
+        radial-gradient(
+          circle at top,
+          #2b0008 0%,
+          #120004 45%,
+          #080001 100%
+        );
+    }
+
+    body {
       color: white;
       font-family: Arial, Helvetica, sans-serif;
       min-height: 100vh;
-      padding: 25px 15px;
+      padding: 0 15px;
     }
 
     .container {
+      width: 100%;
       max-width: 900px;
       margin: 0 auto;
     }
@@ -163,6 +177,10 @@
       margin-bottom: 6px;
     }
 
+    .favorite:hover {
+      background: rgba(90, 30, 40, 0.9);
+    }
+
     .view-more {
       display: block;
       width: 100%;
@@ -182,13 +200,18 @@
       text-decoration: none;
     }
 
+    .view-more:hover {
+      background: #ff3655;
+      color: white;
+    }
+
     .heart {
       font-size: 12px;
       vertical-align: middle;
       margin-right: 3px;
     }
 
-    /* Tablet */
+    /* Tablet and Phone */
     @media (max-width: 700px) {
       .grid {
         grid-template-columns: repeat(2, 1fr);
@@ -236,10 +259,12 @@
               Add to favorites
             </button>
 
-            <a class="view-more"
+            <a
+              class="view-more"
               href="https://vvid.pages.dev"
               target="_blank"
-              rel="noopener noreferrer">
+              rel="noopener noreferrer"
+            >
               View more
             </a>
           </div>
@@ -263,10 +288,12 @@
               Add to favorites
             </button>
 
-            <a class="view-more"
+            <a
+              class="view-more"
               href="https://buzzoid.com"
               target="_blank"
-              rel="noopener noreferrer">
+              rel="noopener noreferrer"
+            >
               View more
             </a>
           </div>
@@ -289,10 +316,12 @@
               Add to favorites
             </button>
 
-            <a class="view-more"
+            <a
+              class="view-more"
               href="https://repskingdom.com/products/"
               target="_blank"
-              rel="noopener noreferrer">
+              rel="noopener noreferrer"
+            >
               View more
             </a>
           </div>
@@ -316,10 +345,12 @@
               Add to favorites
             </button>
 
-            <a class="view-more"
+            <a
+              class="view-more"
               href="https://ventrix.to/"
               target="_blank"
-              rel="noopener noreferrer">
+              rel="noopener noreferrer"
+            >
               View more
             </a>
           </div>
@@ -342,10 +373,12 @@
               Add to favorites
             </button>
 
-            <a class="view-more"
+            <a
+              class="view-more"
               href="https://vortiga-shop.to/store/cards/hq"
               target="_blank"
-              rel="noopener noreferrer">
+              rel="noopener noreferrer"
+            >
               View more
             </a>
           </div>
