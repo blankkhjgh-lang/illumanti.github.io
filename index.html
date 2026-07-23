@@ -19,18 +19,18 @@
       color: white;
       font-family: Arial, Helvetica, sans-serif;
       min-height: 100vh;
-      padding: 48px 28px;
+      padding: 25px 15px;
     }
 
     .container {
-      max-width: 1100px;
+      max-width: 900px;
       margin: 0 auto;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 22px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
     }
 
     .card {
@@ -40,29 +40,25 @@
         rgba(15, 0, 4, 0.98)
       );
 
-      border: 2px solid rgba(130, 0, 25, 0.75);
-      border-radius: 28px;
+      border: 1px solid rgba(130, 0, 25, 0.75);
+      border-radius: 14px;
       overflow: hidden;
 
       box-shadow:
-        0 0 15px rgba(130, 0, 25, 0.18),
-        inset 0 0 25px rgba(80, 0, 15, 0.25);
+        0 0 10px rgba(130, 0, 25, 0.18),
+        inset 0 0 15px rgba(80, 0, 15, 0.25);
 
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      transition: transform 0.2s ease;
     }
 
     .card:hover {
-      transform: translateY(-5px);
-
-      box-shadow:
-        0 0 25px rgba(180, 0, 40, 0.35),
-        inset 0 0 30px rgba(100, 0, 20, 0.35);
+      transform: translateY(-3px);
     }
 
     .image-area {
-      height: 330px;
-      margin: 14px;
-      border-radius: 22px;
+      height: 110px;
+      margin: 6px;
+      border-radius: 10px;
 
       display: flex;
       align-items: center;
@@ -80,8 +76,8 @@
     }
 
     .link-icon {
-      width: 170px;
-      height: 170px;
+      width: 55px;
+      height: 55px;
 
       border-radius: 50%;
 
@@ -89,7 +85,7 @@
       align-items: center;
       justify-content: center;
 
-      font-size: 65px;
+      font-size: 23px;
 
       background: linear-gradient(
         135deg,
@@ -98,21 +94,20 @@
       );
 
       color: #180005;
+      font-weight: 900;
 
       box-shadow:
-        0 0 35px rgba(255, 50, 80, 0.3);
-
-      font-weight: 900;
+        0 0 15px rgba(255, 50, 80, 0.3);
     }
 
     .hot {
       position: absolute;
-      top: 18px;
-      left: 18px;
+      top: 6px;
+      left: 6px;
 
-      padding: 10px 24px;
+      padding: 4px 9px;
 
-      border-radius: 25px;
+      border-radius: 15px;
 
       background: linear-gradient(
         90deg,
@@ -122,111 +117,97 @@
 
       color: #160005;
 
-      font-size: 19px;
+      font-size: 9px;
       font-weight: 900;
-
-      box-shadow:
-        0 4px 12px rgba(255, 50, 100, 0.25);
     }
 
     .info {
       text-align: center;
-      padding: 0 25px 25px;
+      padding: 0 8px 9px;
     }
 
     .title {
-      font-size: 25px;
+      font-size: 14px;
       font-weight: 800;
-      margin-bottom: 10px;
+      margin-bottom: 4px;
     }
 
     .url {
-      font-size: 14px;
+      font-size: 8px;
       color: #b9a5aa;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      margin-bottom: 20px;
+      margin-bottom: 8px;
     }
 
     .buttons {
       border-top: 1px solid rgba(130, 0, 25, 0.55);
-      padding-top: 18px;
+      padding-top: 7px;
     }
 
     .favorite {
       width: 100%;
-      padding: 16px;
+      padding: 7px;
 
-      border-radius: 30px;
+      border-radius: 15px;
 
       background: rgba(55, 20, 27, 0.8);
       border: 1px solid rgba(150, 120, 125, 0.35);
 
       color: white;
-      font-size: 18px;
+      font-size: 9px;
       font-weight: 700;
 
       cursor: pointer;
-      margin-bottom: 14px;
-
-      transition: 0.2s;
-    }
-
-    .favorite:hover {
-      background: rgba(90, 30, 40, 0.9);
+      margin-bottom: 6px;
     }
 
     .view-more {
       display: block;
       width: 100%;
 
-      padding: 16px;
+      padding: 7px;
 
-      border-radius: 30px;
+      border-radius: 15px;
 
       background: white;
       color: #8c1227;
 
-      border: 3px solid #ff3655;
+      border: 1px solid #ff3655;
 
-      font-size: 19px;
+      font-size: 10px;
       font-weight: 900;
 
       text-decoration: none;
-
-      transition: 0.2s;
-    }
-
-    .view-more:hover {
-      background: #ff3655;
-      color: white;
-      transform: scale(1.02);
     }
 
     .heart {
-      font-size: 25px;
+      font-size: 12px;
       vertical-align: middle;
-      margin-right: 8px;
+      margin-right: 3px;
     }
 
-    /* Mobile */
+    /* Tablet */
     @media (max-width: 700px) {
-      body {
-        padding: 25px 14px;
-      }
-
       .grid {
-        grid-template-columns: 1fr;
-        gap: 18px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
       }
 
       .image-area {
-        height: 280px;
+        height: 100px;
+      }
+    }
+
+    /* Small Phone */
+    @media (max-width: 400px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
       }
 
-      .title {
-        font-size: 22px;
+      .image-area {
+        height: 90px;
       }
     }
   </style>
@@ -255,18 +236,15 @@
               Add to favorites
             </button>
 
-            <a
-              class="view-more"
+            <a class="view-more"
               href="https://vvid.pages.dev"
               target="_blank"
-              rel="noopener noreferrer"
-            >
+              rel="noopener noreferrer">
               View more
             </a>
           </div>
         </div>
       </div>
-
 
       <!-- LINK 2 -->
       <div class="card">
@@ -285,18 +263,15 @@
               Add to favorites
             </button>
 
-            <a
-              class="view-more"
+            <a class="view-more"
               href="https://buzzoid.com"
               target="_blank"
-              rel="noopener noreferrer"
-            >
+              rel="noopener noreferrer">
               View more
             </a>
           </div>
         </div>
       </div>
-
 
       <!-- LINK 3 -->
       <div class="card">
@@ -314,18 +289,15 @@
               Add to favorites
             </button>
 
-            <a
-              class="view-more"
+            <a class="view-more"
               href="https://repskingdom.com/products/"
               target="_blank"
-              rel="noopener noreferrer"
-            >
+              rel="noopener noreferrer">
               View more
             </a>
           </div>
         </div>
       </div>
-
 
       <!-- LINK 4 -->
       <div class="card">
@@ -344,18 +316,15 @@
               Add to favorites
             </button>
 
-            <a
-              class="view-more"
+            <a class="view-more"
               href="https://ventrix.to/"
               target="_blank"
-              rel="noopener noreferrer"
-            >
+              rel="noopener noreferrer">
               View more
             </a>
           </div>
         </div>
       </div>
-
 
       <!-- LINK 5 -->
       <div class="card">
@@ -373,12 +342,10 @@
               Add to favorites
             </button>
 
-            <a
-              class="view-more"
+            <a class="view-more"
               href="https://vortiga-shop.to/store/cards/hq"
               target="_blank"
-              rel="noopener noreferrer"
-            >
+              rel="noopener noreferrer">
               View more
             </a>
           </div>
@@ -387,7 +354,6 @@
 
     </div>
   </div>
-
 
   <script>
     function toggleFavorite(button) {
