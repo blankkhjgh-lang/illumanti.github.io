@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>My Links</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at top, #2b0008 0%, #120004 45%, #080001 100%);
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+      min-height: 100vh;
+      padding: 48px 28px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: linear-gradient(
+        180deg,
+        rgba(50, 0, 10, 0.95),
+        rgba(15, 0, 4, 0.98)
+      );
+
+      border: 2px solid rgba(130, 0, 25, 0.75);
+      border-radius: 28px;
+      overflow: hidden;
+
+      box-shadow:
+        0 0 15px rgba(130, 0, 25, 0.18),
+        inset 0 0 25px rgba(80, 0, 15, 0.25);
+
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+
+      box-shadow:
+        0 0 25px rgba(180, 0, 40, 0.35),
+        inset 0 0 30px rgba(100, 0, 20, 0.35);
+    }
+
+    .image-area {
+      height: 330px;
+      margin: 14px;
+      border-radius: 22px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      position: relative;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(80, 0, 15, 0.45),
+          rgba(20, 0, 5, 0.2) 65%,
+          transparent
+        );
+    }
+
+    .link-icon {
+      width: 170px;
+      height: 170px;
+
+      border-radius: 50%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 65px;
+
+      background: linear-gradient(
+        135deg,
+        #ff526d,
+        #ff9b55
+      );
+
+      color: #180005;
+
+      box-shadow:
+        0 0 35px rgba(255, 50, 80, 0.3);
+
+      font-weight: 900;
+    }
+
+    .hot {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+
+      padding: 10px 24px;
+
+      border-radius: 25px;
+
+      background: linear-gradient(
+        90deg,
+        #ff9a55,
+        #ff3f8d
+      );
+
+      color: #160005;
+
+      font-size: 19px;
+      font-weight: 900;
+
+      box-shadow:
+        0 4px 12px rgba(255, 50, 100, 0.25);
+    }
+
+    .info {
+      text-align: center;
+      padding: 0 25px 25px;
+    }
+
+    .title {
+      font-size: 25px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .url {
+      font-size: 14px;
+      color: #b9a5aa;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 20px;
+    }
+
+    .buttons {
+      border-top: 1px solid rgba(130, 0, 25, 0.55);
+      padding-top: 18px;
+    }
+
+    .favorite {
+      width: 100%;
+      padding: 16px;
+
+      border-radius: 30px;
+
+      background: rgba(55, 20, 27, 0.8);
+      border: 1px solid rgba(150, 120, 125, 0.35);
+
+      color: white;
+      font-size: 18px;
+      font-weight: 700;
+
+      cursor: pointer;
+      margin-bottom: 14px;
+
+      transition: 0.2s;
+    }
+
+    .favorite:hover {
+      background: rgba(90, 30, 40, 0.9);
+    }
+
+    .view-more {
+      display: block;
+      width: 100%;
+
+      padding: 16px;
+
+      border-radius: 30px;
+
+      background: white;
+      color: #8c1227;
+
+      border: 3px solid #ff3655;
+
+      font-size: 19px;
+      font-weight: 900;
+
+      text-decoration: none;
+
+      transition: 0.2s;
+    }
+
+    .view-more:hover {
+      background: #ff3655;
+      color: white;
+      transform: scale(1.02);
+    }
+
+    .heart {
+      font-size: 25px;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
+    /* Mobile */
+    @media (max-width: 700px) {
+      body {
+        padding: 25px 14px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .image-area {
+        height: 280px;
+      }
+
+      .title {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="grid">
+
+      <!-- LINK 1 -->
+      <div class="card">
+        <div class="image-area">
+          <div class="hot">HOT</div>
+          <div class="link-icon">1</div>
+        </div>
+
+        <div class="info">
+          <div class="title">Link 1</div>
+          <div class="url">https://vvid.pages.dev</div>
+
+          <div class="buttons">
+            <button class="favorite" onclick="toggleFavorite(this)">
+              <span class="heart">♡</span>
+              Add to favorites
+            </button>
+
+            <a
+              class="view-more"
+              href="https://vvid.pages.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View more
+            </a>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- LINK 2 -->
+      <div class="card">
+        <div class="image-area">
+          <div class="hot">HOT</div>
+          <div class="link-icon">2</div>
+        </div>
+
+        <div class="info">
+          <div class="title">Link 2</div>
+          <div class="url">https://buzzoid.com</div>
+
+          <div class="buttons">
+            <button class="favorite" onclick="toggleFavorite(this)">
+              <span class="heart">♡</span>
+              Add to favorites
+            </button>
+
+            <a
+              class="view-more"
+              href="https://buzzoid.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View more
+            </a>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- LINK 3 -->
+      <div class="card">
+        <div class="image-area">
+          <div class="link-icon">3</div>
+        </div>
+
+        <div class="info">
+          <div class="title">Link 3</div>
+          <div class="url">https://repskingdom.com/products/</div>
+
+          <div class="buttons">
+            <button class="favorite" onclick="toggleFavorite(this)">
+              <span class="heart">♡</span>
+              Add to favorites
+            </button>
+
+            <a
+              class="view-more"
+              href="https://repskingdom.com/products/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View more
+            </a>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- LINK 4 -->
+      <div class="card">
+        <div class="image-area">
+          <div class="hot">HOT</div>
+          <div class="link-icon">4</div>
+        </div>
+
+        <div class="info">
+          <div class="title">Link 4</div>
+          <div class="url">https://ventrix.to/</div>
+
+          <div class="buttons">
+            <button class="favorite" onclick="toggleFavorite(this)">
+              <span class="heart">♡</span>
+              Add to favorites
+            </button>
+
+            <a
+              class="view-more"
+              href="https://ventrix.to/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View more
+            </a>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- LINK 5 -->
+      <div class="card">
+        <div class="image-area">
+          <div class="link-icon">5</div>
+        </div>
+
+        <div class="info">
+          <div class="title">Link 5</div>
+          <div class="url">https://vortiga-shop.to/store/cards/hq</div>
+
+          <div class="buttons">
+            <button class="favorite" onclick="toggleFavorite(this)">
+              <span class="heart">♡</span>
+              Add to favorites
+            </button>
+
+            <a
+              class="view-more"
+              href="https://vortiga-shop.to/store/cards/hq"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View more
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <script>
+    function toggleFavorite(button) {
+      const heart = button.querySelector(".heart");
+
+      if (heart.textContent === "♡") {
+        heart.textContent = "♥";
+        button.style.background = "rgba(130, 0, 30, 0.8)";
+      } else {
+        heart.textContent = "♡";
+        button.style.background = "rgba(55, 20, 27, 0.8)";
+      }
+    }
+  </script>
+
+</body>
+</html>
