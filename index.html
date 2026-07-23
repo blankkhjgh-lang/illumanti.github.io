@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
   <title>My Links</title>
 
@@ -13,17 +13,38 @@
       padding: 0;
     }
 
-    html,
-    body {
+    html {
       width: 100%;
       min-height: 100%;
+      background: #000;
     }
 
     body {
+      width: 100%;
+      min-height: 100vh;
+      min-height: 100dvh;
+
       color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
-      min-height: 100vh;
+
       padding: 0 15px;
+
+      background-color: #000;
+
+      transition: color 0.3s ease;
+    }
+
+    /* FULL SCREEN BACKGROUND */
+    #backgroundLayer {
+      position: fixed;
+      z-index: -10;
+
+      top: 0;
+      left: 0;
+
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
 
       background:
         radial-gradient(
@@ -33,10 +54,28 @@
           var(--bg-main) 100%
         );
 
-      background-attachment: fixed;
-      transition:
-        background 0.3s ease,
-        color 0.3s ease;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      transition: background 0.3s ease;
+    }
+
+    /* DARK OVERLAY FOR CUSTOM PHOTOS */
+    #backgroundOverlay {
+      position: fixed;
+      z-index: -9;
+
+      top: 0;
+      left: 0;
+
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+
+      background: transparent;
+
+      pointer-events: none;
     }
 
     /* =========================
@@ -140,7 +179,9 @@
     .theme-menu {
       width: 100%;
       max-width: 900px;
+
       margin: 12px auto 10px;
+
       display: flex;
       justify-content: center;
       gap: 6px;
@@ -148,8 +189,10 @@
     }
 
     .theme-button,
-    .custom-button {
+    .custom-button,
+    .remove-background {
       padding: 7px 11px;
+
       border-radius: 20px;
 
       background: var(--button);
@@ -161,19 +204,18 @@
       font-weight: 800;
 
       cursor: pointer;
+
       transition: 0.2s;
     }
 
     .theme-button:hover,
-    .custom-button:hover {
+    .custom-button:hover,
+    .remove-background:hover {
       color: var(--accent);
       border-color: var(--accent);
-      box-shadow: 0 0 10px var(--accent-soft);
-    }
 
-    .custom-button {
-      position: relative;
-      overflow: hidden;
+      box-shadow:
+        0 0 10px var(--accent-soft);
     }
 
     #backgroundInput {
@@ -182,18 +224,6 @@
 
     .remove-background {
       display: none;
-      padding: 7px 11px;
-      border-radius: 20px;
-
-      background: var(--button);
-      color: var(--text);
-
-      border: 1px solid var(--border);
-
-      font-size: 10px;
-      font-weight: 800;
-
-      cursor: pointer;
     }
 
     /* =========================
@@ -203,12 +233,16 @@
     .container {
       width: 100%;
       max-width: 900px;
+
       margin: 0 auto;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
       gap: 10px;
     }
 
@@ -219,8 +253,11 @@
     .card {
       background: var(--card);
 
-      border: 1px solid var(--border);
+      border:
+        1px solid var(--border);
+
       border-radius: 14px;
+
       overflow: hidden;
 
       box-shadow:
@@ -233,7 +270,8 @@
     .card:hover {
       transform: translateY(-3px);
 
-      border-color: var(--accent);
+      border-color:
+        var(--accent);
 
       box-shadow:
         0 0 18px var(--accent-soft),
@@ -242,10 +280,13 @@
 
     .image-area {
       height: 110px;
+
       margin: 6px;
+
       border-radius: 10px;
 
       display: flex;
+
       align-items: center;
       justify-content: center;
 
@@ -266,15 +307,18 @@
       border-radius: 50%;
 
       display: flex;
+
       align-items: center;
       justify-content: center;
 
       font-size: 23px;
 
       background: var(--card);
+
       color: var(--accent);
 
-      border: 2px solid var(--accent);
+      border:
+        2px solid var(--accent);
 
       box-shadow:
         0 0 12px var(--accent-soft);
@@ -284,6 +328,7 @@
 
     .hot {
       position: absolute;
+
       top: 6px;
       left: 6px;
 
@@ -291,10 +336,14 @@
 
       border-radius: 15px;
 
-      background: var(--accent);
-      color: var(--bg-main);
+      background:
+        var(--accent);
+
+      color:
+        var(--bg-main);
 
       font-size: 9px;
+
       font-weight: 900;
 
       box-shadow:
@@ -307,71 +356,99 @@
 
     .info {
       text-align: center;
-      padding: 0 8px 9px;
+
+      padding:
+        0 8px 9px;
     }
 
     .title {
       font-size: 14px;
+
       font-weight: 800;
-      color: var(--text);
+
+      color:
+        var(--text);
+
       margin-bottom: 4px;
     }
 
     .url {
       font-size: 8px;
-      color: var(--muted);
+
+      color:
+        var(--muted);
 
       white-space: nowrap;
+
       overflow: hidden;
+
       text-overflow: ellipsis;
 
       margin-bottom: 8px;
     }
 
     .buttons {
-      border-top: 1px solid var(--border);
+      border-top:
+        1px solid var(--border);
+
       padding-top: 7px;
     }
 
     .favorite {
       width: 100%;
+
       padding: 7px;
 
       border-radius: 15px;
 
-      background: var(--button);
-      border: 1px solid var(--border);
+      background:
+        var(--button);
 
-      color: var(--text);
+      border:
+        1px solid var(--border);
+
+      color:
+        var(--text);
 
       font-size: 9px;
+
       font-weight: 700;
 
       cursor: pointer;
+
       margin-bottom: 6px;
 
       transition: 0.2s;
     }
 
     .favorite:hover {
-      background: var(--accent-soft);
-      border-color: var(--accent);
+      background:
+        var(--accent-soft);
+
+      border-color:
+        var(--accent);
     }
 
     .view-more {
       display: block;
+
       width: 100%;
 
       padding: 7px;
 
       border-radius: 15px;
 
-      background: var(--accent);
-      color: var(--bg-main);
+      background:
+        var(--accent);
 
-      border: 1px solid var(--accent);
+      color:
+        var(--bg-main);
+
+      border:
+        1px solid var(--accent);
 
       font-size: 10px;
+
       font-weight: 900;
 
       text-decoration: none;
@@ -380,8 +457,11 @@
     }
 
     .view-more:hover {
-      background: var(--bg-main);
-      color: var(--accent);
+      background:
+        var(--bg-main);
+
+      color:
+        var(--accent);
 
       box-shadow:
         0 0 12px var(--accent-soft);
@@ -389,7 +469,9 @@
 
     .heart {
       font-size: 12px;
+
       vertical-align: middle;
+
       margin-right: 3px;
     }
 
@@ -398,8 +480,11 @@
     ========================= */
 
     @media (max-width: 700px) {
+
       .grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+          repeat(2, 1fr);
+
         gap: 8px;
       }
 
@@ -409,63 +494,87 @@
     }
 
     @media (max-width: 400px) {
+
       .grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+          repeat(2, 1fr);
       }
 
       .image-area {
         height: 90px;
       }
     }
+
   </style>
 </head>
 
 <body class="theme-cyan">
 
-  <!-- THEME BUTTONS -->
+  <!-- FULL SCREEN BACKGROUND -->
+  <div id="backgroundLayer"></div>
+  <div id="backgroundOverlay"></div>
+
+
+  <!-- THEME MENU -->
 
   <div class="theme-menu">
 
-    <button class="theme-button" onclick="setTheme('cyan')">
+    <button
+      class="theme-button"
+      onclick="setTheme('cyan')">
       🩵 Cyan
     </button>
 
-    <button class="theme-button" onclick="setTheme('red')">
+    <button
+      class="theme-button"
+      onclick="setTheme('red')">
       ❤️ Red
     </button>
 
-    <button class="theme-button" onclick="setTheme('purple')">
+    <button
+      class="theme-button"
+      onclick="setTheme('purple')">
       💜 Purple
     </button>
 
-    <button class="theme-button" onclick="setTheme('green')">
+    <button
+      class="theme-button"
+      onclick="setTheme('green')">
       💚 Green
     </button>
 
-    <button class="theme-button" onclick="setTheme('yellow')">
+    <button
+      class="theme-button"
+      onclick="setTheme('yellow')">
       💛 Yellow
     </button>
 
-    <button class="theme-button" onclick="setTheme('white')">
+    <button
+      class="theme-button"
+      onclick="setTheme('white')">
       🤍 White
     </button>
 
     <label class="custom-button">
+
       🖼️ Custom Background
+
       <input
         type="file"
         id="backgroundInput"
         accept="image/*"
         onchange="setCustomBackground(event)"
       >
+
     </label>
 
     <button
       class="remove-background"
       id="removeBackground"
-      onclick="removeCustomBackground()"
-    >
+      onclick="removeCustomBackground()">
+
       ✕ Remove Background
+
     </button>
 
   </div>
@@ -478,160 +587,290 @@
     <div class="grid">
 
       <!-- LINK 1 -->
+
       <div class="card">
+
         <div class="image-area">
-          <div class="hot">HOT</div>
-          <div class="link-icon">1</div>
+
+          <div class="hot">
+            HOT
+          </div>
+
+          <div class="link-icon">
+            1
+          </div>
+
         </div>
 
         <div class="info">
-          <div class="title">Link 1</div>
-          <div class="url">https://vvid.pages.dev</div>
+
+          <div class="title">
+            Link 1
+          </div>
+
+          <div class="url">
+            https://vvid.pages.dev
+          </div>
 
           <div class="buttons">
-            <button class="favorite" onclick="toggleFavorite(this)">
-              <span class="heart">♡</span>
+
+            <button
+              class="favorite"
+              onclick="toggleFavorite(this)">
+
+              <span class="heart">
+                ♡
+              </span>
+
               Add to favorites
+
             </button>
 
             <a
               class="view-more"
               href="https://vvid.pages.dev"
               target="_blank"
-              rel="noopener noreferrer"
-            >
+              rel="noopener noreferrer">
+
               View more
+
             </a>
+
           </div>
+
         </div>
+
       </div>
 
 
       <!-- LINK 2 -->
+
       <div class="card">
+
         <div class="image-area">
-          <div class="hot">HOT</div>
-          <div class="link-icon">2</div>
+
+          <div class="hot">
+            HOT
+          </div>
+
+          <div class="link-icon">
+            2
+          </div>
+
         </div>
 
         <div class="info">
-          <div class="title">Link 2</div>
-          <div class="url">https://buzzoid.com</div>
+
+          <div class="title">
+            Link 2
+          </div>
+
+          <div class="url">
+            https://buzzoid.com
+          </div>
 
           <div class="buttons">
-            <button class="favorite" onclick="toggleFavorite(this)">
-              <span class="heart">♡</span>
+
+            <button
+              class="favorite"
+              onclick="toggleFavorite(this)">
+
+              <span class="heart">
+                ♡
+              </span>
+
               Add to favorites
+
             </button>
 
             <a
               class="view-more"
               href="https://buzzoid.com"
               target="_blank"
-              rel="noopener noreferrer"
-            >
+              rel="noopener noreferrer">
+
               View more
+
             </a>
+
           </div>
+
         </div>
+
       </div>
 
 
       <!-- LINK 3 -->
+
       <div class="card">
+
         <div class="image-area">
-          <div class="link-icon">3</div>
+
+          <div class="link-icon">
+            3
+          </div>
+
         </div>
 
         <div class="info">
-          <div class="title">Link 3</div>
-          <div class="url">https://repskingdom.com/products/</div>
+
+          <div class="title">
+            Link 3
+          </div>
+
+          <div class="url">
+            https://repskingdom.com/products/
+          </div>
 
           <div class="buttons">
-            <button class="favorite" onclick="toggleFavorite(this)">
-              <span class="heart">♡</span>
+
+            <button
+              class="favorite"
+              onclick="toggleFavorite(this)">
+
+              <span class="heart">
+                ♡
+              </span>
+
               Add to favorites
+
             </button>
 
             <a
               class="view-more"
               href="https://repskingdom.com/products/"
               target="_blank"
-              rel="noopener noreferrer"
-            >
+              rel="noopener noreferrer">
+
               View more
+
             </a>
+
           </div>
+
         </div>
+
       </div>
 
 
       <!-- LINK 4 -->
+
       <div class="card">
+
         <div class="image-area">
-          <div class="hot">HOT</div>
-          <div class="link-icon">4</div>
+
+          <div class="hot">
+            HOT
+          </div>
+
+          <div class="link-icon">
+            4
+          </div>
+
         </div>
 
         <div class="info">
-          <div class="title">Link 4</div>
-          <div class="url">https://ventrix.to/</div>
+
+          <div class="title">
+            Link 4
+          </div>
+
+          <div class="url">
+            https://ventrix.to/
+          </div>
 
           <div class="buttons">
-            <button class="favorite" onclick="toggleFavorite(this)">
-              <span class="heart">♡</span>
+
+            <button
+              class="favorite"
+              onclick="toggleFavorite(this)">
+
+              <span class="heart">
+                ♡
+              </span>
+
               Add to favorites
+
             </button>
 
             <a
               class="view-more"
               href="https://ventrix.to/"
               target="_blank"
-              rel="noopener noreferrer"
-            >
+              rel="noopener noreferrer">
+
               View more
+
             </a>
+
           </div>
+
         </div>
+
       </div>
 
 
       <!-- LINK 5 -->
+
       <div class="card">
+
         <div class="image-area">
-          <div class="link-icon">5</div>
+
+          <div class="link-icon">
+            5
+          </div>
+
         </div>
 
         <div class="info">
-          <div class="title">Link 5</div>
-          <div class="url">https://vortiga-shop.to/store/cards/hq</div>
+
+          <div class="title">
+            Link 5
+          </div>
+
+          <div class="url">
+            https://vortiga-shop.to/store/cards/hq
+          </div>
 
           <div class="buttons">
-            <button class="favorite" onclick="toggleFavorite(this)">
-              <span class="heart">♡</span>
+
+            <button
+              class="favorite"
+              onclick="toggleFavorite(this)">
+
+              <span class="heart">
+                ♡
+              </span>
+
               Add to favorites
+
             </button>
 
             <a
               class="view-more"
               href="https://vortiga-shop.to/store/cards/hq"
               target="_blank"
-              rel="noopener noreferrer"
-            >
+              rel="noopener noreferrer">
+
               View more
+
             </a>
+
           </div>
+
         </div>
+
       </div>
 
     </div>
+
   </div>
 
 
   <script>
 
     /* =========================
-       CHANGE THEME
+       THEME
     ========================= */
 
     function setTheme(theme) {
@@ -645,9 +884,26 @@
         "theme-white"
       );
 
-      document.body.classList.add("theme-" + theme);
+      document.body.classList.add(
+        "theme-" + theme
+      );
 
-      localStorage.setItem("selectedTheme", theme);
+      localStorage.setItem(
+        "selectedTheme",
+        theme
+      );
+
+      // Reset background to theme background
+      const bg =
+        document.getElementById(
+          "backgroundLayer"
+        );
+
+      bg.style.backgroundImage = "";
+
+      document.getElementById(
+        "backgroundOverlay"
+      ).style.background = "transparent";
     }
 
 
@@ -657,25 +913,47 @@
 
     function setCustomBackground(event) {
 
-      const file = event.target.files[0];
+      const file =
+        event.target.files[0];
 
       if (!file) return;
 
-      const reader = new FileReader();
+      const reader =
+        new FileReader();
 
       reader.onload = function(e) {
 
-        const image = e.target.result;
+        const image =
+          e.target.result;
 
-        document.body.style.backgroundImage =
-          "linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('" +
-          image +
-          "')";
+        const bg =
+          document.getElementById(
+            "backgroundLayer"
+          );
 
-        document.body.style.backgroundSize = "cover";
-        document.body.style.backgroundPosition = "center";
-        document.body.style.backgroundAttachment = "fixed";
+        const overlay =
+          document.getElementById(
+            "backgroundOverlay"
+          );
 
+        // Make image fill entire phone
+        bg.style.backgroundImage =
+          "url('" + image + "')";
+
+        bg.style.backgroundSize =
+          "cover";
+
+        bg.style.backgroundPosition =
+          "center center";
+
+        bg.style.backgroundRepeat =
+          "no-repeat";
+
+        // Darken image so cards are easier to see
+        overlay.style.background =
+          "rgba(0, 0, 0, 0.45)";
+
+        // Save background
         localStorage.setItem(
           "customBackground",
           image
@@ -683,7 +961,8 @@
 
         document.getElementById(
           "removeBackground"
-        ).style.display = "block";
+        ).style.display =
+          "block";
       };
 
       reader.readAsDataURL(file);
@@ -691,12 +970,26 @@
 
 
     /* =========================
-       REMOVE CUSTOM BACKGROUND
+       REMOVE BACKGROUND
     ========================= */
 
     function removeCustomBackground() {
 
-      document.body.style.backgroundImage = "";
+      const bg =
+        document.getElementById(
+          "backgroundLayer"
+        );
+
+      const overlay =
+        document.getElementById(
+          "backgroundOverlay"
+        );
+
+      bg.style.backgroundImage =
+        "";
+
+      overlay.style.background =
+        "transparent";
 
       localStorage.removeItem(
         "customBackground"
@@ -704,7 +997,8 @@
 
       document.getElementById(
         "removeBackground"
-      ).style.display = "none";
+      ).style.display =
+        "none";
     }
 
 
@@ -715,9 +1009,13 @@
     function toggleFavorite(button) {
 
       const heart =
-        button.querySelector(".heart");
+        button.querySelector(
+          ".heart"
+        );
 
-      if (heart.textContent === "♡") {
+      if (
+        heart.textContent === "♡"
+      ) {
 
         heart.textContent = "♥";
 
@@ -750,39 +1048,64 @@
        LOAD SAVED SETTINGS
     ========================= */
 
-    window.onload = function() {
+    window.addEventListener(
+      "load",
+      function() {
 
-      const savedTheme =
-        localStorage.getItem("selectedTheme");
+        const savedTheme =
+          localStorage.getItem(
+            "selectedTheme"
+          );
 
-      if (savedTheme) {
-        setTheme(savedTheme);
+        if (savedTheme) {
+
+          setTheme(
+            savedTheme
+          );
+        }
+
+        const savedBackground =
+          localStorage.getItem(
+            "customBackground"
+          );
+
+        if (savedBackground) {
+
+          const bg =
+            document.getElementById(
+              "backgroundLayer"
+            );
+
+          const overlay =
+            document.getElementById(
+              "backgroundOverlay"
+            );
+
+          bg.style.backgroundImage =
+            "url('" +
+            savedBackground +
+            "')";
+
+          bg.style.backgroundSize =
+            "cover";
+
+          bg.style.backgroundPosition =
+            "center center";
+
+          bg.style.backgroundRepeat =
+            "no-repeat";
+
+          overlay.style.background =
+            "rgba(0, 0, 0, 0.45)";
+
+          document.getElementById(
+            "removeBackground"
+          ).style.display =
+            "block";
+        }
+
       }
-
-      const savedBackground =
-        localStorage.getItem("customBackground");
-
-      if (savedBackground) {
-
-        document.body.style.backgroundImage =
-          "linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('" +
-          savedBackground +
-          "')";
-
-        document.body.style.backgroundSize =
-          "cover";
-
-        document.body.style.backgroundPosition =
-          "center";
-
-        document.body.style.backgroundAttachment =
-          "fixed";
-
-        document.getElementById(
-          "removeBackground"
-        ).style.display = "block";
-      }
-    };
+    );
 
   </script>
 
