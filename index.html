@@ -17,15 +17,188 @@
     body {
       width: 100%;
       min-height: 100%;
-      background: #000000;
     }
 
     body {
-      color: #ffffff;
+      color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
       min-height: 100vh;
       padding: 0 15px;
+
+      background:
+        radial-gradient(
+          circle at top,
+          var(--bg-glow),
+          var(--bg-mid) 45%,
+          var(--bg-main) 100%
+        );
+
+      background-attachment: fixed;
+      transition:
+        background 0.3s ease,
+        color 0.3s ease;
     }
+
+    /* =========================
+       THEMES
+    ========================= */
+
+    body.theme-cyan {
+      --bg-main: #000000;
+      --bg-mid: #020b0b;
+      --bg-glow: #003333;
+
+      --accent: #00ffff;
+      --accent-soft: rgba(0, 255, 255, 0.15);
+      --border: rgba(0, 255, 255, 0.45);
+
+      --card: #050505;
+      --button: #080808;
+      --text: #ffffff;
+      --muted: #6f9999;
+    }
+
+    body.theme-red {
+      --bg-main: #000000;
+      --bg-mid: #0b0202;
+      --bg-glow: #330000;
+
+      --accent: #ff1744;
+      --accent-soft: rgba(255, 23, 68, 0.15);
+      --border: rgba(255, 23, 68, 0.45);
+
+      --card: #050000;
+      --button: #080000;
+      --text: #ffffff;
+      --muted: #996f6f;
+    }
+
+    body.theme-purple {
+      --bg-main: #000000;
+      --bg-mid: #08020b;
+      --bg-glow: #260033;
+
+      --accent: #c000ff;
+      --accent-soft: rgba(192, 0, 255, 0.15);
+      --border: rgba(192, 0, 255, 0.45);
+
+      --card: #050005;
+      --button: #080008;
+      --text: #ffffff;
+      --muted: #956f99;
+    }
+
+    body.theme-green {
+      --bg-main: #000000;
+      --bg-mid: #020b04;
+      --bg-glow: #003315;
+
+      --accent: #00ff66;
+      --accent-soft: rgba(0, 255, 102, 0.15);
+      --border: rgba(0, 255, 102, 0.45);
+
+      --card: #000500;
+      --button: #000800;
+      --text: #ffffff;
+      --muted: #6f997d;
+    }
+
+    body.theme-yellow {
+      --bg-main: #000000;
+      --bg-mid: #0b0b02;
+      --bg-glow: #333300;
+
+      --accent: #ffff00;
+      --accent-soft: rgba(255, 255, 0, 0.15);
+      --border: rgba(255, 255, 0, 0.45);
+
+      --card: #050500;
+      --button: #080800;
+      --text: #ffffff;
+      --muted: #99996f;
+    }
+
+    body.theme-white {
+      --bg-main: #ffffff;
+      --bg-mid: #eeeeee;
+      --bg-glow: #ffffff;
+
+      --accent: #000000;
+      --accent-soft: rgba(0, 0, 0, 0.08);
+      --border: rgba(0, 0, 0, 0.3);
+
+      --card: #ffffff;
+      --button: #f2f2f2;
+      --text: #000000;
+      --muted: #666666;
+    }
+
+    /* =========================
+       THEME MENU
+    ========================= */
+
+    .theme-menu {
+      width: 100%;
+      max-width: 900px;
+      margin: 12px auto 10px;
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .theme-button,
+    .custom-button {
+      padding: 7px 11px;
+      border-radius: 20px;
+
+      background: var(--button);
+      color: var(--text);
+
+      border: 1px solid var(--border);
+
+      font-size: 10px;
+      font-weight: 800;
+
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .theme-button:hover,
+    .custom-button:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      box-shadow: 0 0 10px var(--accent-soft);
+    }
+
+    .custom-button {
+      position: relative;
+      overflow: hidden;
+    }
+
+    #backgroundInput {
+      display: none;
+    }
+
+    .remove-background {
+      display: none;
+      padding: 7px 11px;
+      border-radius: 20px;
+
+      background: var(--button);
+      color: var(--text);
+
+      border: 1px solid var(--border);
+
+      font-size: 10px;
+      font-weight: 800;
+
+      cursor: pointer;
+    }
+
+    /* =========================
+       CONTAINER
+    ========================= */
 
     .container {
       width: 100%;
@@ -39,26 +212,32 @@
       gap: 10px;
     }
 
+    /* =========================
+       CARDS
+    ========================= */
+
     .card {
-      background: #050505;
-      border: 1px solid rgba(0, 255, 255, 0.45);
+      background: var(--card);
+
+      border: 1px solid var(--border);
       border-radius: 14px;
       overflow: hidden;
 
       box-shadow:
-        0 0 8px rgba(0, 255, 255, 0.12),
-        inset 0 0 15px rgba(0, 255, 255, 0.03);
+        0 0 8px var(--accent-soft),
+        inset 0 0 15px var(--accent-soft);
 
       transition: 0.2s ease;
     }
 
     .card:hover {
       transform: translateY(-3px);
-      border-color: rgba(0, 255, 255, 0.9);
+
+      border-color: var(--accent);
 
       box-shadow:
-        0 0 18px rgba(0, 255, 255, 0.3),
-        inset 0 0 20px rgba(0, 255, 255, 0.06);
+        0 0 18px var(--accent-soft),
+        inset 0 0 20px var(--accent-soft);
     }
 
     .image-area {
@@ -75,9 +254,8 @@
       background:
         radial-gradient(
           circle,
-          rgba(0, 255, 255, 0.12),
-          rgba(0, 0, 0, 0.8) 65%,
-          #000000
+          var(--accent-soft),
+          transparent 65%
         );
     }
 
@@ -93,13 +271,13 @@
 
       font-size: 23px;
 
-      background: #000000;
-      color: #00ffff;
+      background: var(--card);
+      color: var(--accent);
 
-      border: 2px solid #00ffff;
+      border: 2px solid var(--accent);
 
       box-shadow:
-        0 0 12px rgba(0, 255, 255, 0.4);
+        0 0 12px var(--accent-soft);
 
       font-weight: 900;
     }
@@ -113,15 +291,19 @@
 
       border-radius: 15px;
 
-      background: #00ffff;
-      color: #000000;
+      background: var(--accent);
+      color: var(--bg-main);
 
       font-size: 9px;
       font-weight: 900;
 
       box-shadow:
-        0 0 10px rgba(0, 255, 255, 0.5);
+        0 0 10px var(--accent-soft);
     }
+
+    /* =========================
+       INFO
+    ========================= */
 
     .info {
       text-align: center;
@@ -131,21 +313,23 @@
     .title {
       font-size: 14px;
       font-weight: 800;
-      color: #ffffff;
+      color: var(--text);
       margin-bottom: 4px;
     }
 
     .url {
       font-size: 8px;
-      color: #6f9999;
+      color: var(--muted);
+
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+
       margin-bottom: 8px;
     }
 
     .buttons {
-      border-top: 1px solid rgba(0, 255, 255, 0.2);
+      border-top: 1px solid var(--border);
       padding-top: 7px;
     }
 
@@ -155,10 +339,11 @@
 
       border-radius: 15px;
 
-      background: #080808;
-      border: 1px solid rgba(0, 255, 255, 0.35);
+      background: var(--button);
+      border: 1px solid var(--border);
 
-      color: #ffffff;
+      color: var(--text);
+
       font-size: 9px;
       font-weight: 700;
 
@@ -169,8 +354,8 @@
     }
 
     .favorite:hover {
-      background: rgba(0, 255, 255, 0.1);
-      border-color: #00ffff;
+      background: var(--accent-soft);
+      border-color: var(--accent);
     }
 
     .view-more {
@@ -181,10 +366,10 @@
 
       border-radius: 15px;
 
-      background: #00ffff;
-      color: #000000;
+      background: var(--accent);
+      color: var(--bg-main);
 
-      border: 1px solid #00ffff;
+      border: 1px solid var(--accent);
 
       font-size: 10px;
       font-weight: 900;
@@ -195,9 +380,11 @@
     }
 
     .view-more:hover {
-      background: #000000;
-      color: #00ffff;
-      box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
+      background: var(--bg-main);
+      color: var(--accent);
+
+      box-shadow:
+        0 0 12px var(--accent-soft);
     }
 
     .heart {
@@ -205,6 +392,10 @@
       vertical-align: middle;
       margin-right: 3px;
     }
+
+    /* =========================
+       MOBILE
+    ========================= */
 
     @media (max-width: 700px) {
       .grid {
@@ -229,7 +420,58 @@
   </style>
 </head>
 
-<body>
+<body class="theme-cyan">
+
+  <!-- THEME BUTTONS -->
+
+  <div class="theme-menu">
+
+    <button class="theme-button" onclick="setTheme('cyan')">
+      🩵 Cyan
+    </button>
+
+    <button class="theme-button" onclick="setTheme('red')">
+      ❤️ Red
+    </button>
+
+    <button class="theme-button" onclick="setTheme('purple')">
+      💜 Purple
+    </button>
+
+    <button class="theme-button" onclick="setTheme('green')">
+      💚 Green
+    </button>
+
+    <button class="theme-button" onclick="setTheme('yellow')">
+      💛 Yellow
+    </button>
+
+    <button class="theme-button" onclick="setTheme('white')">
+      🤍 White
+    </button>
+
+    <label class="custom-button">
+      🖼️ Custom Background
+      <input
+        type="file"
+        id="backgroundInput"
+        accept="image/*"
+        onchange="setCustomBackground(event)"
+      >
+    </label>
+
+    <button
+      class="remove-background"
+      id="removeBackground"
+      onclick="removeCustomBackground()"
+    >
+      ✕ Remove Background
+    </button>
+
+  </div>
+
+
+  <!-- LINK CARDS -->
 
   <div class="container">
 
@@ -264,6 +506,7 @@
         </div>
       </div>
 
+
       <!-- LINK 2 -->
       <div class="card">
         <div class="image-area">
@@ -293,6 +536,7 @@
         </div>
       </div>
 
+
       <!-- LINK 3 -->
       <div class="card">
         <div class="image-area">
@@ -320,6 +564,7 @@
           </div>
         </div>
       </div>
+
 
       <!-- LINK 4 -->
       <div class="card">
@@ -349,6 +594,7 @@
           </div>
         </div>
       </div>
+
 
       <!-- LINK 5 -->
       <div class="card">
@@ -381,22 +627,163 @@
     </div>
   </div>
 
+
   <script>
+
+    /* =========================
+       CHANGE THEME
+    ========================= */
+
+    function setTheme(theme) {
+
+      document.body.classList.remove(
+        "theme-cyan",
+        "theme-red",
+        "theme-purple",
+        "theme-green",
+        "theme-yellow",
+        "theme-white"
+      );
+
+      document.body.classList.add("theme-" + theme);
+
+      localStorage.setItem("selectedTheme", theme);
+    }
+
+
+    /* =========================
+       CUSTOM BACKGROUND
+    ========================= */
+
+    function setCustomBackground(event) {
+
+      const file = event.target.files[0];
+
+      if (!file) return;
+
+      const reader = new FileReader();
+
+      reader.onload = function(e) {
+
+        const image = e.target.result;
+
+        document.body.style.backgroundImage =
+          "linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('" +
+          image +
+          "')";
+
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundPosition = "center";
+        document.body.style.backgroundAttachment = "fixed";
+
+        localStorage.setItem(
+          "customBackground",
+          image
+        );
+
+        document.getElementById(
+          "removeBackground"
+        ).style.display = "block";
+      };
+
+      reader.readAsDataURL(file);
+    }
+
+
+    /* =========================
+       REMOVE CUSTOM BACKGROUND
+    ========================= */
+
+    function removeCustomBackground() {
+
+      document.body.style.backgroundImage = "";
+
+      localStorage.removeItem(
+        "customBackground"
+      );
+
+      document.getElementById(
+        "removeBackground"
+      ).style.display = "none";
+    }
+
+
+    /* =========================
+       FAVORITES
+    ========================= */
+
     function toggleFavorite(button) {
-      const heart = button.querySelector(".heart");
+
+      const heart =
+        button.querySelector(".heart");
 
       if (heart.textContent === "♡") {
+
         heart.textContent = "♥";
-        button.style.background = "rgba(0, 255, 255, 0.15)";
-        button.style.borderColor = "#00ffff";
-        button.style.color = "#00ffff";
+
+        button.style.background =
+          "var(--accent-soft)";
+
+        button.style.borderColor =
+          "var(--accent)";
+
+        button.style.color =
+          "var(--accent)";
+
       } else {
+
         heart.textContent = "♡";
-        button.style.background = "#080808";
-        button.style.borderColor = "rgba(0, 255, 255, 0.35)";
-        button.style.color = "#ffffff";
+
+        button.style.background =
+          "var(--button)";
+
+        button.style.borderColor =
+          "var(--border)";
+
+        button.style.color =
+          "var(--text)";
       }
     }
+
+
+    /* =========================
+       LOAD SAVED SETTINGS
+    ========================= */
+
+    window.onload = function() {
+
+      const savedTheme =
+        localStorage.getItem("selectedTheme");
+
+      if (savedTheme) {
+        setTheme(savedTheme);
+      }
+
+      const savedBackground =
+        localStorage.getItem("customBackground");
+
+      if (savedBackground) {
+
+        document.body.style.backgroundImage =
+          "linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('" +
+          savedBackground +
+          "')";
+
+        document.body.style.backgroundSize =
+          "cover";
+
+        document.body.style.backgroundPosition =
+          "center";
+
+        document.body.style.backgroundAttachment =
+          "fixed";
+
+        document.getElementById(
+          "removeBackground"
+        ).style.display = "block";
+      }
+    };
+
   </script>
 
 </body>
