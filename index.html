@@ -41,7 +41,6 @@ body {
   overflow-x: hidden;
 }
 
-
 /* =========================================
    FULL SCREEN BACKGROUND
 ========================================= */
@@ -75,7 +74,6 @@ body {
   background-repeat: no-repeat;
 }
 
-
 #backgroundOverlay {
 
   position: fixed;
@@ -94,7 +92,6 @@ body {
 
   pointer-events: none;
 }
-
 
 /* =========================================
    THEMES
@@ -123,7 +120,6 @@ body.theme-cyan {
   --muted: #6f9999;
 }
 
-
 body.theme-red {
 
   --bg-main: #000000;
@@ -146,7 +142,6 @@ body.theme-red {
 
   --muted: #996f6f;
 }
-
 
 body.theme-purple {
 
@@ -171,7 +166,6 @@ body.theme-purple {
   --muted: #956f99;
 }
 
-
 body.theme-green {
 
   --bg-main: #000000;
@@ -194,7 +188,6 @@ body.theme-green {
 
   --muted: #6f997d;
 }
-
 
 body.theme-yellow {
 
@@ -219,7 +212,6 @@ body.theme-yellow {
   --muted: #99996f;
 }
 
-
 body.theme-white {
 
   --bg-main: #ffffff;
@@ -243,7 +235,6 @@ body.theme-white {
   --muted: #666666;
 }
 
-
 /* =========================================
    THEME MENU
 ========================================= */
@@ -264,7 +255,6 @@ body.theme-white {
 
   flex-wrap: wrap;
 }
-
 
 .theme-button,
 .custom-button,
@@ -298,7 +288,6 @@ body.theme-white {
     0.2s;
 }
 
-
 .theme-button:hover,
 .custom-button:hover,
 .remove-background:hover {
@@ -313,20 +302,17 @@ body.theme-white {
     0 0 10px var(--accent-soft);
 }
 
-
 #backgroundInput {
 
   display:
     none;
 }
 
-
 .remove-background {
 
   display:
     none;
 }
-
 
 /* =========================================
    HEADER
@@ -343,7 +329,6 @@ body.theme-white {
   margin-bottom:
     15px;
 }
-
 
 .header h1 {
 
@@ -368,7 +353,6 @@ body.theme-white {
   text-shadow:
     0 0 15px var(--accent-soft);
 }
-
 
 /* =========================================
    CATEGORY BUTTONS
@@ -397,7 +381,6 @@ body.theme-white {
   padding:
     0 5px;
 }
-
 
 .btn {
 
@@ -438,7 +421,6 @@ body.theme-white {
     0.3px;
 }
 
-
 .btn:hover,
 .btn.active {
 
@@ -457,7 +439,6 @@ body.theme-white {
   box-shadow:
     0 0 15px var(--accent-soft);
 }
-
 
 /* =========================================
    SEARCH BAR
@@ -502,9 +483,8 @@ body.theme-white {
     none;
 
   box-shadow:
-    0 0 15px var(--accent-soft);
+    0 0 20px var(--accent-soft);
 }
-
 
 .search-bar:focus {
 
@@ -515,13 +495,11 @@ body.theme-white {
     0 0 20px var(--accent-soft);
 }
 
-
 .search-bar::placeholder {
 
   color:
     var(--muted);
 }
-
 
 /* =========================================
    LINK CARDS
@@ -539,7 +517,6 @@ body.theme-white {
     0 auto;
 }
 
-
 .grid {
 
   display:
@@ -548,1337 +525,141 @@ body.theme-white {
   grid-template-columns:
     repeat(3, 1fr);
 
-  gap:
-    10px;
+  gap: 15px;
 }
-
 
 .card {
-
-  background:
-    var(--card);
-
-  border:
-    1px solid var(--border);
-
-  border-radius:
-    14px;
-
-  overflow:
-    hidden;
-
-  box-shadow:
-    0 0 8px var(--accent-soft),
-    inset 0 0 15px var(--accent-soft);
-
-  transition:
-    0.2s ease;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
-
-
-.card:hover {
-
-  transform:
-    translateY(-3px);
-
-  border-color:
-    var(--accent);
-
-  box-shadow:
-    0 0 18px var(--accent-soft);
-}
-
 
 .image-area {
-
-  height:
-    110px;
-
-  margin:
-    6px;
-
-  border-radius:
-    10px;
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    center;
-
-  position:
-    relative;
-
-  background:
-    radial-gradient(
-      circle,
-      var(--accent-soft),
-      transparent 65%
-    );
+  position: relative;
+  background: rgba(255,255,255,0.05);
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
-
-.link-icon {
-
-  width:
-    55px;
-
-  height:
-    55px;
-
-  border-radius:
-    50%;
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    center;
-
-  font-size:
-    23px;
-
-  background:
-    var(--card);
-
-  color:
-    var(--accent);
-
-  border:
-    2px solid var(--accent);
-
-  box-shadow:
-    0 0 12px var(--accent-soft);
-
-  font-weight:
-    900;
-}
-
 
 .hot {
-
-  position:
-    absolute;
-
-  top:
-    6px;
-
-  left:
-    6px;
-
-  padding:
-    4px 9px;
-
-  border-radius:
-    15px;
-
-  background:
-    var(--accent);
-
-  color:
-    var(--bg-main);
-
-  font-size:
-    9px;
-
-  font-weight:
-    900;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #ff1744;
+  color: #fff;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 4px;
 }
 
+.link-icon {
+  font-size: 36px;
+  font-weight: bold;
+  color: var(--accent);
+}
 
 .info {
-
-  text-align:
-    center;
-
-  padding:
-    0 8px 9px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
-
 
 .title {
-
-  font-size:
-    14px;
-
-  font-weight:
-    800;
-
-  color:
-    var(--text);
-
-  margin-bottom:
-    4px;
+  font-size: 18px;
+  font-weight: bold;
 }
-
 
 .url {
-
-  font-size:
-    8px;
-
-  color:
-    var(--muted);
-
-  white-space:
-    nowrap;
-
-  overflow:
-    hidden;
-
-  text-overflow:
-    ellipsis;
-
-  margin-bottom:
-    8px;
+  font-size: 12px;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-
 
 .buttons {
-
-  border-top:
-    1px solid var(--border);
-
-  padding-top:
-    7px;
+  display: flex;
+  gap: 8px;
 }
 
+.favorite, .view-more {
+  flex: 1;
+  padding: 8px;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+}
 
 .favorite {
-
-  width:
-    100%;
-
-  padding:
-    7px;
-
-  border-radius:
-    15px;
-
-  background:
-    var(--button);
-
-  border:
-    1px solid var(--border);
-
-  color:
-    var(--text);
-
-  font-size:
-    9px;
-
-  font-weight:
-    700;
-
-  cursor:
-    pointer;
-
-  margin-bottom:
-    6px;
+  background: var(--button);
+  color: var(--text);
+  border: 1px solid var(--border);
 }
-
 
 .view-more {
-
-  display:
-    block;
-
-  width:
-    100%;
-
-  padding:
-    7px;
-
-  border-radius:
-    15px;
-
-  background:
-    var(--accent);
-
-  color:
-    var(--bg-main);
-
-  border:
-    1px solid var(--accent);
-
-  font-size:
-    10px;
-
-  font-weight:
-    900;
-
-  text-decoration:
-    none;
-}
-
-
-.heart {
-
-  font-size:
-    12px;
-
-  vertical-align:
-    middle;
-
-  margin-right:
-    3px;
-}
-
-
-/* =========================================
-   MOBILE
-========================================= */
-
-@media (max-width: 700px) {
-
-  .header h1 {
-
-    font-size:
-      25px;
-  }
-
-
-  .buttons-container {
-
-    grid-template-columns:
-      repeat(2, 1fr);
-
-    gap:
-      8px;
-  }
-
-
-  .grid {
-
-    grid-template-columns:
-      repeat(2, 1fr);
-
-    gap:
-      8px;
-  }
-
-
-  .image-area {
-
-    height:
-      100px;
-  }
-
-}
-
-
-@media (max-width: 400px) {
-
-  .header h1 {
-
-    font-size:
-      22px;
-  }
-
-
-  .image-area {
-
-    height:
-      90px;
-  }
-
+  background: var(--accent);
+  color: var(--bg-main);
+  border: none;
 }
 
 </style>
 </head>
-
-
 <body class="theme-cyan">
 
-
-<!-- FULL SCREEN BACKGROUND -->
-
 <div id="backgroundLayer"></div>
-
 <div id="backgroundOverlay"></div>
 
-
-<!-- THEME MENU -->
-
-<div class="theme-menu">
-
-  <button
-    class="theme-button"
-    onclick="setTheme('cyan')">
-
-    Cyan
-
-  </button>
-
-
-  <button
-    class="theme-button"
-    onclick="setTheme('red')">
-
-    Red
-
-  </button>
-
-
-  <button
-    class="theme-button"
-    onclick="setTheme('purple')">
-
-    Purple
-
-  </button>
-
-
-  <button
-    class="theme-button"
-    onclick="setTheme('green')">
-
-    Green
-
-  </button>
-
-
-  <button
-    class="theme-button"
-    onclick="setTheme('yellow')">
-
-    Yellow
-
-  </button>
-
-
-  <button
-    class="theme-button"
-    onclick="setTheme('white')">
-
-    White
-
-  </button>
-
-
-  <label class="custom-button">
-
-    Custom Background
-
-    <input
-      type="file"
-      id="backgroundInput"
-      accept="image/*"
-      onchange="setCustomBackground(event)"
-    >
-
-  </label>
-
-
-  <button
-    class="remove-background"
-    id="removeBackground"
-    onclick="removeCustomBackground()">
-
-    Remove Background
-
-  </button>
-
-</div>
-
-
-<!-- HEADER -->
-
 <div class="header">
-
-  <h1>
-    Every Link You Could Need
-  </h1>
-
+  <h1>Every Link You Could Need</h1>
 </div>
-
-
-<!-- CATEGORY BUTTONS -->
-
-<div class="buttons-container">
-
-  <div
-    class="btn active"
-    data-category="scamming">
-
-    Scamming
-
-  </div>
-
-
-  <div
-    class="btn"
-    data-category="movies">
-
-    Movies
-
-  </div>
-
-
-  <div
-    class="btn"
-    data-category="clothes">
-
-    Clothes
-
-  </div>
-
-
-  <div
-    class="btn"
-    data-category="followers-likes">
-
-    Followers/Likes
-
-  </div>
-
-
-  <div
-    class="btn"
-    data-category="blank2">
-
-    Blank 2
-
-  </div>
-
-
-  <div
-    class="btn"
-    data-category="blank3">
-
-    Blank 3
-
-  </div>
-
-
-  <div
-    class="btn"
-    data-category="blank4">
-
-    Blank 4
-
-  </div>
-
-
-  <div
-    class="btn"
-    data-category="blank5">
-
-    Blank 5
-
-  </div>
-
-
-  <div
-    class="btn"
-    data-category="blank6">
-
-    Blank 6
-
-  </div>
-
-
-  <div
-    class="btn"
-    data-category="blank7">
-
-    Blank 7
-
-  </div>
-
-</div>
-
-
-<!-- SEARCH BAR UNDER BLANK BUTTONS -->
-
-<input
-  type="text"
-  class="search-bar"
-  placeholder="Search links..."
-  id="searchBar">
-
-
-<!-- LINK CARDS -->
 
 <div class="container">
-
-<div class="grid">
-
-
-<!-- LINK 1 - VVID / MOVIES -->
-
-<div
-  class="card"
-  data-category="movies">
-
-  <div class="image-area">
-
-    <div class="hot">
-      HOT
-    </div>
-
-    <div class="link-icon">
-      1
-    </div>
-
-  </div>
-
-
-  <div class="info">
-
-    <div class="title">
-      Link 1
-    </div>
-
-    <div class="url">
-      https://vvid.pages.dev
-    </div>
-
-
-    <div class="buttons">
-
-      <button
-        class="favorite"
-        onclick="toggleFavorite(this)">
-
-        <span class="heart">
-          ♡
-        </span>
-
-        Add to favorites
-
-      </button>
-
-
-      <a
-        class="view-more"
-        href="https://vvid.pages.dev"
-        target="_blank"
-        rel="noopener noreferrer">
-
-        View more
-
-      </a>
-
+  <div class="grid">
+    
+    <!-- LINK 8 - RIO / MOVIES -->
+    <div class="card" data-category="movies">
+      <div class="image-area">
+        <div class="hot">HOT</div>
+        <div class="link-icon">8</div>
+      </div>
+      <div class="info">
+        <div class="title">Rio</div>
+        <div class="url">https://drive.google.com/file/d/1DIHKkPm7JVwOWWgM5RvYgOhAbFXWOAhf/view</div>
+        <div class="buttons">
+          <button class="favorite" onclick="toggleFavorite(this)">
+            <span class="heart">♡</span> Add to favorites
+          </button>
+          <a class="view-more" href="https://drive.google.com/file/d/1DIHKkPm7JVwOWWgM5RvYgOhAbFXWOAhf/view" target="_blank" rel="noopener noreferrer">
+            View more
+          </a>
+        </div>
+      </div>
     </div>
 
   </div>
-
 </div>
-
-
-<!-- LINK 2 - BUZZOID / FOLLOWERS-LIKES -->
-
-<div
-  class="card"
-  data-category="followers-likes">
-
-  <div class="image-area">
-
-    <div class="hot">
-      HOT
-    </div>
-
-    <div class="link-icon">
-      2
-    </div>
-
-  </div>
-
-
-  <div class="info">
-
-    <div class="title">
-      Link 2
-    </div>
-
-    <div class="url">
-      https://buzzoid.com
-    </div>
-
-
-    <div class="buttons">
-
-      <button
-        class="favorite"
-        onclick="toggleFavorite(this)">
-
-        <span class="heart">
-          ♡
-        </span>
-
-        Add to favorites
-
-      </button>
-
-
-      <a
-        class="view-more"
-        href="https://buzzoid.com"
-        target="_blank"
-        rel="noopener noreferrer">
-
-        View more
-
-      </a>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-<!-- LINK 3 - CLOTHES -->
-
-<div
-  class="card"
-  data-category="clothes">
-
-  <div class="image-area">
-
-    <div class="link-icon">
-      3
-    </div>
-
-  </div>
-
-
-  <div class="info">
-
-    <div class="title">
-      Link 3
-    </div>
-
-    <div class="url">
-      https://repskingdom.com/products/
-    </div>
-
-
-    <div class="buttons">
-
-      <button
-        class="favorite"
-        onclick="toggleFavorite(this)">
-
-        <span class="heart">
-          ♡
-        </span>
-
-        Add to favorites
-
-      </button>
-
-
-      <a
-        class="view-more"
-        href="https://repskingdom.com/products/"
-        target="_blank"
-        rel="noopener noreferrer">
-
-        View more
-
-      </a>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-<!-- LINK 4 - VENTRIX / SCAMMING -->
-
-<div
-  class="card"
-  data-category="scamming">
-
-  <div class="image-area">
-
-    <div class="hot">
-      HOT
-    </div>
-
-    <div class="link-icon">
-      4
-    </div>
-
-  </div>
-
-
-  <div class="info">
-
-    <div class="title">
-      Link 4
-    </div>
-
-    <div class="url">
-      https://ventrix.to/
-    </div>
-
-
-    <div class="buttons">
-
-      <button
-        class="favorite"
-        onclick="toggleFavorite(this)">
-
-        <span class="heart">
-          ♡
-        </span>
-
-        Add to favorites
-
-      </button>
-
-
-      <a
-        class="view-more"
-        href="https://ventrix.to/"
-        target="_blank"
-        rel="noopener noreferrer">
-
-        View more
-
-      </a>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-<!-- LINK 5 - SCAMMING -->
-
-<div
-  class="card"
-  data-category="scamming">
-
-  <div class="image-area">
-
-    <div class="link-icon">
-      5
-    </div>
-
-  </div>
-
-
-  <div class="info">
-
-    <div class="title">
-      Link 5
-    </div>
-
-    <div class="url">
-      https://vortiga-shop.to/store/cards/hq
-    </div>
-
-
-    <div class="buttons">
-
-      <button
-        class="favorite"
-        onclick="toggleFavorite(this)">
-
-        <span class="heart">
-          ♡
-        </span>
-
-        Add to favorites
-
-      </button>
-
-
-      <a
-        class="view-more"
-        href="https://vortiga-shop.to/store/cards/hq"
-        target="_blank"
-        rel="noopener noreferrer">
-
-        View more
-
-      </a>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-<!-- LINK 6 - CORALINE / MOVIES -->
-
-<div
-  class="card"
-  data-category="movies">
-
-  <div class="image-area">
-
-    <div class="hot">
-      HOT
-    </div>
-
-    <div class="link-icon">
-      6
-    </div>
-
-  </div>
-
-
-  <div class="info">
-
-    <div class="title">
-      Coraline
-    </div>
-
-    <div class="url">
-      https://drive.google.com/file/d/1TFiL16cNmQmG5pSi-s6od4xgymFqK1kJ/view
-    </div>
-
-
-    <div class="buttons">
-
-      <button
-        class="favorite"
-        onclick="toggleFavorite(this)">
-
-        <span class="heart">
-          ♡
-        </span>
-
-        Add to favorites
-
-      </button>
-
-
-      <a
-        class="view-more"
-        href="https://drive.google.com/file/d/1TFiL16cNmQmG5pSi-s6od4xgymFqK1kJ/view"
-        target="_blank"
-        rel="noopener noreferrer">
-
-        View more
-
-      </a>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-</div>
-
-</div>
-
 
 <script>
-
-
-/* =========================================
-   THEME SWITCHING
-========================================= */
-
-function setTheme(theme) {
-
-  document.body.classList.remove(
-
-    "theme-cyan",
-    "theme-red",
-    "theme-purple",
-    "theme-green",
-    "theme-yellow",
-    "theme-white"
-
-  );
-
-
-  document.body.classList.add(
-    "theme-" + theme
-  );
-
-
-  localStorage.setItem(
-    "selectedTheme",
-    theme
-  );
-
-}
-
-
-/* =========================================
-   CUSTOM BACKGROUND
-========================================= */
-
-function setCustomBackground(event) {
-
-  const file =
-    event.target.files[0];
-
-
-  if (!file) return;
-
-
-  const reader =
-    new FileReader();
-
-
-  reader.onload =
-    function(e) {
-
-      const image =
-        e.target.result;
-
-
-      const bg =
-        document.getElementById(
-          "backgroundLayer"
-        );
-
-
-      const overlay =
-        document.getElementById(
-          "backgroundOverlay"
-        );
-
-
-      bg.style.backgroundImage =
-        "url('" +
-        image +
-        "')";
-
-
-      bg.style.backgroundSize =
-        "cover";
-
-
-      bg.style.backgroundPosition =
-        "center center";
-
-
-      bg.style.backgroundRepeat =
-        "no-repeat";
-
-
-      overlay.style.background =
-        "rgba(0,0,0,0.45)";
-
-
-      localStorage.setItem(
-        "customBackground",
-        image
-      );
-
-
-      document.getElementById(
-        "removeBackground"
-      ).style.display =
-        "block";
-
-    };
-
-
-  reader.readAsDataURL(file);
-
-}
-
-
-/* =========================================
-   REMOVE CUSTOM BACKGROUND
-========================================= */
-
-function removeCustomBackground() {
-
-  const bg =
-    document.getElementById(
-      "backgroundLayer"
-    );
-
-
-  const overlay =
-    document.getElementById(
-      "backgroundOverlay"
-    );
-
-
-  bg.style.backgroundImage =
-    "";
-
-
-  overlay.style.background =
-    "transparent";
-
-
-  localStorage.removeItem(
-    "customBackground"
-  );
-
-
-  document.getElementById(
-    "removeBackground"
-  ).style.display =
-    "none";
-
-}
-
-
-/* =========================================
-   FAVORITES
-========================================= */
-
 function toggleFavorite(button) {
-
-  const heart =
-    button.querySelector(
-      ".heart"
-    );
-
-
-  if (
-    heart.textContent === "♡"
-  ) {
-
-    heart.textContent =
-      "♥";
-
-
-    button.style.background =
-      "var(--accent-soft)";
-
-
-    button.style.borderColor =
-      "var(--accent)";
-
-
-    button.style.color =
-      "var(--accent)";
-
+  const heart = button.querySelector('.heart');
+  if (heart.innerText === '♡') {
+    heart.innerText = '♥';
+    button.style.color = 'var(--accent)';
   } else {
-
-    heart.textContent =
-      "♡";
-
-
-    button.style.background =
-      "var(--button)";
-
-
-    button.style.borderColor =
-      "var(--border)";
-
-
-    button.style.color =
-      "var(--text)";
-
+    heart.innerText = '♡';
+    button.style.color = 'var(--text)';
   }
-
 }
-
-
-/* =========================================
-   CATEGORY FILTER
-========================================= */
-
-const categoryButtons =
-  document.querySelectorAll(
-    ".btn"
-  );
-
-
-const cards =
-  document.querySelectorAll(
-    ".card"
-  );
-
-
-categoryButtons.forEach(
-  function(button) {
-
-    button.addEventListener(
-      "click",
-      function() {
-
-        categoryButtons.forEach(
-          function(btn) {
-
-            btn.classList.remove(
-              "active"
-            );
-
-          }
-        );
-
-
-        button.classList.add(
-          "active"
-        );
-
-
-        const category =
-          button.dataset.category;
-
-
-        cards.forEach(
-          function(card) {
-
-            if (
-              card.dataset.category ===
-              category
-            ) {
-
-              card.style.display =
-                "block";
-
-            } else {
-
-              card.style.display =
-                "none";
-
-            }
-
-          }
-        );
-
-      }
-    );
-
-  }
-);
-
-
-/* =========================================
-   SEARCH
-========================================= */
-
-const searchBar =
-  document.getElementById(
-    "searchBar"
-  );
-
-
-searchBar.addEventListener(
-  "input",
-  function() {
-
-    const search =
-      searchBar.value
-      .toLowerCase()
-      .trim();
-
-
-    cards.forEach(
-      function(card) {
-
-        const text =
-          card.textContent
-          .toLowerCase();
-
-
-        if (
-          text.includes(search)
-        ) {
-
-          card.style.display =
-            "block";
-
-        } else {
-
-          card.style.display =
-            "none";
-
-        }
-
-      }
-    );
-
-  }
-);
-
-
-/* =========================================
-   LOAD SAVED SETTINGS
-========================================= */
-
-window.addEventListener(
-  "load",
-  function() {
-
-
-    const savedTheme =
-      localStorage.getItem(
-        "selectedTheme"
-      );
-
-
-    if (savedTheme) {
-
-      setTheme(
-        savedTheme
-      );
-
-    }
-
-
-    const savedBackground =
-      localStorage.getItem(
-        "customBackground"
-      );
-
-
-    if (savedBackground) {
-
-      const bg =
-        document.getElementById(
-          "backgroundLayer"
-        );
-
-
-      const overlay =
-        document.getElementById(
-          "backgroundOverlay"
-        );
-
-
-      bg.style.backgroundImage =
-        "url('" +
-        savedBackground +
-        "')";
-
-
-      bg.style.backgroundSize =
-        "cover";
-
-
-      bg.style.backgroundPosition =
-        "center center";
-
-
-      bg.style.backgroundRepeat =
-        "no-repeat";
-
-
-      overlay.style.background =
-        "rgba(0,0,0,0.45)";
-
-
-      document.getElementById(
-        "removeBackground"
-      ).style.display =
-        "block";
-
-    }
-
-  }
-);
-
 </script>
 
 </body>
