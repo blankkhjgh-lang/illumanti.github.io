@@ -41,6 +41,7 @@ body {
   overflow-x: hidden;
 }
 
+
 /* =========================================
    FULL SCREEN BACKGROUND
 ========================================= */
@@ -74,6 +75,7 @@ body {
   background-repeat: no-repeat;
 }
 
+
 #backgroundOverlay {
 
   position: fixed;
@@ -92,6 +94,7 @@ body {
 
   pointer-events: none;
 }
+
 
 /* =========================================
    THEMES
@@ -120,6 +123,7 @@ body.theme-cyan {
   --muted: #6f9999;
 }
 
+
 body.theme-red {
 
   --bg-main: #000000;
@@ -142,6 +146,7 @@ body.theme-red {
 
   --muted: #996f6f;
 }
+
 
 body.theme-purple {
 
@@ -166,6 +171,7 @@ body.theme-purple {
   --muted: #956f99;
 }
 
+
 body.theme-green {
 
   --bg-main: #000000;
@@ -188,6 +194,7 @@ body.theme-green {
 
   --muted: #6f997d;
 }
+
 
 body.theme-yellow {
 
@@ -212,6 +219,7 @@ body.theme-yellow {
   --muted: #99996f;
 }
 
+
 body.theme-white {
 
   --bg-main: #ffffff;
@@ -235,6 +243,7 @@ body.theme-white {
   --muted: #666666;
 }
 
+
 /* =========================================
    THEME MENU
 ========================================= */
@@ -255,6 +264,7 @@ body.theme-white {
 
   flex-wrap: wrap;
 }
+
 
 .theme-button,
 .custom-button,
@@ -288,6 +298,7 @@ body.theme-white {
     0.2s;
 }
 
+
 .theme-button:hover,
 .custom-button:hover,
 .remove-background:hover {
@@ -302,17 +313,20 @@ body.theme-white {
     0 0 10px var(--accent-soft);
 }
 
+
 #backgroundInput {
 
   display:
     none;
 }
 
+
 .remove-background {
 
   display:
     none;
 }
+
 
 /* =========================================
    HEADER
@@ -329,6 +343,7 @@ body.theme-white {
   margin-bottom:
     15px;
 }
+
 
 .header h1 {
 
@@ -353,6 +368,7 @@ body.theme-white {
   text-shadow:
     0 0 15px var(--accent-soft);
 }
+
 
 /* =========================================
    CATEGORY BUTTONS
@@ -381,6 +397,7 @@ body.theme-white {
   padding:
     0 5px;
 }
+
 
 .btn {
 
@@ -421,6 +438,7 @@ body.theme-white {
     0.3px;
 }
 
+
 .btn:hover,
 .btn.active {
 
@@ -439,6 +457,7 @@ body.theme-white {
   box-shadow:
     0 0 15px var(--accent-soft);
 }
+
 
 /* =========================================
    SEARCH BAR
@@ -483,8 +502,9 @@ body.theme-white {
     none;
 
   box-shadow:
-    0 0 20px var(--accent-soft);
+    0 0 15px var(--accent-soft);
 }
+
 
 .search-bar:focus {
 
@@ -495,11 +515,13 @@ body.theme-white {
     0 0 20px var(--accent-soft);
 }
 
+
 .search-bar::placeholder {
 
   color:
     var(--muted);
 }
+
 
 /* =========================================
    LINK CARDS
@@ -517,6 +539,7 @@ body.theme-white {
     0 auto;
 }
 
+
 .grid {
 
   display:
@@ -525,142 +548,329 @@ body.theme-white {
   grid-template-columns:
     repeat(3, 1fr);
 
-  gap: 15px;
+  gap:
+    10px;
 }
+
 
 .card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
+
+  background:
+    var(--card);
+
+  border:
+    1px solid var(--border);
+
+  border-radius:
+    14px;
+
+  overflow:
+    hidden;
+
+  box-shadow:
+    0 0 8px var(--accent-soft),
+    inset 0 0 15px var(--accent-soft);
+
+  transition:
+    0.2s ease;
 }
+
+
+.card:hover {
+
+  transform:
+    translateY(-3px);
+
+  border-color:
+    var(--accent);
+
+  box-shadow:
+    0 0 18px var(--accent-soft);
+}
+
 
 .image-area {
-  position: relative;
-  background: rgba(255,255,255,0.05);
-  height: 120px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
+  height:
+    110px;
+
+  margin:
+    6px;
+
+  border-radius:
+    10px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  position:
+    relative;
+
+  background:
+    radial-gradient(
+      circle,
+      var(--accent-soft),
+      transparent 65%
+    );
 }
 
-.hot {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background: #ff1744;
-  color: #fff;
-  font-size: 10px;
-  font-weight: bold;
-  padding: 2px 6px;
-  border-radius: 4px;
-}
 
 .link-icon {
-  font-size: 36px;
-  font-weight: bold;
-  color: var(--accent);
+
+  width:
+    55px;
+
+  height:
+    55px;
+
+  border-radius:
+    50%;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  font-size:
+    23px;
+
+  background:
+    var(--card);
+
+  color:
+    var(--accent);
+
+  border:
+    2px solid var(--accent);
+
+  box-shadow:
+    0 0 12px var(--accent-soft);
+
+  font-weight:
+    900;
 }
+
+
+.hot {
+
+  position:
+    absolute;
+
+  top:
+    6px;
+
+  left:
+    6px;
+
+  padding:
+    4px 9px;
+
+  border-radius:
+    15px;
+
+  background:
+    var(--accent);
+
+  color:
+    var(--bg-main);
+
+  font-size:
+    9px;
+
+  font-weight:
+    900;
+}
+
 
 .info {
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+
+  text-align:
+    center;
+
+  padding:
+    0 8px 9px;
 }
+
 
 .title {
-  font-size: 18px;
-  font-weight: bold;
+
+  font-size:
+    14px;
+
+  font-weight:
+    800;
+
+  color:
+    var(--text);
+
+  margin-bottom:
+    4px;
 }
+
 
 .url {
-  font-size: 12px;
-  color: var(--muted);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+
+  font-size:
+    8px;
+
+  color:
+    var(--muted);
+
+  white-space:
+    nowrap;
+
+  overflow:
+    hidden;
+
+  text-overflow:
+    ellipsis;
+
+  margin-bottom:
+    8px;
 }
+
 
 .buttons {
-  display: flex;
-  gap: 8px;
+
+  border-top:
+    1px solid var(--border);
+
+  padding-top:
+    7px;
 }
 
-.favorite, .view-more {
-  flex: 1;
-  padding: 8px;
-  font-size: 12px;
-  font-weight: bold;
-  text-align: center;
-  border-radius: 6px;
-  cursor: pointer;
-  text-decoration: none;
-}
 
 .favorite {
-  background: var(--button);
-  color: var(--text);
-  border: 1px solid var(--border);
+
+  width:
+    100%;
+
+  padding:
+    7px;
+
+  border-radius:
+    15px;
+
+  background:
+    var(--button);
+
+  border:
+    1px solid var(--border);
+
+  color:
+    var(--text);
+
+  font-size:
+    9px;
+
+  font-weight:
+    700;
+
+  cursor:
+    pointer;
+
+  margin-bottom:
+    6px;
 }
+
 
 .view-more {
-  background: var(--accent);
-  color: var(--bg-main);
-  border: none;
+
+  display:
+    block;
+
+  width:
+    100%;
+
+  padding:
+    7px;
+
+  border-radius:
+    15px;
+
+  background:
+    var(--accent);
+
+  color:
+    var(--bg-main);
+
+  border:
+    1px solid var(--accent);
+
+  font-size:
+    10px;
+
+  font-weight:
+    900;
+
+  text-decoration:
+    none;
 }
 
-</style>
-</head>
-<body class="theme-cyan">
 
-<div id="backgroundLayer"></div>
-<div id="backgroundOverlay"></div>
+.heart {
 
-<div class="header">
-  <h1>Every Link You Could Need</h1>
-</div>
+  font-size:
+    12px;
 
-<div class="container">
-  <div class="grid">
-    
-    <!-- LINK 8 - RIO / MOVIES -->
-    <div class="card" data-category="movies">
-      <div class="image-area">
-        <div class="hot">HOT</div>
-        <div class="link-icon">8</div>
-      </div>
-      <div class="info">
-        <div class="title">Rio</div>
-        <div class="url">https://drive.google.com/file/d/1DIHKkPm7JVwOWWgM5RvYgOhAbFXWOAhf/view</div>
-        <div class="buttons">
-          <button class="favorite" onclick="toggleFavorite(this)">
-            <span class="heart">♡</span> Add to favorites
-          </button>
-          <a class="view-more" href="https://drive.google.com/file/d/1DIHKkPm7JVwOWWgM5RvYgOhAbFXWOAhf/view" target="_blank" rel="noopener noreferrer">
-            View more
-          </a>
-        </div>
-      </div>
-    </div>
+  vertical-align:
+    middle;
 
-  </div>
-</div>
+  margin-right:
+    3px;
+}
 
-<script>
-function toggleFavorite(button) {
-  const heart = button.querySelector('.heart');
-  if (heart.innerText === '♡') {
-    heart.innerText = '♥';
-    button.style.color = 'var(--accent)';
-  } else {
-    heart.innerText = '♡';
-    button.style.color = 'var(--text)';
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+  .header h1 {
+
+    font-size:
+      25px;
   }
-}
-</script>
 
-</body>
-</html>
+
+  .buttons-container {
+
+    grid-template-columns:
+      repeat(2, 1fr);
+
+    gap:
+      8px;
+  }
+
+
+  .grid {
+
+    grid-template-columns:
+      repeat(2, 1fr);
+
+    gap:
+      8px;
+  }
+
+
+  .image-area {
+
+    height:
+      100px;
+  }
+
+}
+
+
+@media (max-width: 400
